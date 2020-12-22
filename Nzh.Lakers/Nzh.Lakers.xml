@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nzh.Lakers</name>
+    </assembly>
+    <members>
+        <member name="M:Nzh.Lakers.Controllers.DemoController.#ctor(Nzh.Lakers.IService.IDemoService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="demoService"></param>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.DemoController.GetDemoPageList(System.Int32,System.Int32,System.String)">
+            <summary>
+            获取Demo分页
+            </summary>
+            <param name="PageIndex"></param>
+            <param name="PageSize"></param>
+            <param name="Name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.DemoController.GetDemoById(System.Int64)">
+            <summary>
+            获取Demo
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.DemoController.InsertDemo(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            添加Demo
+            </summary>
+            <param name="Name"></param>
+            <param name="Sex"></param>
+            <param name="Age"></param>
+            <param name="Remark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.DemoController.UpdateDemo(System.Int64,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            修改Demo
+            </summary>
+            <param name="Id"></param>
+            <param name="Name"></param>
+            <param name="Sex"></param>
+            <param name="Age"></param>
+            <param name="Remark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.DemoController.DeleteDemo(System.Int64)">
+            <summary>
+            删除Demo
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.TestController.#ctor(Nzh.Lakers.IService.ITestService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="testService"></param>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.TestController.GetDemoPageListAsync(System.Int32,System.Int32,System.String)">
+            <summary>
+            获取Demo分页（异步）
+            </summary>
+            <param name="PageIndex"></param>
+            <param name="PageSize"></param>
+            <param name="Name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.TestController.GetDemoByIdAsync(System.Int64)">
+            <summary>
+            获取Demo（异步）
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.TestController.InsertDemoAsync(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            添加Demo（异步）
+            </summary>
+            <param name="Name"></param>
+            <param name="Sex"></param>
+            <param name="Age"></param>
+            <param name="Remark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.TestController.UpdateDemoAsync(System.Int64,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            修改Demo（异步）
+            </summary>
+            <param name="Id"></param>
+            <param name="Name"></param>
+            <param name="Sex"></param>
+            <param name="Age"></param>
+            <param name="Remark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.TestController.DeleteDemoByIdAsync(System.Int64)">
+            <summary>
+            删除Demo（异步）
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Lakers.SwaggerHelper.SwaggerDocTag">
+            <summary>
+            Swagger注释帮助类
+            </summary>
+        </member>
+        <member name="M:Nzh.Lakers.SwaggerHelper.SwaggerDocTag.Apply(Microsoft.OpenApi.Models.OpenApiDocument,Swashbuckle.AspNetCore.SwaggerGen.DocumentFilterContext)">
+            <summary>
+            添加附加注释
+            </summary>
+            <param name="swaggerDoc"></param>
+            <param name="context"></param>
+        </member>
+    </members>
+</doc>
