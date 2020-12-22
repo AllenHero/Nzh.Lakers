@@ -124,7 +124,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpPost("DeleteDemoById")]
-        public JsonResult DeleteDemo(long Id)
+        public JsonResult DeleteDemoById(long Id)
         {
             ResultModel<bool> Result = new ResultModel<bool>();
             try
