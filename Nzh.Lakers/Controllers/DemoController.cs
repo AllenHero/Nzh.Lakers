@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Nzh.Lakers.Controllers
 {
-    [Route("api/[Demo]")]
+    [Route("api/Demo")]
     [ApiController]
     public class DemoController : Controller
     {
