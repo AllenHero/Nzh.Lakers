@@ -4,12 +4,13 @@
         <name>Nzh.Lakers</name>
     </assembly>
     <members>
-        <member name="M:Nzh.Lakers.Controllers.DemoController.#ctor(Nzh.Lakers.IService.IDemoService,System.IServiceProvider)">
+        <member name="M:Nzh.Lakers.Controllers.DemoController.#ctor(Nzh.Lakers.IService.IDemoService,Nzh.Lakers.Cache.Interface.ICacheService,Nzh.Lakers.Cache.Interface.ICacheService)">
             <summary>
             构造函数
             </summary>
             <param name="demoService"></param>
-            <param name="cacheService"></param>
+            <param name="memoryCache"></param>
+            <param name="redisCache"></param>
         </member>
         <member name="M:Nzh.Lakers.Controllers.DemoController.GetDemoPageList(System.Int32,System.Int32,System.String)">
             <summary>

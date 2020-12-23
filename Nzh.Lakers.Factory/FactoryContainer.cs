@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Nzh.Lakers.Cache.Interface;
+using Nzh.Lakers.Cache.MemoryCache;
+using Nzh.Lakers.Cache.RedisCache;
 using Nzh.Lakers.IRepository;
 using Nzh.Lakers.IService;
 using Nzh.Lakers.Repository;
@@ -24,6 +27,9 @@ namespace Nzh.Lakers.Factory
 
             services.AddScoped<ITestService, TestService>();
             services.AddScoped<ITestRepository, TestRepository>();
+
+            services.AddScoped<ICacheService, MemoryCacheService>();
+            services.AddScoped<ICacheService, RedisCacheService>();
 
             return services;
         }

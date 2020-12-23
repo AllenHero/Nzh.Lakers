@@ -1,22 +1,27 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Configuration;
 using Nzh.Lakers.Cache.Interface;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Nzh.Lakers.Cache.MemoryCache
+namespace Nzh.Lakers.Cache.RedisCache
 {
-    /// <summary>
-    /// 缓存接口实现
-    /// </summary>
-    public class MemoryCacheService : ICacheService
+    public class RedisCacheService : ICacheService
     {
-        protected IMemoryCache _cache;
+        private ConnectionMultiplexer Redis { get; set; }
 
-        public MemoryCacheService(IMemoryCache cache)
+        private IDatabase DB { get; set; }
+
+        public IConfiguration _Configuration { get; }
+
+        public RedisCacheService(IConfiguration Configuration)
         {
-            _cache = cache;
+            _Configuration = Configuration;
+            string Connection = _Configuration.GetSection("Redis:ConnectionString").Value;
+            Redis = ConnectionMultiplexer.Connect(Connection);
+            DB = Redis.GetDatabase();
         }
 
         /// <summary>
@@ -29,28 +34,9 @@ namespace Nzh.Lakers.Cache.MemoryCache
         {
             if (!string.IsNullOrEmpty(key))
             {
-                _cache.Set(key, value);
+                return DB.StringSet(key,Convert.ToString(value));
             }
             return true;
-        }
-
-        /// <summary>
-        /// 移除
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public bool Remove(string key)
-        {
-            if (string.IsNullOrEmpty(key))
-            {
-                return false;
-            }
-            if (Exists(key))
-            {
-                _cache.Remove(key);
-                return true;
-            }
-            return false;
         }
 
         /// <summary>
@@ -66,9 +52,27 @@ namespace Nzh.Lakers.Cache.MemoryCache
             }
             if (Exists(key))
             {
-                return _cache.Get(key).ToString();
+                return DB.StringGet(key);
             }
             return null;
+        }
+
+        /// <summary>
+        /// 移除
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public bool Remove(string key)
+        {
+            if (string.IsNullOrEmpty(key))
+            {
+                return false;
+            }
+            if (Exists(key))
+            {
+                return DB.KeyDelete(key);
+            }
+            return false;
         }
 
         /// <summary>
@@ -82,8 +86,7 @@ namespace Nzh.Lakers.Cache.MemoryCache
             {
                 return false;
             }
-            object cache;
-            return _cache.TryGetValue(key, out cache);
+            return !string.IsNullOrEmpty(DB.StringGet(key)) ? true : false;
         }
     }
 }

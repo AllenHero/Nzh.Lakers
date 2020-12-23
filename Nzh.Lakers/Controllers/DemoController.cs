@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using Nzh.Lakers.Cache.RedisCache;
 
 namespace Nzh.Lakers.Controllers
 {
@@ -22,15 +23,19 @@ namespace Nzh.Lakers.Controllers
 
         private readonly ICacheService _memoryCache;
 
+        private readonly ICacheService _redisCache;
+
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="demoService"></param>
-        /// <param name="cacheService"></param>
-        public DemoController(IDemoService demoService, IServiceProvider cacheService)
+        /// <param name="memoryCache"></param>
+        /// <param name="redisCache"></param>
+        public DemoController(IDemoService demoService, ICacheService memoryCache, ICacheService redisCache)
         {
             _demoService = demoService;
-            _memoryCache = cacheService.GetService<MemoryCacheService>();
+            _memoryCache = memoryCache;
+            _redisCache= redisCache;
         }
 
         /// <summary>
@@ -47,7 +52,8 @@ namespace Nzh.Lakers.Controllers
             try
             {
                 Result = _demoService.GetDemoPageList(PageIndex, PageSize, Name);
-                _memoryCache.Add("GetDemoPageList", JsonConvert.SerializeObject(Result));
+                //_memoryCache.Add("GetDemoPageList", JsonConvert.SerializeObject(Result));
+                _redisCache.Add("GetDemoPageList", JsonConvert.SerializeObject(Result));
             }
             catch (Exception ex)
             {
@@ -159,7 +165,8 @@ namespace Nzh.Lakers.Controllers
             ResultModel<string> Result = new ResultModel<string>();
             try
             {
-                Result.Data = _memoryCache.GetValue(Key);
+                //Result.Data = _memoryCache.GetValue(Key);
+                Result.Data = _redisCache.GetValue(Key);
             }
             catch (Exception ex)
             {

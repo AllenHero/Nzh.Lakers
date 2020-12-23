@@ -6,7 +6,6 @@ namespace Nzh.Lakers.Cache.Interface
 {
     /// <summary>
     /// 缓存接口
-    /// 分别内存缓存和Redis缓存(2.1.0版本)
     /// </summary>
     public interface ICacheService
     {
@@ -17,7 +16,7 @@ namespace Nzh.Lakers.Cache.Interface
         /// <param name="value"></param>
         /// <param name="ExpirtionTime"></param>
         /// <returns></returns>
-        bool Add(string key, object value, int ExpirtionTime = 20);
+        bool Add(string key, object value);
 
 
         /// <summary>
