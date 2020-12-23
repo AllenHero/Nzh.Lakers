@@ -28,6 +28,9 @@ namespace Nzh.Lakers.Factory
             services.AddScoped<ITestService, TestService>();
             services.AddScoped<ITestRepository, TestRepository>();
 
+            services.AddScoped<IEnclosureRepository, EnclosureRepository>();
+            services.AddScoped<IEnclosureService, EnclosureService>();
+
             services.AddScoped<ICacheService, MemoryCacheService>();
             services.AddScoped<ICacheService, RedisCacheService>();
 

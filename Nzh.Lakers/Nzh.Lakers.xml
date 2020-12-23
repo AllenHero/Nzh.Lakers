@@ -63,11 +63,13 @@
             <param name="Key"></param>
             <returns></returns>
         </member>
-        <member name="M:Nzh.Lakers.Controllers.TestController.#ctor(Nzh.Lakers.IService.ITestService)">
+        <member name="M:Nzh.Lakers.Controllers.TestController.#ctor(Nzh.Lakers.IService.ITestService,Nzh.Lakers.IService.IEnclosureService,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
             <summary>
             构造函数
             </summary>
             <param name="testService"></param>
+            <param name="enclosureService"></param>
+            <param name="hostingEnvironment"></param>
         </member>
         <member name="M:Nzh.Lakers.Controllers.TestController.GetDemoPageListAsync(System.Int32,System.Int32,System.String)">
             <summary>
@@ -109,6 +111,20 @@
         <member name="M:Nzh.Lakers.Controllers.TestController.DeleteDemoByIdAsync(System.Int64)">
             <summary>
             删除Demo（异步）
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.TestController.TestUpLoadEnclosure(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            上传附件
+            </summary>
+            <param name="uploadfile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.TestController.TestDownLoadEnclosure(System.Int64)">
+            <summary>
+            下载附件
             </summary>
             <param name="Id"></param>
             <returns></returns>
