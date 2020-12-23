@@ -10,18 +10,18 @@ namespace Nzh.Lakers.Cache.RedisCache
 {
     public class RedisCacheService : ICacheService
     {
-        private ConnectionMultiplexer Redis { get; set; }
+        private ConnectionMultiplexer _redis { get; set; }
 
-        private IDatabase DB { get; set; }
+        private IDatabase _cache { get; set; }
 
-        public IConfiguration _Configuration { get; }
+        public IConfiguration _configuration { get; }
 
-        public RedisCacheService(IConfiguration Configuration)
+        public RedisCacheService(IConfiguration configuration)
         {
-            _Configuration = Configuration;
-            string Connection = _Configuration.GetSection("Redis:ConnectionString").Value;
-            Redis = ConnectionMultiplexer.Connect(Connection);
-            DB = Redis.GetDatabase();
+            _configuration = configuration;
+            string Connection = _configuration.GetSection("Redis:ConnectionString").Value;
+            _redis = ConnectionMultiplexer.Connect(Connection);
+            _cache = _redis.GetDatabase();
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Nzh.Lakers.Cache.RedisCache
         {
             if (!string.IsNullOrEmpty(key))
             {
-                return DB.StringSet(key,Convert.ToString(value));
+                return _cache.StringSet(key,Convert.ToString(value));
             }
             return true;
         }
@@ -52,7 +52,7 @@ namespace Nzh.Lakers.Cache.RedisCache
             }
             if (Exists(key))
             {
-                return DB.StringGet(key);
+                return _cache.StringGet(key);
             }
             return null;
         }
@@ -70,7 +70,7 @@ namespace Nzh.Lakers.Cache.RedisCache
             }
             if (Exists(key))
             {
-                return DB.KeyDelete(key);
+                return _cache.KeyDelete(key);
             }
             return false;
         }
@@ -86,7 +86,7 @@ namespace Nzh.Lakers.Cache.RedisCache
             {
                 return false;
             }
-            return !string.IsNullOrEmpty(DB.StringGet(key)) ? true : false;
+            return !string.IsNullOrEmpty(_cache.StringGet(key)) ? true : false;
         }
     }
 }
