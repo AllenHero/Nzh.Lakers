@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Nzh.Lakers.Cache.Interface;
+using Nzh.Lakers.Cache.MemoryCache;
 using Nzh.Lakers.Entity;
 using Nzh.Lakers.IService;
 using Nzh.Lakers.Model;
@@ -7,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 namespace Nzh.Lakers.Controllers
 {
@@ -16,13 +20,17 @@ namespace Nzh.Lakers.Controllers
     {
         private readonly IDemoService _demoService;
 
+        private readonly ICacheService _memoryCache;
+
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="demoService"></param>
-        public DemoController(IDemoService demoService)
+        /// <param name="cacheService"></param>
+        public DemoController(IDemoService demoService, IServiceProvider cacheService)
         {
             _demoService = demoService;
+            _memoryCache = cacheService.GetService<MemoryCacheService>();
         }
 
         /// <summary>
@@ -39,6 +47,7 @@ namespace Nzh.Lakers.Controllers
             try
             {
                 Result = _demoService.GetDemoPageList(PageIndex, PageSize, Name);
+                _memoryCache.Add("GetDemoPageList", JsonConvert.SerializeObject(Result));
             }
             catch (Exception ex)
             {
@@ -130,6 +139,27 @@ namespace Nzh.Lakers.Controllers
             try
             {
                 Result = _demoService.DeleteDemoById(Id);
+            }
+            catch (Exception ex)
+            {
+                Result.Code = -1;
+                Result.Msg = ex.Message;
+            }
+            return Json(Result);
+        }
+
+        /// <summary>
+        /// 获取缓存值
+        /// </summary>
+        /// <param name="Key"></param>
+        /// <returns></returns>
+        [HttpPost("GetCacheValue")]
+        public JsonResult GetCacheValue(string Key)
+        {
+            ResultModel<string> Result = new ResultModel<string>();
+            try
+            {
+                Result.Data = _memoryCache.GetValue(Key);
             }
             catch (Exception ex)
             {

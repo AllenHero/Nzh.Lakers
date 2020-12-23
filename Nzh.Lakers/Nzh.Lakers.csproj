@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Nzh.Lakers.Cache\Nzh.Lakers.Cache.csproj" />
     <ProjectReference Include="..\Nzh.Lakers.Factory\Nzh.Lakers.Factory.csproj" />
     <ProjectReference Include="..\Nzh.Lakers.IService\Nzh.Lakers.IService.csproj" />
   </ItemGroup>

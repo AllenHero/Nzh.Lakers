@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Nzh.Lakers.Cache.MemoryCache;
 using Nzh.Lakers.Factory;
 using Nzh.Lakers.SqlSugar;
 using Nzh.Lakers.SwaggerHelper;
@@ -47,6 +48,8 @@ namespace Nzh.Lakers
                 //添加对控制器的标签
                 c.DocumentFilter<SwaggerDocTag>();
             });
+
+            services.AddTransient<MemoryCacheService>(); //内存缓存认证注入 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -4,11 +4,12 @@
         <name>Nzh.Lakers</name>
     </assembly>
     <members>
-        <member name="M:Nzh.Lakers.Controllers.DemoController.#ctor(Nzh.Lakers.IService.IDemoService)">
+        <member name="M:Nzh.Lakers.Controllers.DemoController.#ctor(Nzh.Lakers.IService.IDemoService,System.IServiceProvider)">
             <summary>
             构造函数
             </summary>
             <param name="demoService"></param>
+            <param name="cacheService"></param>
         </member>
         <member name="M:Nzh.Lakers.Controllers.DemoController.GetDemoPageList(System.Int32,System.Int32,System.String)">
             <summary>
@@ -52,6 +53,13 @@
             删除Demo
             </summary>
             <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.DemoController.GetCacheValue(System.String)">
+            <summary>
+            获取缓存值
+            </summary>
+            <param name="Key"></param>
             <returns></returns>
         </member>
         <member name="M:Nzh.Lakers.Controllers.TestController.#ctor(Nzh.Lakers.IService.ITestService)">
