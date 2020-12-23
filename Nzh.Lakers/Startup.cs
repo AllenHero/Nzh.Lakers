@@ -48,8 +48,6 @@ namespace Nzh.Lakers
                 //添加对控制器的标签
                 c.DocumentFilter<SwaggerDocTag>();
             });
-
-            services.AddTransient<MemoryCacheService>(); //内存缓存认证注入 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
