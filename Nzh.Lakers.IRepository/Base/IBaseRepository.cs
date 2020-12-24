@@ -46,6 +46,10 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<List<T>> GetPageListBySqlAsync(string Sql, List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
+        DataTable GetDataTableBySql(string Sql);
+
+        Task<DataTable> GetDataTableBySqlAsync(string Sql);
+
         DataTable GetDataTableBySql(string Sql, object parameters);
 
         Task<DataTable> GetDataTableBySqlAsync(string Sql, object parameters);
@@ -57,6 +61,14 @@ namespace Nzh.Lakers.IRepository.Base
         DataTable GetDataTableBySql(string Sql, List<SugarParameter> parameters);
 
         Task<DataTable> GetDataTableBySqlAsync(string Sql, List<SugarParameter> parameters);
+
+        DataTable GetDataTableBySql(string Sql, Expression<Func<T, bool>> expression);
+
+        Task<DataTable> GetDataTableBySqlAsync(string Sql, Expression<Func<T, bool>> expression);
+
+        DataSet GetDataSetBySql(string Sql);
+
+        Task<DataSet> GetDataSetBySqlAsync(string Sql);
 
         DataSet GetDataSetBySql(string Sql, object parameters);
 
@@ -70,9 +82,17 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<DataSet> GetDataSetBySqlAsync(string Sql, List<SugarParameter> parameters);
 
-        bool ExecuteSql(string Sql, object parameters = null);
+        DataSet GetDataSetBySql(string Sql, Expression<Func<T, bool>> expression);
 
-        Task<bool> ExecuteSqlAsync(string Sql, object parameters = null);
+        Task<DataSet> GetDataSetBySqlAsync(string Sql, Expression<Func<T, bool>> expression);
+
+        bool ExecuteSql(string Sql);
+
+        Task<bool> ExecuteSqlAsync(string Sql);
+
+        bool ExecuteSql(string Sql, object parameters);
+
+        Task<bool> ExecuteSqlAsync(string Sql, object parameters);
 
         bool ExecuteSql(string Sql, params SugarParameter[] parameters);
 
@@ -82,9 +102,17 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<bool> ExecuteSqlAsync(string Sql, List<SugarParameter> parameters);
 
-        List<T> GetList(string Sql, object parameters = null);
+        bool ExecuteSql(string Sql, Expression<Func<T, bool>> expression);
 
-        Task<List<T>> GetListAsync(string Sql, object parameters = null);
+        Task<bool> ExecuteSqlAsync(string Sql, Expression<Func<T, bool>> expression);
+
+        List<T> GetList(string Sql);
+
+        Task<List<T>> GetListAsync(string Sql);
+
+        List<T> GetList(string Sql, object parameters);
+
+        Task<List<T>> GetListAsync(string Sql, object parameters);
 
         List<T> GetList(string Sql, params SugarParameter[] parameters);
 
@@ -94,9 +122,17 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<List<T>> GetListAsync(string Sql, List<SugarParameter> parameters);
 
-        T Get(string Sql, object parameters = null);
+        List<T> GetList(string Sql, Expression<Func<T, bool>> expression);
 
-        Task<T> GetAsync(string Sql, object parameters = null);
+        Task<List<T>> GetListAsync(string Sql, Expression<Func<T, bool>> expression);
+
+        T Get(string Sql);
+
+        Task<T> GetAsync(string Sql);
+
+        T Get(string Sql, object parameters);
+
+        Task<T> GetAsync(string Sql, object parameters);
 
         T Get(string Sql, params SugarParameter[] parameters);
 
@@ -106,9 +142,17 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<T> GetAsync(string Sql, List<SugarParameter> parameters);
 
-        dynamic GetDynamic(string Sql, object parameters = null);
+        T Get(string Sql, Expression<Func<T, bool>> expression);
 
-        Task<dynamic> GetDynamicAsync(string Sql, object parameters = null);
+        Task<T> GetAsync(string Sql, Expression<Func<T, bool>> expression);
+
+        dynamic GetDynamic(string Sql);
+
+        Task<dynamic> GetDynamicAsync(string Sql);
+
+        dynamic GetDynamic(string Sql, object parameters);
+
+        Task<dynamic> GetDynamicAsync(string Sql, object parameters);
 
         dynamic GetDynamic(string Sql, params SugarParameter[] parameters);
 
@@ -118,17 +162,45 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<dynamic> GetDynamicAsync(string Sql, List<SugarParameter> parameters);
 
+        dynamic GetDynamic(string Sql, Expression<Func<T, bool>> expression);
+
+        Task<dynamic> GetDynamicAsync(string Sql, Expression<Func<T, bool>> expression);
+
         #endregion
 
         #region  其他
+
+        DataTable QueryProcedure(string procedureName);
+
+        Task<DataTable> QueryProcedureAsync(string procedureName);
+
+        DataTable QueryProcedure(string procedureName, object parameters);
+
+        Task<DataTable> QueryProcedureAsync(string procedureName, object parameters);
+
+        DataTable QueryProcedure(string procedureName, params SugarParameter[] parameters);
+
+        Task<DataTable> QueryProcedureAsync(string procedureName, params SugarParameter[] parameters);
 
         DataTable QueryProcedure(string procedureName, List<SugarParameter> parameters);
 
         Task<DataTable> QueryProcedureAsync(string procedureName, List<SugarParameter> parameters);
 
+        DataTable QueryProcedure(string procedureName, Expression<Func<T, bool>> expression);
+
+        Task<DataTable> QueryProcedureAsync(string procedureName, Expression<Func<T, bool>> expression);
+
+        List<T> Take(int num);
+
+        Task<List<T>> TakeAsync(int num);
+
         List<T> Take(Expression<Func<T, bool>> expression, int num);
 
         Task<List<T>> TakeAsync(Expression<Func<T, bool>> expression, int num);
+
+        T First();
+
+        Task<T> FirstAsync();
 
         T First(Expression<Func<T, bool>> expression);
 

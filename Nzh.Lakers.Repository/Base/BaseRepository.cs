@@ -244,6 +244,26 @@ namespace Nzh.Lakers.Repository.Base
         /// 执行sql根据参数返回DataTable
         /// </summary>
         /// <param name="Sql"></param>
+        /// <returns></returns>
+        public DataTable GetDataTableBySql(string Sql)
+        {
+            return db.Ado.GetDataTable(Sql);
+        }
+
+        /// <summary>
+        /// 执行sql根据参数返回DataTable（异步）
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <returns></returns>
+        public async Task<DataTable> GetDataTableBySqlAsync(string Sql)
+        {
+            return await Task.Run(() => db.Ado.GetDataTableAsync(Sql));
+        }
+
+        /// <summary>
+        /// 执行sql根据参数返回DataTable
+        /// </summary>
+        /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
         public DataTable GetDataTableBySql(string Sql, object parameters)
@@ -304,6 +324,48 @@ namespace Nzh.Lakers.Repository.Base
         public async Task<DataTable> GetDataTableBySqlAsync(string Sql, List<SugarParameter> parameters)
         {
             return await Task.Run(() => db.Ado.GetDataTableAsync(Sql, parameters));
+        }
+
+        /// <summary>
+        /// 执行sql根据集合参数返回DataTable
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public DataTable GetDataTableBySql(string Sql, Expression<Func<T, bool>> expression)
+        {
+            return db.Ado.GetDataTable(Sql, expression);
+        }
+
+        /// <summary>
+        /// 执行sql根据集合参数返回DataTable（异步）
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public async Task<DataTable> GetDataTableBySqlAsync(string Sql, Expression<Func<T, bool>> expression)
+        {
+            return await Task.Run(() => db.Ado.GetDataTableAsync(Sql, expression));
+        }
+
+        /// <summary>
+        /// 执行sql根据参数返回DataSet
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <returns></returns>
+        public DataSet GetDataSetBySql(string Sql)
+        {
+            return db.Ado.GetDataSetAll(Sql);
+        }
+
+        /// <summary>
+        /// 执行sql根据参数返回DataSet（异步）
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <returns></returns>
+        public async Task<DataSet> GetDataSetBySqlAsync(string Sql)
+        {
+            return await Task.Run(() => db.Ado.GetDataSetAllAsync(Sql));
         }
 
         /// <summary>
@@ -373,12 +435,55 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
+        /// 执行sql根据集合参数返回DataSet
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public DataSet GetDataSetBySql(string Sql, Expression<Func<T, bool>> expression)
+        {
+            return db.Ado.GetDataSetAll(Sql, expression);
+        }
+
+        /// <summary>
+        /// 执行sql根据集合参数返回DataSet（异步）
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public async Task<DataSet> GetDataSetBySqlAsync(string Sql, Expression<Func<T, bool>> expression)
+        {
+            return await Task.Run(() => db.Ado.GetDataSetAllAsync(Sql, expression));
+        }
+
+        /// <summary>
+        /// 根据参数执行Sql
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <returns></returns>
+        public bool ExecuteSql(string Sql)
+        {
+            return db.Ado.ExecuteCommand(Sql) > 0 ? true : false;
+        }
+
+        /// <summary>
+        /// 根据参数执行Sql（异步）
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <returns></returns>
+
+        public async Task<bool> ExecuteSqlAsync(string Sql)
+        {
+            return await Task.Run(() => db.Ado.ExecuteCommandAsync(Sql)) > 0 ? true : false;
+        }
+
+        /// <summary>
         /// 根据参数执行Sql
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public bool ExecuteSql(string Sql, object parameters = null)
+        public bool ExecuteSql(string Sql, object parameters)
         {
             return db.Ado.ExecuteCommand(Sql, parameters) > 0 ? true : false;
         }
@@ -389,7 +494,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public async Task<bool> ExecuteSqlAsync(string Sql, object parameters = null)
+        public async Task<bool> ExecuteSqlAsync(string Sql, object parameters)
         {
             return await Task.Run(() => db.Ado.ExecuteCommandAsync(Sql, parameters)) > 0 ? true : false;
         }
@@ -439,12 +544,54 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
+        ///  根据集合参数执行Sql
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public bool ExecuteSql(string Sql, Expression<Func<T, bool>> expression)
+        {
+            return db.Ado.ExecuteCommand(Sql, expression) > 0 ? true : false;
+        }
+
+        /// <summary>
+        /// 根据集合参数执行Sql（异步）
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public async Task<bool> ExecuteSqlAsync(string Sql, Expression<Func<T, bool>> expression)
+        {
+            return await Task.Run(() => db.Ado.ExecuteCommandAsync(Sql, expression)) > 0 ? true : false;
+        }
+
+        /// <summary>
+        /// 执行sql根据条件获取List
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <returns></returns>
+        public List<T> GetList(string Sql)
+        {
+            return db.Ado.SqlQuery<T>(Sql);
+        }
+
+        /// <summary>
+        /// 执行sql根据条件获取List（异步）
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <returns></returns>
+        public async Task<List<T>> GetListAsync(string Sql)
+        {
+            return await Task.Run(() => db.Ado.SqlQueryAsync<T>(Sql));
+        }
+
+        /// <summary>
         /// 执行sql根据条件获取List
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public List<T> GetList(string Sql, object parameters = null)
+        public List<T> GetList(string Sql, object parameters)
         {
             return db.Ado.SqlQuery<T>(Sql, parameters);
         }
@@ -455,7 +602,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public async Task<List<T>> GetListAsync(string Sql, object parameters = null)
+        public async Task<List<T>> GetListAsync(string Sql, object parameters)
         {
             return await Task.Run(() => db.Ado.SqlQueryAsync<T>(Sql, parameters));
         }
@@ -505,12 +652,54 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
+        /// 执行sql根据集合条件获取List
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public List<T> GetList(string Sql, Expression<Func<T, bool>> expression)
+        {
+            return db.Ado.SqlQuery<T>(Sql, expression);
+        }
+
+        /// <summary>
+        /// 执行sql根据集合条件获取List（异步）
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public async Task<List<T>> GetListAsync(string Sql, Expression<Func<T, bool>> expression)
+        {
+            return await Task.Run(() => db.Ado.SqlQueryAsync<T>(Sql, expression));
+        }
+
+        /// <summary>
+        /// 执行sql根据条件获取实体
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <returns></returns>
+        public T Get(string Sql)
+        {
+            return db.Ado.SqlQuerySingle<T>(Sql);
+        }
+
+        /// <summary>
+        /// 执行sql根据条件获取实体（异步）
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <returns></returns>
+        public async Task<T> GetAsync(string Sql)
+        {
+            return await Task.Run(() => db.Ado.SqlQuerySingleAsync<T>(Sql));
+        }
+
+        /// <summary>
         ///  执行sql根据条件获取实体
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public T Get(string Sql, object parameters = null)
+        public T Get(string Sql, object parameters)
         {
             return db.Ado.SqlQuerySingle<T>(Sql, parameters);
         }
@@ -521,7 +710,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public async Task<T> GetAsync(string Sql, object parameters = null)
+        public async Task<T> GetAsync(string Sql, object parameters)
         {
             return await Task.Run(() => db.Ado.SqlQuerySingleAsync<T>(Sql, parameters));
         }
@@ -571,12 +760,54 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
+        /// 执行sql根据集合条件获取实体
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public T Get(string Sql, Expression<Func<T, bool>> expression)
+        {
+            return db.Ado.SqlQuerySingle<T>(Sql, expression);
+        }
+
+        /// <summary>
+        /// 执行sql根据集合条件获取实体（异步）
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public async Task<T> GetAsync(string Sql, Expression<Func<T, bool>> expression)
+        {
+            return await Task.Run(() => db.Ado.SqlQuerySingleAsync<T>(Sql, expression));
+        }
+
+        /// <summary>
+        /// 执行sql根据条件获取结果
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <returns></returns>
+        public dynamic GetDynamic(string Sql)
+        {
+            return db.Ado.SqlQueryDynamic(Sql);
+        }
+
+        /// <summary>
+        /// 执行sql根据条件获取结果（异步）
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <returns></returns>
+        public async Task<dynamic> GetDynamicAsync(string Sql)
+        {
+            return await Task.Run(() => db.Ado.SqlQueryDynamic(Sql));
+        }
+
+        /// <summary>
         /// 执行sql根据条件获取结果
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public dynamic GetDynamic(string Sql, object parameters = null)
+        public dynamic GetDynamic(string Sql, object parameters)
         {
             return db.Ado.SqlQueryDynamic(Sql, parameters);
         }
@@ -587,7 +818,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public async Task<dynamic> GetDynamicAsync(string Sql, object parameters = null)
+        public async Task<dynamic> GetDynamicAsync(string Sql, object parameters)
         {
             return await Task.Run(() => db.Ado.SqlQueryDynamic(Sql, parameters));
         }
@@ -636,9 +867,101 @@ namespace Nzh.Lakers.Repository.Base
             return await Task.Run(() => db.Ado.SqlQueryDynamic(Sql, parameters));
         }
 
+        /// <summary>
+        /// 执行sql根据集合条件获取结果
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public dynamic GetDynamic(string Sql, Expression<Func<T, bool>> expression)
+        {
+            return db.Ado.SqlQueryDynamic(Sql, expression);
+        }
+
+        /// <summary>
+        /// 执行sql根据集合条件获取结果（异步）
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public async Task<dynamic> GetDynamicAsync(string Sql, Expression<Func<T, bool>> expression)
+        {
+            return await Task.Run(() => db.Ado.SqlQueryDynamic(Sql, expression));
+        }
+
         #endregion
 
         #region 其他
+
+        /// <summary>
+        /// 查询存储过程
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <returns></returns>
+        public DataTable QueryProcedure(string procedureName)
+        {
+            var datas = db.Ado.UseStoredProcedure().GetDataTable(procedureName);
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询存储过程（异步）
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <returns></returns>
+        public async Task<DataTable> QueryProcedureAsync(string procedureName)
+        {
+            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName));
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询存储过程
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public DataTable QueryProcedure(string procedureName, object parameters)
+        {
+            var datas = db.Ado.UseStoredProcedure().GetDataTable(procedureName, parameters);
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询存储过程（异步）
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public async Task<DataTable> QueryProcedureAsync(string procedureName, object parameters)
+        {
+            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, parameters));
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询存储过程
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public DataTable QueryProcedure(string procedureName, params SugarParameter[] parameters)
+        {
+            var datas = db.Ado.UseStoredProcedure().GetDataTable(procedureName, parameters);
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询存储过程（异步）
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public async Task<DataTable> QueryProcedureAsync(string procedureName, params SugarParameter[] parameters)
+        {
+            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, parameters));
+            return datas;
+        }
 
         /// <summary>
         /// 查询存储过程
@@ -665,6 +988,47 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
+        ///  查询存储过程
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public DataTable QueryProcedure(string procedureName, Expression<Func<T, bool>> expression)
+        {
+            var datas = db.Ado.UseStoredProcedure().GetDataTable(procedureName, expression);
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询存储过程（异步）
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public async Task<DataTable> QueryProcedureAsync(string procedureName, Expression<Func<T, bool>> expression)
+        {
+            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, expression));
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询前多少条数据
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        public List<T> Take(int num)
+        {
+            var datas = db.Queryable<T>().With(SqlWith.NoLock).Take(num).ToList();
+            return datas;
+        }
+
+        public async Task<List<T>> TakeAsync(int num)
+        {
+            var datas = await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).Take(num).ToListAsync());
+            return datas;
+        }
+
+        /// <summary>
         /// 查询前多少条数据 
         /// </summary>
         /// <param name="expression"></param>
@@ -684,7 +1048,27 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<List<T>> TakeAsync(Expression<Func<T, bool>> expression, int num)
         {
-            var datas = await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).Where(expression).Take(num).ToList());
+            var datas = await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).Where(expression).Take(num).ToListAsync());
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询单条数据
+        /// </summary>
+        /// <returns></returns>
+        public T First()
+        {
+            var datas = db.Queryable<T>().With(SqlWith.NoLock).First();
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询单条数据（异步）
+        /// </summary>
+        /// <returns></returns>
+        public async Task<T> FirstAsync()
+        {
+            var datas = await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).FirstAsync());
             return datas;
         }
 
@@ -706,7 +1090,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<T> FirstAsync(Expression<Func<T, bool>> expression)
         {
-            var datas = await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).Where(expression).First());
+            var datas = await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).Where(expression).FirstAsync());
             return datas;
         }
 
