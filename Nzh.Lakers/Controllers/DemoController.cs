@@ -52,8 +52,8 @@ namespace Nzh.Lakers.Controllers
             try
             {
                 result = _demoService.GetDemoPageList(PageIndex, PageSize, Name);
-                _memoryCache.Add("GetDemoPageList", JsonConvert.SerializeObject(Result));
-                _redisCache.Add("GetDemoPageList", JsonConvert.SerializeObject(Result));
+                _memoryCache.Add("GetDemoPageList", JsonConvert.SerializeObject(result));
+                _redisCache.Add("GetDemoPageList", JsonConvert.SerializeObject(result));
             }
             catch (Exception ex)
             {
