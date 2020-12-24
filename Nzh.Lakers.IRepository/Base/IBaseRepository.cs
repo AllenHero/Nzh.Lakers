@@ -210,7 +210,6 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, Expression<Func<T, bool>> expression);
 
-
         List<T> Take(int num);
 
         Task<List<T>> TakeAsync(int num);
