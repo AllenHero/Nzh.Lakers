@@ -164,9 +164,8 @@ namespace Nzh.Lakers.Controllers
             {
                 uploadfile = Request.Form.Files[0];
                 var now = DateTime.Now;
-                //var webRootPath = _hostingEnvironment.ContentRootPath;
-                var webRootPath = @"D:\Github\Nzh.Lakers\Nzh.Lakers";
-                var filePath = string.Format(@"\UpLoadFile\{0}\", now.ToString("yyyyMMdd"));
+                var webRootPath = _hostingEnvironment.WebRootPath;
+                var filePath = string.Format(@"\upload\{0}\", now.ToString("yyyyMMdd"));
                 if (!Directory.Exists(webRootPath + filePath))
                 {
                     Directory.CreateDirectory(webRootPath + filePath);
@@ -294,6 +293,46 @@ namespace Nzh.Lakers.Controllers
                 {
                     System.IO.File.Delete(filename);
                 }
+            }
+            catch (Exception ex)
+            {
+                result.Code = -1;
+                result.Msg = ex.Message;
+            }
+            return Json(result);
+        }
+
+        /// <summary>
+        /// 导出Execel
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("TestExcelExport")]
+        public JsonResult TestExportExcel(string Name)
+        {
+            var result = new ResultModel<bool>();
+            try
+            {
+                string sWebRootFolder = _hostingEnvironment.WebRootPath + @"\download\";
+                string sFileName = $@"ExcelExport{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx";
+                if (!Directory.Exists(sWebRootFolder))
+                {
+                    Directory.CreateDirectory(sWebRootFolder);
+                }
+                var path = Path.Combine(sWebRootFolder, sFileName);
+                FileInfo file = new FileInfo(path);
+                List<Demo> list = _testService.TestExportExcel(Name);
+                if (file.Exists)
+                {
+                    file.Delete();
+                    file = new FileInfo(path);
+                }
+                using (ExcelPackage package = new ExcelPackage(file))
+                {
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("测试Test");
+                    worksheet.Cells.LoadFromCollection(list, true);
+                    package.Save();
+                }
+                var info = File(new FileStream(Path.Combine(sWebRootFolder, sFileName), FileMode.Open), "application/octet-stream", $"导出Execel{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx");
             }
             catch (Exception ex)
             {

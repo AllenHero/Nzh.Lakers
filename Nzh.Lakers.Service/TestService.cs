@@ -3,6 +3,7 @@ using Nzh.Lakers.IRepository;
 using Nzh.Lakers.IService;
 using Nzh.Lakers.Model;
 using Nzh.Lakers.Service.Base;
+using Nzh.Lakers.Util.Extension;
 using Nzh.Lakers.Util.Helper;
 using SqlSugar;
 using System;
@@ -37,12 +38,27 @@ namespace Nzh.Lakers.Service
         {
             PageModel pm = new PageModel() { PageIndex = PageIndex, PageSize = PageSize };
             string sql = "SELECT * FROM  Demo";
-            Expression<Func<Demo, bool>> expression = ex => ex.Name == Name;
+            var expression = ListFilter(Name);
             List<Demo> list = await _testRepository.GetPageListBySqlAsync(sql, expression, pm);
             ResultModel<Demo> rm = new ResultModel<Demo>();
             rm.Count = pm.PageCount;
             rm.Data = list;
             return rm;
+        }
+
+        /// <summary>
+        /// 私有方法过滤查询条件
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
+        private Expression<Func<Demo, bool>> ListFilter(string Name)
+        {
+            var expression = LinqExtensions.True<Demo>();
+            if (!string.IsNullOrEmpty(Name))
+            {
+                expression = expression.And(t => t.Name.Contains(Name));
+            }
+            return expression;
         }
 
         /// <summary>
@@ -187,6 +203,18 @@ namespace Nzh.Lakers.Service
                 _testRepository.RollbackTran();//回滚事务
                 throw ex;
             }
+        }
+
+        /// <summary>
+        /// 导出Excel
+        /// </summary>
+        /// <returns></returns>
+        public List<Demo> TestExportExcel(string Name)
+        {
+            string sql = "SELECT * FROM  Demo";
+            var expression = ListFilter(Name);
+            List<Demo> list = _testRepository.GetListBySql(sql, expression);
+            return list;
         }
     }
 }
