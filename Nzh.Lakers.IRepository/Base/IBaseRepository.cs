@@ -10,27 +10,33 @@ namespace Nzh.Lakers.IRepository.Base
 {
     public interface IBaseRepository<T> where T : class
     {
+        #region  事务
+
         void BeginTran();
 
         void CommitTran();
 
         void RollbackTran();
 
+        #endregion
+
+        #region  Sql
+
         List<T> GetListBySql(string Sql);
 
         Task<List<T>> GetListBySqlAsync(string Sql);
 
-        List<T> GetListBySql(string Sql, Expression<Func<T, bool>> whereExpression);
+        List<T> GetListBySql(string Sql, Expression<Func<T, bool>> expression);
 
-        Task<List<T>> GetListBySqlAsync(string Sql, Expression<Func<T, bool>> whereExpression);
+        Task<List<T>> GetListBySqlAsync(string Sql, Expression<Func<T, bool>> expression);
 
-        List<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> whereExpression, PageModel page);
+        List<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> expression, PageModel page);
 
-        Task<List<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> whereExpression, PageModel page);
+        Task<List<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> expression, PageModel page);
 
-        List<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> whereExpression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        List<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
-        Task<List<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> whereExpression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Task<List<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
         List<T> GetPageListBySql(string Sql, List<IConditionalModel> conditionalList, PageModel page);
 
@@ -112,41 +118,73 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<dynamic> GetDynamicAsync(string Sql, List<SugarParameter> parameters);
 
+        #endregion
+
+        #region  其他
+
         DataTable QueryProcedure(string procedureName, List<SugarParameter> parameters);
 
         Task<DataTable> QueryProcedureAsync(string procedureName, List<SugarParameter> parameters);
 
-        List<T> Take(Expression<Func<T, bool>> whereLambda, int num);
+        List<T> Take(Expression<Func<T, bool>> expression, int num);
 
-        Task<List<T>> TakeAsync(Expression<Func<T, bool>> whereLambda, int num);
+        Task<List<T>> TakeAsync(Expression<Func<T, bool>> expression, int num);
 
-        T First(Expression<Func<T, bool>> whereLambda);
+        T First(Expression<Func<T, bool>> expression);
 
-        Task<T> FirstAsync(Expression<Func<T, bool>> whereLambda);
+        Task<T> FirstAsync(Expression<Func<T, bool>> expression);
 
         int Sum(string field);
 
         Task<int> SumAsync(string field);
 
+        int Sum(Expression<Func<T, int>> expression);
+
+        Task<int> SumAsync(Expression<Func<T, int>> expression);
+
         object Max(string field);
 
         Task<object> MaxAsync(string field);
+
+        object Max(Expression<Func<T, bool>> expression);
+
+        Task<object> MaxAsync(Expression<Func<T, bool>> expression);
 
         object Min(string field);
 
         Task<object> MinAsync(string field);
 
+        object Min(Expression<Func<T, bool>> expression);
+
+        Task<object> MinAsync(Expression<Func<T, bool>> expression);
+
         int Avg(string field);
 
         Task<int> AvgAsync(string field);
 
-        int Count(Expression<Func<T, bool>> whereExpression);
+        int Avg(Expression<Func<T, int>> expression);
 
-        Task<int> CountAsync(Expression<Func<T, bool>> whereExpression);
+        Task<int> AvgAsync(Expression<Func<T, int>> expression);
 
-        bool IsAny(Expression<Func<T, bool>> whereExpression);
+        int Count();
 
-        Task<bool> IsAnyAsync(Expression<Func<T, bool>> whereExpression);
+        Task<int> CountAsync();
+
+        Task<int> CountAsync(Expression<Func<T, bool>> expression);
+
+        int Count(Expression<Func<T, bool>> expression);
+
+        bool IsAny();
+
+        Task<bool> IsAnyAsync();
+
+        bool IsAny(Expression<Func<T, bool>> expression);
+   
+        Task<bool> IsAnyAsync(Expression<Func<T, bool>> expression);
+
+        #endregion
+
+        #region  查询
 
         T GetById(dynamic id);
 
@@ -156,19 +194,23 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<List<T>> GetListAsync();
 
-        List<T> GetList(Expression<Func<T, bool>> whereExpression);
+        List<T> GetList(Expression<Func<T, bool>> expression);
 
-        Task<List<T>> GetListAsync(Expression<Func<T, bool>> whereExpression);
+        Task<List<T>> GetListAsync(Expression<Func<T, bool>> expression);
 
-        T GetSingle(Expression<Func<T, bool>> whereExpression);
+        T GetSingle();
 
-        Task<T> GetSingleAsync(Expression<Func<T, bool>> whereExpression);
+        Task<T> GetSingleAsync();
 
-        List<T> GetPageList(Expression<Func<T, bool>> whereExpression, PageModel page);
+        T GetSingle(Expression<Func<T, bool>> expression);
 
-        Task<List<T>> GetPageListAsync(Expression<Func<T, bool>> whereExpression, PageModel page);
+        Task<T> GetSingleAsync(Expression<Func<T, bool>> expression);
 
-        List<T> GetPageList(Expression<Func<T, bool>> whereExpression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        List<T> GetPageList(Expression<Func<T, bool>> expression, PageModel page);
+
+        Task<List<T>> GetPageListAsync(Expression<Func<T, bool>> expression, PageModel page);
+
+        List<T> GetPageList(Expression<Func<T, bool>> expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
         Task<List<T>> GetPageListAsync(Expression<Func<T, bool>> whereExpression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
@@ -179,6 +221,10 @@ namespace Nzh.Lakers.IRepository.Base
         List<T> GetPageList(List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
         Task<List<T>> GetPageListAsync(List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+
+        #endregion
+
+        #region  新增
 
         bool Insert(T insertObj);
 
@@ -196,6 +242,14 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<bool> InsertRangeAsync(List<T>[] insertObjs);
 
+        bool InsertRange(List<T> insertObjs);
+
+        Task<bool> InsertRangeAsync(List<T> insertObjs);
+
+        #endregion
+
+        #region  修改
+
         bool Update(T updateObj);
 
         Task<bool> UpdateAsync(T updateObj);
@@ -208,9 +262,21 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<bool> UpdateRangeAsync(List<T>[] updateObjs);
 
-        bool Update(Expression<Func<T, T>> columns, Expression<Func<T, bool>> whereExpression);
+        bool UpdateRange(List<T> updateObjs);
 
-        Task<bool> UpdateAsync(Expression<Func<T, T>> columns, Expression<Func<T, bool>> whereExpression);
+        Task<bool> UpdateRangeAsync(List<T> updateObjs);
+
+        bool Update(Expression<Func<T, T>> columns, Expression<Func<T, bool>> expression);
+
+        Task<bool> UpdateAsync(Expression<Func<T, T>> columns, Expression<Func<T, bool>> expression);
+
+        bool Update(Expression<Func<T, bool>> expression);
+
+        Task<bool> UpdateAsync(Expression<Func<T, bool>> expression);
+
+        #endregion
+
+        #region  删除
 
         bool Delete(T deleteObj);
 
@@ -224,17 +290,26 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<bool> DeleteAsync(List<T>[] deleteObj);
 
-        bool Delete(Expression<Func<T, bool>> whereExpression);
+        bool Delete(List<T> deleteObj);
 
-        Task<bool> DeleteAsync(Expression<Func<T, bool>> whereExpression);
+        Task<bool> DeleteAsync(List<T> deleteObj);
 
-        bool DeleteById(dynamic id);
+        bool Delete(Expression<Func<T, bool>> expression);
 
-        Task<bool> DeleteByIdAsync(dynamic id);
+        Task<bool> DeleteAsync(Expression<Func<T, bool>> expression);
 
         bool DeleteByIds(dynamic[] ids);
 
         Task<bool> DeleteByIdsAsync(dynamic[] ids);
 
+        bool DeleteByIds(List<dynamic> ids);
+
+        Task<bool> DeleteByIdsAsync(List<dynamic> ids);
+
+        bool DeleteById(long id);
+
+        Task<bool> DeleteByIdAsync(long id);
+
+        #endregion
     }
 }
