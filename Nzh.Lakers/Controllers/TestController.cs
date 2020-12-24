@@ -163,9 +163,8 @@ namespace Nzh.Lakers.Controllers
             try
             {
                 uploadfile = Request.Form.Files[0];
-                var now = DateTime.Now;
                 var webRootPath = _hostingEnvironment.WebRootPath;
-                var filePath = string.Format(@"\upload\{0}\", now.ToString("yyyyMMdd"));
+                var filePath = string.Format(@"\upload\{0}\",DateTime.Now.ToString("yyyyMMdd"));
                 if (!Directory.Exists(webRootPath + filePath))
                 {
                     Directory.CreateDirectory(webRootPath + filePath);
@@ -202,9 +201,7 @@ namespace Nzh.Lakers.Controllers
                         fs.Flush();
                     }
                     result = _enclosureService.TestUpLoadEnclosure(FilePath);
-                    return new JsonResult(new ResultModel<string> { Code = 0, Msg = "上传成功", });
                 }
-                return new JsonResult(new ResultModel<string> { Code = -1, Msg = "上传失败" });
             }
             catch (Exception ex)
             {
@@ -225,13 +222,15 @@ namespace Nzh.Lakers.Controllers
             ResultModel<bool> result = new ResultModel<bool>();
             try
             {
-                //var webRootPath = _hostingEnvironment.ContentRootPath;
-                var webRootPath = @"D:\Github\Nzh.Lakers\Nzh.Lakers";
+                var webRootPath = _hostingEnvironment.WebRootPath;
+                if (!Directory.Exists(webRootPath))
+                {
+                    Directory.CreateDirectory(webRootPath);
+                }
                 Enclosure Enclosure = _enclosureService.TestDownLoadEnclosure(Id);
                 var addrUrl = Path.Combine(Directory.GetCurrentDirectory(), $@"{webRootPath + Enclosure.FilePath}");
                 FileStream fs = new FileStream(addrUrl, FileMode.Open);
                 var info = File(fs, "application/vnd.android.package-archive", Enclosure.FilePath);
-                return new JsonResult(new ResultModel<string> { Code = 0, Msg = "下载成功", });
             }
             catch (Exception ex)
             {
@@ -244,26 +243,27 @@ namespace Nzh.Lakers.Controllers
         /// <summary>
         /// 导入Excel
         /// </summary>
-        /// <param name="fileinput"></param>
+        /// <param name="uploadfile"></param>
         /// <returns></returns>
         [HttpPost("TestImportExcel")]
-        public JsonResult TestImportExcel(IFormFile fileinput)
+        public JsonResult TestImportExcel(IFormFile uploadfile)
         {
             var result = new ResultModel<bool>();
             try
             {
-                var filename = ContentDispositionHeaderValue.Parse(fileinput.ContentDisposition).FileName; // 原文件名（包括路径）
+                var filename = ContentDispositionHeaderValue.Parse(uploadfile.ContentDisposition).FileName; // 原文件名（包括路径）
                 var extName = filename.Substring(filename.LastIndexOf('.')).Replace("\"", "");// 扩展名
                 string shortfilename = $"{Guid.NewGuid()}{extName}";// 新文件名
-                string fileSavePath = _hostingEnvironment.WebRootPath + @"\upload\";//文件临时目录，导入完成后 删除
-                filename = fileSavePath + shortfilename; // 新文件名（包括路径）
-                if (!Directory.Exists(fileSavePath))
+                string webRootPath = _hostingEnvironment.WebRootPath;//文件临时目录，导入完成后 删除
+                var filePath = string.Format(@"\upload\{0}\", DateTime.Now.ToString("yyyyMMdd"));
+                filename = webRootPath + filePath + shortfilename; // 新文件名（包括路径）
+                if (!Directory.Exists(webRootPath + filePath))
                 {
-                    Directory.CreateDirectory(fileSavePath);
+                    Directory.CreateDirectory(webRootPath + filePath);
                 }
                 using (FileStream fs = System.IO.File.Create(filename)) // 创建新文件
                 {
-                    fileinput.CopyTo(fs);// 复制文件
+                    uploadfile.CopyTo(fs);// 复制文件
                     fs.Flush();// 清空缓冲区数据
                 }
                 FileInfo file = new FileInfo(filename);
@@ -312,13 +312,14 @@ namespace Nzh.Lakers.Controllers
             var result = new ResultModel<bool>();
             try
             {
-                string sWebRootFolder = _hostingEnvironment.WebRootPath + @"\download\";
+                string webRootPath = _hostingEnvironment.WebRootPath;
+                var filePath = string.Format(@"\download\{0}\", DateTime.Now.ToString("yyyyMMdd"));
                 string sFileName = $@"ExcelExport{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx";
-                if (!Directory.Exists(sWebRootFolder))
+                if (!Directory.Exists(webRootPath + filePath))
                 {
-                    Directory.CreateDirectory(sWebRootFolder);
+                    Directory.CreateDirectory(webRootPath + filePath);
                 }
-                var path = Path.Combine(sWebRootFolder, sFileName);
+                var path = Path.Combine(webRootPath + filePath, sFileName);
                 FileInfo file = new FileInfo(path);
                 List<Demo> list = _testService.TestExportExcel(Name);
                 if (file.Exists)
@@ -332,7 +333,7 @@ namespace Nzh.Lakers.Controllers
                     worksheet.Cells.LoadFromCollection(list, true);
                     package.Save();
                 }
-                var info = File(new FileStream(Path.Combine(sWebRootFolder, sFileName), FileMode.Open), "application/octet-stream", $"导出Execel{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx");
+                var info = File(new FileStream(Path.Combine(webRootPath + filePath, sFileName), FileMode.Open), "application/octet-stream", $"导出Execel{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx");
             }
             catch (Exception ex)
             {
