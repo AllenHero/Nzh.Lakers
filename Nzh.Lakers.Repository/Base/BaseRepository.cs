@@ -894,120 +894,238 @@ namespace Nzh.Lakers.Repository.Base
         #region 其他
 
         /// <summary>
-        /// 查询存储过程
+        /// 查询存储过程返回DataTable
         /// </summary>
         /// <param name="procedureName"></param>
         /// <returns></returns>
-        public DataTable QueryProcedure(string procedureName)
+        public DataTable QueryDataTableByProcedure(string procedureName)
         {
             var datas = db.Ado.UseStoredProcedure().GetDataTable(procedureName);
             return datas;
         }
 
         /// <summary>
-        /// 查询存储过程（异步）
+        /// 查询存储过程返回DataTable（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <returns></returns>
-        public async Task<DataTable> QueryProcedureAsync(string procedureName)
+        public async Task<DataTable> QueryDataTableByProcedureAsync(string procedureName)
         {
             var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName));
             return datas;
         }
 
         /// <summary>
-        /// 查询存储过程
+        /// 查询存储过程返回DataTable
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public DataTable QueryProcedure(string procedureName, object parameters)
+        public DataTable QueryDataTableByProcedure(string procedureName, object parameters)
         {
             var datas = db.Ado.UseStoredProcedure().GetDataTable(procedureName, parameters);
             return datas;
         }
 
         /// <summary>
-        /// 查询存储过程（异步）
+        /// 查询存储过程返回DataTable（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public async Task<DataTable> QueryProcedureAsync(string procedureName, object parameters)
+        public async Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, object parameters)
         {
             var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, parameters));
             return datas;
         }
 
         /// <summary>
-        /// 查询存储过程
+        /// 查询存储过程返回DataTable
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public DataTable QueryProcedure(string procedureName, params SugarParameter[] parameters)
+        public DataTable QueryDataTableByProcedure(string procedureName, params SugarParameter[] parameters)
         {
             var datas = db.Ado.UseStoredProcedure().GetDataTable(procedureName, parameters);
             return datas;
         }
 
         /// <summary>
-        /// 查询存储过程（异步）
+        /// 查询存储过程返回DataTable（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public async Task<DataTable> QueryProcedureAsync(string procedureName, params SugarParameter[] parameters)
+        public async Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, params SugarParameter[] parameters)
         {
             var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, parameters));
             return datas;
         }
 
         /// <summary>
-        /// 查询存储过程
+        /// 查询存储过程返回DataTable
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public DataTable QueryProcedure(string procedureName, List<SugarParameter> parameters)
+        public DataTable QueryDataTableByProcedure(string procedureName, List<SugarParameter> parameters)
         {
             var datas = db.Ado.UseStoredProcedure().GetDataTable(procedureName, parameters);
             return datas;
         }
 
         /// <summary>
-        /// 查询存储过程（异步）
+        /// 查询存储过程返回DataTable（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public async Task<DataTable> QueryProcedureAsync(string procedureName, List<SugarParameter> parameters)
+        public async Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, List<SugarParameter> parameters)
         {
             var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, parameters));
             return datas;
         }
 
         /// <summary>
-        ///  查询存储过程
+        ///  查询存储过程返回DataTable
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="expression"></param>
         /// <returns></returns>
-        public DataTable QueryProcedure(string procedureName, Expression<Func<T, bool>> expression)
+        public DataTable QueryDataTableByProcedure(string procedureName, Expression<Func<T, bool>> expression)
         {
             var datas = db.Ado.UseStoredProcedure().GetDataTable(procedureName, expression);
             return datas;
         }
 
         /// <summary>
-        /// 查询存储过程（异步）
+        /// 查询存储过程返回DataTable（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="expression"></param>
         /// <returns></returns>
-        public async Task<DataTable> QueryProcedureAsync(string procedureName, Expression<Func<T, bool>> expression)
+        public async Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, Expression<Func<T, bool>> expression)
         {
             var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, expression));
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询存储过程返回DataSet
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <returns></returns>
+        public DataSet QueryDataSetByProcedure(string procedureName)
+        {
+            var datas = db.Ado.UseStoredProcedure().GetDataSetAll(procedureName);
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询存储过程返回DataSet（异步）
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <returns></returns>
+        public async Task<DataSet> QueryDataSetByProcedureAsync(string procedureName)
+        {
+            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName));
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询存储过程返回DataSet
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public DataSet QueryDataSetByProcedure(string procedureName, object parameters)
+        {
+            var datas = db.Ado.UseStoredProcedure().GetDataSetAll(procedureName, parameters);
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询存储过程返回DataSet（异步）
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public async Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, object parameters)
+        {
+            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName, parameters));
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询存储过程返回DataSet
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public DataSet QueryDataSetByProcedure(string procedureName, params SugarParameter[] parameters)
+        {
+            var datas = db.Ado.UseStoredProcedure().GetDataSetAll(procedureName, parameters);
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询存储过程返回DataSet（异步）
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public async Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, params SugarParameter[] parameters)
+        {
+            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName, parameters));
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询存储过程返回DataSet
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public DataSet QueryDataSetByProcedure(string procedureName, List<SugarParameter> parameters)
+        {
+            var datas = db.Ado.UseStoredProcedure().GetDataSetAll(procedureName, parameters);
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询存储过程返回DataSet（异步）
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public async Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, List<SugarParameter> parameters)
+        {
+            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName, parameters));
+            return datas;
+        }
+
+        /// <summary>
+        ///  查询存储过程返回DataSet
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public DataSet QueryDataSetByProcedure(string procedureName, Expression<Func<T, bool>> expression)
+        {
+            var datas = db.Ado.UseStoredProcedure().GetDataSetAll(procedureName, expression);
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询存储过程返回DataSet（异步）
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public async Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, Expression<Func<T, bool>> expression)
+        {
+            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName, expression));
             return datas;
         }
 

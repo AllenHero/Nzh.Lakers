@@ -170,25 +170,46 @@ namespace Nzh.Lakers.IRepository.Base
 
         #region  其他
 
-        DataTable QueryProcedure(string procedureName);
+        DataTable QueryDataTableByProcedure(string procedureName);
 
-        Task<DataTable> QueryProcedureAsync(string procedureName);
+        Task<DataTable> QueryDataTableByProcedureAsync(string procedureName);
 
-        DataTable QueryProcedure(string procedureName, object parameters);
+        DataTable QueryDataTableByProcedure(string procedureName, object parameters);
 
-        Task<DataTable> QueryProcedureAsync(string procedureName, object parameters);
+        Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, object parameters);
 
-        DataTable QueryProcedure(string procedureName, params SugarParameter[] parameters);
+        DataTable QueryDataTableByProcedure(string procedureName, params SugarParameter[] parameters);
 
-        Task<DataTable> QueryProcedureAsync(string procedureName, params SugarParameter[] parameters);
+        Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, params SugarParameter[] parameters);
 
-        DataTable QueryProcedure(string procedureName, List<SugarParameter> parameters);
+        DataTable QueryDataTableByProcedure(string procedureName, List<SugarParameter> parameters);
 
-        Task<DataTable> QueryProcedureAsync(string procedureName, List<SugarParameter> parameters);
+        Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, List<SugarParameter> parameters);
 
-        DataTable QueryProcedure(string procedureName, Expression<Func<T, bool>> expression);
+        DataTable QueryDataTableByProcedure(string procedureName, Expression<Func<T, bool>> expression);
 
-        Task<DataTable> QueryProcedureAsync(string procedureName, Expression<Func<T, bool>> expression);
+        Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, Expression<Func<T, bool>> expression);
+
+        DataSet QueryDataSetByProcedure(string procedureName);
+
+        Task<DataSet> QueryDataSetByProcedureAsync(string procedureName);
+
+        DataSet QueryDataSetByProcedure(string procedureName, object parameters);
+
+        Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, object parameters);
+
+        DataSet QueryDataSetByProcedure(string procedureName, params SugarParameter[] parameters);
+
+        Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, params SugarParameter[] parameters);
+
+        DataSet QueryDataSetByProcedure(string procedureName, List<SugarParameter> parameters);
+
+        Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, List<SugarParameter> parameters);
+
+        DataSet QueryDataSetByProcedure(string procedureName, Expression<Func<T, bool>> expression);
+
+        Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, Expression<Func<T, bool>> expression);
+
 
         List<T> Take(int num);
 
