@@ -248,7 +248,7 @@ namespace Nzh.Lakers.Controllers
         [HttpPost("TestImportExcel")]
         public JsonResult TestImportExcel(IFormFile uploadfile)
         {
-            var result = new ResultModel<bool>();
+            ResultModel<bool> result = new ResultModel<bool>();
             try
             {
                 var filename = ContentDispositionHeaderValue.Parse(uploadfile.ContentDisposition).FileName; // 原文件名（包括路径）
@@ -305,11 +305,12 @@ namespace Nzh.Lakers.Controllers
         /// <summary>
         /// 导出Execel
         /// </summary>
+        /// <param name="Name"></param>
         /// <returns></returns>
         [HttpGet("TestExcelExport")]
         public JsonResult TestExportExcel(string Name)
         {
-            var result = new ResultModel<bool>();
+            ResultModel<bool> result = new ResultModel<bool>();
             try
             {
                 string webRootPath = _hostingEnvironment.WebRootPath;
