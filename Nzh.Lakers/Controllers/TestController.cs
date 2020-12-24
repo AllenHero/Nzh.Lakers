@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.StaticFiles;
 using Nzh.Lakers.Entity;
 using Nzh.Lakers.IService;
 using Nzh.Lakers.Model;
@@ -9,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
@@ -212,35 +214,6 @@ namespace Nzh.Lakers.Controllers
         }
 
         /// <summary>
-        /// 下载附件
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <returns></returns>
-        [HttpGet("TestDownLoadEnclosure")]
-        public JsonResult TestDownLoadEnclosure(long Id)
-        {
-            ResultModel<bool> result = new ResultModel<bool>();
-            try
-            {
-                var webRootPath = _hostingEnvironment.WebRootPath;
-                if (!Directory.Exists(webRootPath))
-                {
-                    Directory.CreateDirectory(webRootPath);
-                }
-                Enclosure Enclosure = _enclosureService.TestDownLoadEnclosure(Id);
-                var addrUrl = Path.Combine(Directory.GetCurrentDirectory(), $@"{webRootPath + Enclosure.FilePath}");
-                FileStream fs = new FileStream(addrUrl, FileMode.Open);
-                var info = File(fs, "application/vnd.android.package-archive", Enclosure.FilePath);
-            }
-            catch (Exception ex)
-            {
-                result.Code = -1;
-                result.Msg = ex.Message;
-            }
-            return Json(result);
-        }
-
-        /// <summary>
         /// 导入Excel
         /// </summary>
         /// <param name="uploadfile"></param>
@@ -303,12 +276,38 @@ namespace Nzh.Lakers.Controllers
         }
 
         /// <summary>
+        /// 下载附件
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [HttpGet("TestDownLoadEnclosure")]
+        public IActionResult TestDownLoadEnclosure(long Id)
+        {
+            ResultModel<bool> result = new ResultModel<bool>();
+            try
+            {
+                var webRootPath = _hostingEnvironment.WebRootPath;
+                Enclosure picture = new Enclosure();
+                picture = _enclosureService.TestDownLoadEnclosure(Id);
+                var addrUrl = Path.Combine(Directory.GetCurrentDirectory(), $@"{webRootPath + picture.FilePath}");
+                FileStream fs = new FileStream(addrUrl, FileMode.Open);
+                return File(fs, "application/vnd.android.package-archive", picture.FilePath);
+            }
+            catch (Exception ex)
+            {
+                result.Code = -1;
+                result.Msg = ex.Message;
+            }
+            return Json(result);
+        }
+
+        /// <summary>
         /// 导出Execel
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
         [HttpGet("TestExcelExport")]
-        public JsonResult TestExportExcel(string Name)
+        public IActionResult TestExportExcel(string Name)
         {
             ResultModel<bool> result = new ResultModel<bool>();
             try
@@ -334,7 +333,7 @@ namespace Nzh.Lakers.Controllers
                     worksheet.Cells.LoadFromCollection(list, true);
                     package.Save();
                 }
-                var info = File(new FileStream(Path.Combine(webRootPath + filePath, sFileName), FileMode.Open), "application/octet-stream", $"导出Execel{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx");
+                return File(new FileStream(Path.Combine(webRootPath + filePath, sFileName), FileMode.Open), "application/octet-stream", $"导出Execel{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx");
             }
             catch (Exception ex)
             {

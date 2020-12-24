@@ -122,13 +122,6 @@
             <param name="uploadfile"></param>
             <returns></returns>
         </member>
-        <member name="M:Nzh.Lakers.Controllers.TestController.TestDownLoadEnclosure(System.Int64)">
-            <summary>
-            下载附件
-            </summary>
-            <param name="Id"></param>
-            <returns></returns>
-        </member>
         <member name="M:Nzh.Lakers.Controllers.TestController.TestImportExcel(Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
             导入Excel
@@ -136,10 +129,18 @@
             <param name="uploadfile"></param>
             <returns></returns>
         </member>
+        <member name="M:Nzh.Lakers.Controllers.TestController.TestDownLoadEnclosure(System.Int64)">
+            <summary>
+            下载附件
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
         <member name="M:Nzh.Lakers.Controllers.TestController.TestExportExcel(System.String)">
             <summary>
             导出Execel
             </summary>
+            <param name="Name"></param>
             <returns></returns>
         </member>
         <member name="T:Nzh.Lakers.SwaggerHelper.SwaggerDocTag">
