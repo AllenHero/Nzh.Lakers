@@ -129,6 +129,19 @@
             <param name="Id"></param>
             <returns></returns>
         </member>
+        <member name="M:Nzh.Lakers.Controllers.TestController.TestImportExcel">
+            <summary>
+            导入Excel
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.TestController.ImportExcel(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            测试
+            </summary>
+            <param name="fileinput"></param>
+            <returns></returns>
+        </member>
         <member name="T:Nzh.Lakers.SwaggerHelper.SwaggerDocTag">
             <summary>
             Swagger注释帮助类

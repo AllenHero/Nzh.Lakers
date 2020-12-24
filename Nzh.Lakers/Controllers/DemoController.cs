@@ -48,19 +48,19 @@ namespace Nzh.Lakers.Controllers
         [HttpGet("GetDemoPageList")]
         public JsonResult GetDemoPageList(int PageIndex, int PageSize, string Name)
         {
-            ResultModel<Demo> Result = new ResultModel<Demo>();
+            ResultModel<Demo> result = new ResultModel<Demo>();
             try
             {
-                Result = _demoService.GetDemoPageList(PageIndex, PageSize, Name);
+                result = _demoService.GetDemoPageList(PageIndex, PageSize, Name);
                 _memoryCache.Add("GetDemoPageList", JsonConvert.SerializeObject(Result));
                 _redisCache.Add("GetDemoPageList", JsonConvert.SerializeObject(Result));
             }
             catch (Exception ex)
             {
-                Result.Code = -1;
-                Result.Msg = ex.Message;
+                result.Code = -1;
+                result.Msg = ex.Message;
             }
-            return Json(Result);
+            return Json(result);
         }
 
         /// <summary>
@@ -71,17 +71,17 @@ namespace Nzh.Lakers.Controllers
         [HttpGet("GetDemoById")]
         public JsonResult GetDemoById(long Id)
         {
-            ResultModel<Demo> Result = new ResultModel<Demo>();
+            ResultModel<Demo> result = new ResultModel<Demo>();
             try
             {
-                Result = _demoService.GetDemoById(Id);
+                result = _demoService.GetDemoById(Id);
             }
             catch (Exception ex)
             {
-                Result.Code = -1;
-                Result.Msg = ex.Message;
+                result.Code = -1;
+                result.Msg = ex.Message;
             }
-            return Json(Result);
+            return Json(result);
         }
 
         /// <summary>
@@ -95,17 +95,17 @@ namespace Nzh.Lakers.Controllers
         [HttpPost("InsertDemo")]
         public JsonResult InsertDemo(string Name, string Sex, int Age, string Remark)
         {
-            ResultModel<bool> Result = new ResultModel<bool>();
+            ResultModel<bool> result = new ResultModel<bool>();
             try
             {
-                Result = _demoService.InsertDemo(Name, Sex, Age, Remark);
+                result = _demoService.InsertDemo(Name, Sex, Age, Remark);
             }
             catch (Exception ex)
             {
-                Result.Code = -1;
-                Result.Msg = ex.Message;
+                result.Code = -1;
+                result.Msg = ex.Message;
             }
-            return Json(Result);
+            return Json(result);
         }
 
         /// <summary>
@@ -120,17 +120,17 @@ namespace Nzh.Lakers.Controllers
         [HttpPost("UpdateDemo")]
         public JsonResult UpdateDemo(long Id, string Name, string Sex, int Age, string Remark)
         {
-            ResultModel<bool> Result = new ResultModel<bool>();
+            ResultModel<bool> result = new ResultModel<bool>();
             try
             {
-                Result = _demoService.UpdateDemo(Id, Name, Sex, Age, Remark);
+                result = _demoService.UpdateDemo(Id, Name, Sex, Age, Remark);
             }
             catch (Exception ex)
             {
-                Result.Code = -1;
-                Result.Msg = ex.Message;
+                result.Code = -1;
+                result.Msg = ex.Message;
             }
-            return Json(Result);
+            return Json(result);
         }
 
         /// <summary>
@@ -141,17 +141,17 @@ namespace Nzh.Lakers.Controllers
         [HttpPost("DeleteDemoById")]
         public JsonResult DeleteDemoById(long Id)
         {
-            ResultModel<bool> Result = new ResultModel<bool>();
+            ResultModel<bool> result = new ResultModel<bool>();
             try
             {
-                Result = _demoService.DeleteDemoById(Id);
+                result = _demoService.DeleteDemoById(Id);
             }
             catch (Exception ex)
             {
-                Result.Code = -1;
-                Result.Msg = ex.Message;
+                result.Code = -1;
+                result.Msg = ex.Message;
             }
-            return Json(Result);
+            return Json(result);
         }
 
         /// <summary>
@@ -162,18 +162,18 @@ namespace Nzh.Lakers.Controllers
         [HttpPost("GetCacheValue")]
         public JsonResult GetCacheValue(string Key)
         {
-            ResultModel<string> Result = new ResultModel<string>();
+            ResultModel<string> result = new ResultModel<string>();
             try
             {
-                //Result.Data = _memoryCache.GetValue(Key);
-                Result.Data = _redisCache.GetValue(Key);
+                //result.Data = _memoryCache.GetValue(Key);
+                result.Data = _redisCache.GetValue(Key);
             }
             catch (Exception ex)
             {
-                Result.Code = -1;
-                Result.Msg = ex.Message;
+                result.Code = -1;
+                result.Msg = ex.Message;
             }
-            return Json(Result);
+            return Json(result);
         }
     }
 }

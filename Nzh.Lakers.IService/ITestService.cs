@@ -19,5 +19,7 @@ namespace Nzh.Lakers.IService
         Task<ResultModel<bool>> UpdateDemoAsync(long Id, string Name, string Sex, int Age, string Remark);
 
         Task<ResultModel<bool>> DeleteDemoByIdAsync(long Id);
+
+        ResultModel<bool> TestImportExcel(List<Demo> list);
     }
 }

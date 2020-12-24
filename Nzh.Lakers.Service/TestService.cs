@@ -161,5 +161,32 @@ namespace Nzh.Lakers.Service
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// 导入Excel
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public ResultModel<bool> TestImportExcel(List<Demo> list)
+        {
+            try
+            {
+                _testRepository.BeginTran();//开始事务
+                ResultModel<bool> rm = new ResultModel<bool>();
+                var result = false;
+                foreach (var item in list)
+                {
+                    result = _testRepository.Insert(item);
+                }
+                _testRepository.CommitTran();//提交事务
+                rm.Data = result;
+                return rm;
+            }
+            catch (Exception ex)
+            {
+                _testRepository.RollbackTran();//回滚事务
+                throw ex;
+            }
+        }
     }
 }
