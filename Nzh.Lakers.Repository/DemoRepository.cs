@@ -7,6 +7,5 @@ namespace Nzh.Lakers.Repository
 {
     public class DemoRepository : BaseRepository<Demo>, IDemoRepository
     {
-
     }
 }

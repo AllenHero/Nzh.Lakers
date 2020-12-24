@@ -8,6 +8,5 @@ namespace Nzh.Lakers.IRepository
 {
     public interface ITestRepository : IBaseRepository<Demo>
     {
-
     }
 }

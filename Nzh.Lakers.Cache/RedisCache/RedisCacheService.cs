@@ -40,24 +40,6 @@ namespace Nzh.Lakers.Cache.RedisCache
         }
 
         /// <summary>
-        /// 获取
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public string GetValue(string key)
-        {
-            if (string.IsNullOrEmpty(key))
-            {
-                return null;
-            }
-            if (Exists(key))
-            {
-                return _cache.StringGet(key);
-            }
-            return null;
-        }
-
-        /// <summary>
         /// 移除
         /// </summary>
         /// <param name="key"></param>
@@ -73,6 +55,24 @@ namespace Nzh.Lakers.Cache.RedisCache
                 return _cache.KeyDelete(key);
             }
             return false;
+        }
+
+        /// <summary>
+        /// 获取
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public string GetValue(string key)
+        {
+            if (string.IsNullOrEmpty(key))
+            {
+                return null;
+            }
+            if (Exists(key))
+            {
+                return _cache.StringGet(key);
+            }
+            return null;
         }
 
         /// <summary>

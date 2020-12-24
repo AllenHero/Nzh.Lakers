@@ -18,6 +18,12 @@ namespace Nzh.Lakers.Cache.Interface
         /// <returns></returns>
         bool Add(string key, object value);
 
+        /// <summary>
+        /// 移除
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        bool Remove(string key);
 
         /// <summary>
         /// 获取
@@ -32,12 +38,5 @@ namespace Nzh.Lakers.Cache.Interface
         /// <param name="key">缓存Key</param>
         /// <returns></returns>
         bool Exists(string key);
-
-        /// <summary>
-        /// 移除
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        bool Remove(string key);
     }
 }

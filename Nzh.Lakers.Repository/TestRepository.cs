@@ -9,6 +9,5 @@ namespace Nzh.Lakers.Repository
 {
     public class TestRepository : BaseRepository<Demo>, ITestRepository
     {
-
     }
 }

@@ -6,6 +6,5 @@ namespace Nzh.Lakers.IRepository
 {
     public interface IDemoRepository : IBaseRepository<Demo>
     {
-
     }
 }
