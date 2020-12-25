@@ -1810,6 +1810,46 @@ namespace Nzh.Lakers.Repository.Base
             return await Task.Run(() => db.Queryable<T>().ToTreeAsync(childListExpression, parentIdExpression, rootValue));
         }
 
+        /// <summary>
+        /// 获取字典
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public Dictionary<string, object> GetDictionary(Expression<Func<T, object>> key, Expression<Func<T, object>> value)
+        {
+            return db.Queryable<T>().ToDictionary(key, value);
+        }
+
+        /// <summary>
+        /// 获取字典（异步）
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public async Task<Dictionary<string, object>> GetDictionaryAsync(Expression<Func<T, object>> key, Expression<Func<T, object>> value)
+        {
+            return await Task.Run(() => db.Queryable<T>().ToDictionaryAsync(key, value));
+        }
+
+        /// <summary>
+        /// 获取字典List
+        /// </summary>
+        /// <returns></returns>
+        public List<Dictionary<string, object>> ToDictionaryList()
+        {
+            return db.Queryable<T>().ToDictionaryList();
+        }
+
+        /// <summary>
+        /// 获取字典List（异步）
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Dictionary<string, object>>> ToDictionaryListAsync()
+        {
+            return await Task.Run(() => db.Queryable<T>().ToDictionaryListAsync());
+        }
+
         #endregion
 
         #region  新增

@@ -342,6 +342,14 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<List<T>> GetTreeListAsync(Expression<Func<T, IEnumerable<object>>> childListExpression, Expression<Func<T, object>> parentIdExpression, object rootValue);
 
+        Dictionary<string, object> GetDictionary(Expression<Func<T, object>> key, Expression<Func<T, object>> value);
+
+        Task<Dictionary<string, object>> GetDictionaryAsync(Expression<Func<T, object>> key, Expression<Func<T, object>> value);
+
+        List<Dictionary<string, object>> ToDictionaryList();
+
+        Task<List<Dictionary<string, object>>> ToDictionaryListAsync();
+
         #endregion
 
         #region  新增
