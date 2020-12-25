@@ -910,8 +910,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public DataTable QueryDataTableByProcedure(string procedureName)
         {
-            var datas = db.Ado.UseStoredProcedure().GetDataTable(procedureName);
-            return datas;
+            return db.Ado.UseStoredProcedure().GetDataTable(procedureName);
         }
 
         /// <summary>
@@ -921,8 +920,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<DataTable> QueryDataTableByProcedureAsync(string procedureName)
         {
-            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName));
-            return datas;
+            return await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName));
         }
 
         /// <summary>
@@ -933,8 +931,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public DataTable QueryDataTableByProcedure(string procedureName, object parameters)
         {
-            var datas = db.Ado.UseStoredProcedure().GetDataTable(procedureName, parameters);
-            return datas;
+            return db.Ado.UseStoredProcedure().GetDataTable(procedureName, parameters);
         }
 
         /// <summary>
@@ -945,8 +942,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, object parameters)
         {
-            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, parameters));
-            return datas;
+            return await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, parameters));
         }
 
         /// <summary>
@@ -957,8 +953,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public DataTable QueryDataTableByProcedure(string procedureName, params SugarParameter[] parameters)
         {
-            var datas = db.Ado.UseStoredProcedure().GetDataTable(procedureName, parameters);
-            return datas;
+            return db.Ado.UseStoredProcedure().GetDataTable(procedureName, parameters);
         }
 
         /// <summary>
@@ -969,8 +964,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, params SugarParameter[] parameters)
         {
-            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, parameters));
-            return datas;
+            return await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, parameters));
         }
 
         /// <summary>
@@ -981,8 +975,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public DataTable QueryDataTableByProcedure(string procedureName, List<SugarParameter> parameters)
         {
-            var datas = db.Ado.UseStoredProcedure().GetDataTable(procedureName, parameters);
-            return datas;
+            return db.Ado.UseStoredProcedure().GetDataTable(procedureName, parameters);
         }
 
         /// <summary>
@@ -993,8 +986,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, List<SugarParameter> parameters)
         {
-            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, parameters));
-            return datas;
+            return await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, parameters));
         }
 
         /// <summary>
@@ -1005,8 +997,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public DataTable QueryDataTableByProcedure(string procedureName, Expression<Func<T, bool>> expression)
         {
-            var datas = db.Ado.UseStoredProcedure().GetDataTable(procedureName, expression);
-            return datas;
+            return db.Ado.UseStoredProcedure().GetDataTable(procedureName, expression);
         }
 
         /// <summary>
@@ -1017,8 +1008,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, Expression<Func<T, bool>> expression)
         {
-            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, expression));
-            return datas;
+            return await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, expression));
         }
 
         /// <summary>
@@ -1028,8 +1018,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public DataSet QueryDataSetByProcedure(string procedureName)
         {
-            var datas = db.Ado.UseStoredProcedure().GetDataSetAll(procedureName);
-            return datas;
+            return db.Ado.UseStoredProcedure().GetDataSetAll(procedureName);
         }
 
         /// <summary>
@@ -1039,8 +1028,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<DataSet> QueryDataSetByProcedureAsync(string procedureName)
         {
-            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName));
-            return datas;
+            return await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName));
         }
 
         /// <summary>
@@ -1051,8 +1039,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public DataSet QueryDataSetByProcedure(string procedureName, object parameters)
         {
-            var datas = db.Ado.UseStoredProcedure().GetDataSetAll(procedureName, parameters);
-            return datas;
+            return db.Ado.UseStoredProcedure().GetDataSetAll(procedureName, parameters);
         }
 
         /// <summary>
@@ -1063,8 +1050,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, object parameters)
         {
-            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName, parameters));
-            return datas;
+            return await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName, parameters));
         }
 
         /// <summary>
@@ -1075,8 +1061,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public DataSet QueryDataSetByProcedure(string procedureName, params SugarParameter[] parameters)
         {
-            var datas = db.Ado.UseStoredProcedure().GetDataSetAll(procedureName, parameters);
-            return datas;
+            return db.Ado.UseStoredProcedure().GetDataSetAll(procedureName, parameters);
         }
 
         /// <summary>
@@ -1087,8 +1072,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, params SugarParameter[] parameters)
         {
-            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName, parameters));
-            return datas;
+            return await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName, parameters));
         }
 
         /// <summary>
@@ -1099,8 +1083,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public DataSet QueryDataSetByProcedure(string procedureName, List<SugarParameter> parameters)
         {
-            var datas = db.Ado.UseStoredProcedure().GetDataSetAll(procedureName, parameters);
-            return datas;
+            return db.Ado.UseStoredProcedure().GetDataSetAll(procedureName, parameters);
         }
 
         /// <summary>
@@ -1111,8 +1094,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, List<SugarParameter> parameters)
         {
-            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName, parameters));
-            return datas;
+            return await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName, parameters));
         }
 
         /// <summary>
@@ -1123,8 +1105,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public DataSet QueryDataSetByProcedure(string procedureName, Expression<Func<T, bool>> expression)
         {
-            var datas = db.Ado.UseStoredProcedure().GetDataSetAll(procedureName, expression);
-            return datas;
+            return db.Ado.UseStoredProcedure().GetDataSetAll(procedureName, expression);
         }
 
         /// <summary>
@@ -1135,8 +1116,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, Expression<Func<T, bool>> expression)
         {
-            var datas = await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName, expression));
-            return datas;
+            return await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName, expression));
         }
 
         /// <summary>
@@ -1146,14 +1126,12 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public List<T> Take(int num)
         {
-            var datas = db.Queryable<T>().With(SqlWith.NoLock).Take(num).ToList();
-            return datas;
+            return db.Queryable<T>().With(SqlWith.NoLock).Take(num).ToList();
         }
 
         public async Task<List<T>> TakeAsync(int num)
         {
-            var datas = await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).Take(num).ToListAsync());
-            return datas;
+            return await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).Take(num).ToListAsync());
         }
 
         /// <summary>
@@ -1164,8 +1142,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public List<T> Take(Expression<Func<T, bool>> expression, int num)
         {
-            var datas = db.Queryable<T>().With(SqlWith.NoLock).Where(expression).Take(num).ToList();
-            return datas;
+            return db.Queryable<T>().With(SqlWith.NoLock).Where(expression).Take(num).ToList();
         }
 
         /// <summary>
@@ -1176,8 +1153,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<List<T>> TakeAsync(Expression<Func<T, bool>> expression, int num)
         {
-            var datas = await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).Where(expression).Take(num).ToListAsync());
-            return datas;
+            return await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).Where(expression).Take(num).ToListAsync());
         }
 
         /// <summary>
@@ -1186,8 +1162,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public T First()
         {
-            var datas = db.Queryable<T>().With(SqlWith.NoLock).First();
-            return datas;
+            return db.Queryable<T>().With(SqlWith.NoLock).First();
         }
 
         /// <summary>
@@ -1196,8 +1171,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<T> FirstAsync()
         {
-            var datas = await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).FirstAsync());
-            return datas;
+            return await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).FirstAsync());
         }
 
         /// <summary>
@@ -1207,8 +1181,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public T First(Expression<Func<T, bool>> expression)
         {
-            var datas = db.Queryable<T>().With(SqlWith.NoLock).Where(expression).First();
-            return datas;
+            return db.Queryable<T>().With(SqlWith.NoLock).Where(expression).First();
         }
 
         /// <summary>
@@ -1218,8 +1191,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<T> FirstAsync(Expression<Func<T, bool>> expression)
         {
-            var datas = await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).Where(expression).FirstAsync());
-            return datas;
+            return await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).Where(expression).FirstAsync());
         }
 
         /// <summary>
@@ -1230,8 +1202,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public int Sum(string field)
         {
-            var datas = db.Queryable<T>().Sum<int>(field);
-            return datas;
+            return db.Queryable<T>().Sum<int>(field);
         }
 
         /// <summary>
@@ -1242,8 +1213,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<int> SumAsync(string field)
         {
-            var datas = await Task.Run(() => db.Queryable<T>().SumAsync<int>(field));
-            return datas;
+            return await Task.Run(() => db.Queryable<T>().SumAsync<int>(field));
         }
 
         /// <summary>
@@ -1253,8 +1223,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public int Sum(Expression<Func<T, int>> expression)
         {
-            var datas = db.Queryable<T>().Sum(expression);
-            return datas;
+            return db.Queryable<T>().Sum(expression);
         }
 
         /// <summary>
@@ -1264,8 +1233,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<int> SumAsync(Expression<Func<T, int>> expression)
         {
-            var datas = await Task.Run(() => db.Queryable<T>().SumAsync(expression));
-            return datas;
+            return await Task.Run(() => db.Queryable<T>().SumAsync(expression));
         }
 
         /// <summary>
@@ -1275,8 +1243,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public object Max(string field)
         {
-            var datas = db.Queryable<T>().Max<object>(field);
-            return datas;
+            return db.Queryable<T>().Max<object>(field);
         }
 
         /// <summary>
@@ -1286,8 +1253,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<object> MaxAsync(string field)
         {
-            var datas = await Task.Run(() => db.Queryable<T>().MaxAsync<object>(field));
-            return datas;
+            return await Task.Run(() => db.Queryable<T>().MaxAsync<object>(field));
         }
 
         /// <summary>
@@ -1297,8 +1263,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public object Max(Expression<Func<T, bool>> expression)
         {
-            var datas = db.Queryable<T>().Max(expression);
-            return datas;
+            return db.Queryable<T>().Max(expression);
         }
 
         /// <summary>
@@ -1308,8 +1273,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<object> MaxAsync(Expression<Func<T, bool>> expression)
         {
-            var datas = await Task.Run(() => db.Queryable<T>().MaxAsync(expression));
-            return datas;
+            return await Task.Run(() => db.Queryable<T>().MaxAsync(expression));
         }
 
         /// <summary>
@@ -1319,8 +1283,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public object Min(string field)
         {
-            var datas = db.Queryable<T>().Min<object>(field);
-            return datas;
+            return db.Queryable<T>().Min<object>(field);
         }
 
         /// <summary>
@@ -1330,8 +1293,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<object> MinAsync(string field)
         {
-            var datas = await Task.Run(() => db.Queryable<T>().MinAsync<object>(field));
-            return datas;
+            return await Task.Run(() => db.Queryable<T>().MinAsync<object>(field));
         }
 
         /// <summary>
@@ -1341,8 +1303,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public object Min(Expression<Func<T, bool>> expression)
         {
-            var datas = db.Queryable<T>().Min(expression);
-            return datas;
+            return db.Queryable<T>().Min(expression);
         }
 
         /// <summary>
@@ -1352,8 +1313,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<object> MinAsync(Expression<Func<T, bool>> expression)
         {
-            var datas = await Task.Run(() => db.Queryable<T>().MinAsync(expression));
-            return datas;
+            return await Task.Run(() => db.Queryable<T>().MinAsync(expression));
         }
 
         /// <summary>
@@ -1363,8 +1323,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public int Avg(string field)
         {
-            var datas = db.Queryable<T>().Avg<int>(field);
-            return datas;
+            return db.Queryable<T>().Avg<int>(field);
         }
 
         /// <summary>
@@ -1374,8 +1333,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<int> AvgAsync(string field)
         {
-            var datas = await Task.Run(() => db.Queryable<T>().AvgAsync<int>(field));
-            return datas;
+            return await Task.Run(() => db.Queryable<T>().AvgAsync<int>(field));
         }
 
         /// <summary>
@@ -1385,8 +1343,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public int Avg(Expression<Func<T, int>> expression)
         {
-            var datas = db.Queryable<T>().Avg(expression);
-            return datas;
+            return db.Queryable<T>().Avg(expression);
         }
 
         /// <summary>
@@ -1396,8 +1353,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<int> AvgAsync(Expression<Func<T, int>> expression)
         {
-            var datas = await Task.Run(() => db.Queryable<T>().AvgAsync(expression));
-            return datas;
+            return await Task.Run(() => db.Queryable<T>().AvgAsync(expression));
         }
 
         /// <summary>
@@ -1610,8 +1566,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public string GetJson()
         {
-            var result = db.Queryable<T>().ToJson();
-            return result;
+            return db.Queryable<T>().ToJson();
         }
 
         /// <summary>
@@ -1620,8 +1575,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<string> GetJsonAsync()
         {
-            var result = await Task.Run(() => db.Queryable<T>().ToJsonAsync());
-            return result;
+            return await Task.Run(() => db.Queryable<T>().ToJsonAsync());
         }
 
         /// <summary>
@@ -1631,8 +1585,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public string GetJson(Expression<Func<T, bool>> expression)
         {
-            var result = db.Queryable<T>().Where(expression).ToJson();
-            return result;
+            return db.Queryable<T>().Where(expression).ToJson();
         }
 
         /// <summary>
@@ -1642,8 +1595,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<string> GetJsonAsync(Expression<Func<T, bool>> expression)
         {
-            var result = await Task.Run(() => db.Queryable<T>().Where(expression).ToJsonAsync());
-            return result;
+            return await Task.Run(() => db.Queryable<T>().Where(expression).ToJsonAsync());
         }
 
         /// <summary>
@@ -1680,8 +1632,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public DataTable GetDataTable()
         {
-            var result = db.Queryable<T>().ToDataTable();
-            return result;
+            return db.Queryable<T>().ToDataTable();
         }
 
         /// <summary>
@@ -1690,8 +1641,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<DataTable> GetDataTableAsync()
         {
-            var result = await Task.Run(() => db.Queryable<T>().ToDataTableAsync());
-            return result;
+            return await Task.Run(() => db.Queryable<T>().ToDataTableAsync());
         }
 
         /// <summary>
@@ -1701,8 +1651,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public DataTable GetDataTable(Expression<Func<T, bool>> expression)
         {
-            var result = db.Queryable<T>().Where(expression).ToDataTable();
-            return result;
+            return db.Queryable<T>().Where(expression).ToDataTable();
         }
 
         /// <summary>
@@ -1712,8 +1661,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<DataTable> GetDataTableAsync(Expression<Func<T, bool>> expression)
         {
-            var result = await Task.Run(() => db.Queryable<T>().Where(expression).ToDataTableAsync());
-            return result;
+            return await Task.Run(() => db.Queryable<T>().Where(expression).ToDataTableAsync());
         }
 
         /// <summary>
@@ -1845,8 +1793,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public List<T> GetTreeList(Expression<Func<T, IEnumerable<object>>> childListExpression, Expression<Func<T, object>> parentIdExpression, object rootValue)
         {
-            var result = db.Queryable<T>().ToTree(childListExpression, parentIdExpression,rootValue);
-            return result;
+            return db.Queryable<T>().ToTree(childListExpression, parentIdExpression,rootValue);
         }
 
         /// <summary>
@@ -1858,8 +1805,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <returns></returns>
         public async Task<List<T>> GetTreeListAsync(Expression<Func<T, IEnumerable<object>>> childListExpression, Expression<Func<T, object>> parentIdExpression, object rootValue)
         {
-            var result = await Task.Run(() => db.Queryable<T>().ToTreeAsync(childListExpression, parentIdExpression, rootValue));
-            return result;
+            return await Task.Run(() => db.Queryable<T>().ToTreeAsync(childListExpression, parentIdExpression, rootValue));
         }
 
         #endregion
