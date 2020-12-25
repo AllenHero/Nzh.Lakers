@@ -21,12 +21,12 @@ namespace Nzh.Lakers
 {
     public class Startup
     {
+        public IConfiguration _configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -37,7 +37,7 @@ namespace Nzh.Lakers
             services.AddRepositories();
 
             //读取数据库连接字符串
-            BaseDBConfig.ConnectionString = this.Configuration.GetSection("Db:MySql").Value;
+            BaseDBConfig.ConnectionString = this._configuration.GetSection("Db:MySql").Value;
 
             //Swagger
             services.AddSwaggerGen(c => {
