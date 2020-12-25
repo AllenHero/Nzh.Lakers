@@ -13,7 +13,9 @@ namespace Nzh.Lakers.Repository.Base
     public class BaseRepository<T> : IBaseRepository<T> where T : class, new()
     {
         private DbContext context;
+
         private SqlSugarClient db;
+
         private SimpleClient<T> entityDB;
 
         public DbContext Context

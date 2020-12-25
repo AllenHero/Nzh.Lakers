@@ -8,7 +8,9 @@ namespace Nzh.Lakers.SqlSugar
     public class DbContext
     {
         private static string _connectionString;
+
         private static DbType _dbType;
+
         private SqlSugarClient _db;
 
         /// <summary>
@@ -101,6 +103,7 @@ namespace Nzh.Lakers.SqlSugar
         }
 
         #region 实例方法
+
         /// <summary>
         /// 获取数据库处理对象
         /// </summary>
@@ -121,6 +124,7 @@ namespace Nzh.Lakers.SqlSugar
         }
 
         #region 根据数据库表生产实体类
+
         /// <summary>
         /// 根据数据库表生产实体类
         /// </summary>       
@@ -244,6 +248,7 @@ namespace {Namespace}
         #endregion
 
         #region 根据实体类生成数据库表
+
         /// <summary>
         /// 根据实体类生成数据库表
         /// </summary>
@@ -280,6 +285,7 @@ namespace {Namespace}
                 _db.CodeFirst.InitTables(lstEntitys);
             }
         }
+
         #endregion
 
         #endregion
@@ -359,6 +365,7 @@ namespace {Namespace}
             SqlSugarClient sugarClient = GetCustomDB(config);
             return GetCustomEntityDB<T>(sugarClient);
         }
+
         #endregion
     }
 }
