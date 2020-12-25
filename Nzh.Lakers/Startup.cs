@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 using Nzh.Lakers.Cache.MemoryCache;
 using Nzh.Lakers.Factory;
 using Nzh.Lakers.SqlSugar;
@@ -51,7 +53,7 @@ namespace Nzh.Lakers
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -84,6 +86,12 @@ namespace Nzh.Lakers
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Nzh.Lakers API V1");
             });
+
+            // 添加NLog
+            loggerFactory.AddNLog();
+
+            //引入Nlog配置文件
+            NLog.LogManager.LoadConfiguration("NLog.config"); 
         }
     }
 }

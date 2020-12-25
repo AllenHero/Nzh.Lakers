@@ -4,7 +4,7 @@
         <name>Nzh.Lakers</name>
     </assembly>
     <members>
-        <member name="M:Nzh.Lakers.Controllers.DemoController.#ctor(Nzh.Lakers.IService.IDemoService,Nzh.Lakers.Cache.Interface.ICacheService,Nzh.Lakers.Cache.Interface.ICacheService)">
+        <member name="M:Nzh.Lakers.Controllers.DemoController.#ctor(Nzh.Lakers.IService.IDemoService,Nzh.Lakers.Cache.Interface.ICacheService,Nzh.Lakers.Cache.Interface.ICacheService,Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.DemoController})">
             <summary>
             构造函数
             </summary>

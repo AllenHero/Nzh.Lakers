@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Nzh.Lakers.Cache.RedisCache;
+using Microsoft.Extensions.Logging;
 
 namespace Nzh.Lakers.Controllers
 {
@@ -25,17 +26,20 @@ namespace Nzh.Lakers.Controllers
 
         private readonly ICacheService _redisCache;
 
+        private readonly ILogger<DemoController> _logger;
+
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="demoService"></param>
         /// <param name="memoryCache"></param>
         /// <param name="redisCache"></param>
-        public DemoController(IDemoService demoService, ICacheService memoryCache, ICacheService redisCache)
+        public DemoController(IDemoService demoService, ICacheService memoryCache, ICacheService redisCache, ILogger<DemoController> logger)
         {
             _demoService = demoService;
             _memoryCache = memoryCache;
             _redisCache= redisCache;
+            _logger = logger;
         }
 
         /// <summary>
@@ -54,6 +58,7 @@ namespace Nzh.Lakers.Controllers
                 result = _demoService.GetDemoPageList(PageIndex, PageSize, Name);
                 _memoryCache.Add("GetDemoPageList", JsonConvert.SerializeObject(result));
                 _redisCache.Add("GetDemoPageList", JsonConvert.SerializeObject(result));
+                _logger.LogInformation(JsonConvert.SerializeObject(result));
             }
             catch (Exception ex)
             {
