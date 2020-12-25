@@ -101,7 +101,6 @@ namespace Nzh.Lakers.Service
                 _demoRepository.RollbackTran();//回滚事务
                 throw ex;
             }
-
         }
 
         /// <summary>
@@ -135,7 +134,6 @@ namespace Nzh.Lakers.Service
                 _demoRepository.RollbackTran();//回滚事务
                 throw ex;
             }
-
         }
 
         /// <summary>
