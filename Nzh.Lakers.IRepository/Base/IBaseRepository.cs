@@ -302,6 +302,30 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<List<T>> GetPageListAsync(Expression<Func<T, bool>> expression, PageModel page);
 
+        string GetJson();
+
+        Task<string> GetJsonAsync();
+
+        string GetJson(Expression<Func<T, bool>> expression);
+
+        Task<string> GetJsonAsync(Expression<Func<T, bool>> expression);
+
+        string GetJsonPage(Expression<Func<T, bool>> expression, PageModel page);
+
+        Task<string> GetJsonPageAsync(Expression<Func<T, bool>> expression, PageModel page);
+
+        DataTable GetDataTable();
+
+        Task<DataTable> GetDataTableAsync();
+
+        DataTable GetDataTable(Expression<Func<T, bool>> expression);
+
+        Task<DataTable> GetDataTableAsync(Expression<Func<T, bool>> expression);
+
+        DataTable GetDataTablePage(Expression<Func<T, bool>> expression, PageModel page);
+
+        Task<DataTable> GetDataTablePageAsync(Expression<Func<T, bool>> expression, PageModel page);
+
         List<T> GetPageList(Expression<Func<T, bool>> expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
         Task<List<T>> GetPageListAsync(Expression<Func<T, bool>> whereExpression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
@@ -313,6 +337,10 @@ namespace Nzh.Lakers.IRepository.Base
         List<T> GetPageList(List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
         Task<List<T>> GetPageListAsync(List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+
+        List<T> GetTreeList(Expression<Func<T, IEnumerable<object>>> childListExpression, Expression<Func<T, object>> parentIdExpression, object rootValue);
+
+        Task<List<T>> GetTreeListAsync(Expression<Func<T, IEnumerable<object>>> childListExpression, Expression<Func<T, object>> parentIdExpression, object rootValue);
 
         #endregion
 
@@ -337,6 +365,10 @@ namespace Nzh.Lakers.IRepository.Base
         bool InsertRange(List<T> insertObjs);
 
         Task<bool> InsertRangeAsync(List<T> insertObjs);
+
+        T InsertReturnEntity(T insertObj);
+
+        Task<T> InsertReturnEntityAsync(T insertObjs);
 
         #endregion
 

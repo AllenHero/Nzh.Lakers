@@ -786,6 +786,7 @@ namespace Nzh.Lakers.Repository.Base
         /// </summary>
         /// <param name="Sql"></param>
         /// <returns></returns>
+        [Obsolete("Use SqlQuery<dynamic>(sql)")]
         public dynamic GetDynamic(string Sql)
         {
             return db.Ado.SqlQueryDynamic(Sql);
@@ -796,6 +797,7 @@ namespace Nzh.Lakers.Repository.Base
         /// </summary>
         /// <param name="Sql"></param>
         /// <returns></returns>
+        [Obsolete("Use SqlQuery<dynamic>(sql)")]
         public async Task<dynamic> GetDynamicAsync(string Sql)
         {
             return await Task.Run(() => db.Ado.SqlQueryDynamic(Sql));
@@ -807,6 +809,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
+        [Obsolete("Use SqlQuery<dynamic>(sql)")]
         public dynamic GetDynamic(string Sql, object parameters)
         {
             return db.Ado.SqlQueryDynamic(Sql, parameters);
@@ -818,6 +821,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
+        [Obsolete("Use SqlQuery<dynamic>(sql)")]
         public async Task<dynamic> GetDynamicAsync(string Sql, object parameters)
         {
             return await Task.Run(() => db.Ado.SqlQueryDynamic(Sql, parameters));
@@ -829,6 +833,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
+        [Obsolete("Use SqlQuery<dynamic>(sql)")]
         public dynamic GetDynamic(string Sql, params SugarParameter[] parameters)
         {
             return db.Ado.SqlQueryDynamic(Sql, parameters);
@@ -840,6 +845,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
+        [Obsolete("Use SqlQuery<dynamic>(sql)")]
         public async Task<dynamic> GetDynamicAsync(string Sql, params SugarParameter[] parameters)
         {
             return await Task.Run(() => db.Ado.SqlQueryDynamic(Sql, parameters));
@@ -851,6 +857,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
+        [Obsolete("Use SqlQuery<dynamic>(sql)")]
         public dynamic GetDynamic(string Sql, List<SugarParameter> parameters)
         {
             return db.Ado.SqlQueryDynamic(Sql, parameters);
@@ -862,6 +869,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
+        [Obsolete("Use SqlQuery<dynamic>(sql)")]
         public async Task<dynamic> GetDynamicAsync(string Sql, List<SugarParameter> parameters)
         {
             return await Task.Run(() => db.Ado.SqlQueryDynamic(Sql, parameters));
@@ -873,6 +881,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="Sql"></param>
         /// <param name="expression"></param>
         /// <returns></returns>
+        [Obsolete("Use SqlQuery<dynamic>(sql)")]
         public dynamic GetDynamic(string Sql, Expression<Func<T, bool>> expression)
         {
             return db.Ado.SqlQueryDynamic(Sql, expression);
@@ -884,6 +893,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="Sql"></param>
         /// <param name="expression"></param>
         /// <returns></returns>
+        [Obsolete("Use SqlQuery<dynamic>(sql)")]
         public async Task<dynamic> GetDynamicAsync(string Sql, Expression<Func<T, bool>> expression)
         {
             return await Task.Run(() => db.Ado.SqlQueryDynamic(Sql, expression));
@@ -1595,6 +1605,146 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
+        /// 获取Json
+        /// </summary>
+        /// <returns></returns>
+        public string GetJson()
+        {
+            var result = db.Queryable<T>().ToJson();
+            return result;
+        }
+
+        /// <summary>
+        ///  获取Json（异步）
+        /// </summary>
+        /// <returns></returns>
+        public async Task<string> GetJsonAsync()
+        {
+            var result = await Task.Run(() => db.Queryable<T>().ToJsonAsync());
+            return result;
+        }
+
+        /// <summary>
+        ///  获取Json
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public string GetJson(Expression<Func<T, bool>> expression)
+        {
+            var result = db.Queryable<T>().Where(expression).ToJson();
+            return result;
+        }
+
+        /// <summary>
+        ///  获取Json（异步）
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public async Task<string> GetJsonAsync(Expression<Func<T, bool>> expression)
+        {
+            var result = await Task.Run(() => db.Queryable<T>().Where(expression).ToJsonAsync());
+            return result;
+        }
+
+        /// <summary>
+        /// 获取Json分页
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        public string GetJsonPage(Expression<Func<T, bool>> expression, PageModel page)
+        {
+            int count = 0;
+            var result = db.Queryable<T>().Where(expression).ToJsonPage(page.PageIndex, page.PageSize, ref count);
+            page.PageCount = count;
+            return result;
+        }
+
+        /// <summary>
+        /// 获取Json分页（异步）
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        public async Task<string> GetJsonPageAsync(Expression<Func<T, bool>> expression, PageModel page)
+        {
+            int count = 0;
+            var result = await Task.Run(() => db.Queryable<T>().Where(expression).ToJsonPage(page.PageIndex, page.PageSize, ref count));
+            page.PageCount = count;
+            return result;
+        }
+
+        /// <summary>
+        /// 获取DataTable
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetDataTable()
+        {
+            var result = db.Queryable<T>().ToDataTable();
+            return result;
+        }
+
+        /// <summary>
+        /// 获取DataTable（异步）
+        /// </summary>
+        /// <returns></returns>
+        public async Task<DataTable> GetDataTableAsync()
+        {
+            var result = await Task.Run(() => db.Queryable<T>().ToDataTableAsync());
+            return result;
+        }
+
+        /// <summary>
+        /// 获取DataTable
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public DataTable GetDataTable(Expression<Func<T, bool>> expression)
+        {
+            var result = db.Queryable<T>().Where(expression).ToDataTable();
+            return result;
+        }
+
+        /// <summary>
+        /// 获取DataTable（异步）
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public async Task<DataTable> GetDataTableAsync(Expression<Func<T, bool>> expression)
+        {
+            var result = await Task.Run(() => db.Queryable<T>().Where(expression).ToDataTableAsync());
+            return result;
+        }
+
+        /// <summary>
+        /// 获取DataTable分页
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        public DataTable GetDataTablePage(Expression<Func<T, bool>> expression, PageModel page)
+        {
+            int count = 0;
+            var result = db.Queryable<T>().Where(expression).ToDataTablePage(page.PageIndex, page.PageSize, ref count);
+            page.PageCount = count;
+            return result;
+        }
+
+        /// <summary>
+        /// 获取DataTable分页（异步）
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        public async Task<DataTable> GetDataTablePageAsync(Expression<Func<T, bool>> expression, PageModel page)
+        {
+            int count = 0;
+            var result = await Task.Run(() => db.Queryable<T>().Where(expression).ToDataTablePage(page.PageIndex, page.PageSize, ref count));
+            page.PageCount = count;
+            return result;
+        }
+
+        /// <summary>
         /// 根据条件获取分页并排序
         /// </summary>
         /// <param name="expression"></param>
@@ -1683,6 +1833,32 @@ namespace Nzh.Lakers.Repository.Base
             int count = 0;
             var result = await Task.Run(() => db.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref count));
             page.PageCount = count;
+            return result;
+        }
+
+        /// <summary>
+        /// 获取Tree
+        /// </summary>
+        /// <param name="childListExpression"></param>
+        /// <param name="parentIdExpression"></param>
+        /// <param name="rootValue"></param>
+        /// <returns></returns>
+        public List<T> GetTreeList(Expression<Func<T, IEnumerable<object>>> childListExpression, Expression<Func<T, object>> parentIdExpression, object rootValue)
+        {
+            var result = db.Queryable<T>().ToTree(childListExpression, parentIdExpression,rootValue);
+            return result;
+        }
+
+        /// <summary>
+        /// 获取Tree（异步）
+        /// </summary>
+        /// <param name="childListExpression"></param>
+        /// <param name="parentIdExpression"></param>
+        /// <param name="rootValue"></param>
+        /// <returns></returns>
+        public async Task<List<T>> GetTreeListAsync(Expression<Func<T, IEnumerable<object>>> childListExpression, Expression<Func<T, object>> parentIdExpression, object rootValue)
+        {
+            var result = await Task.Run(() => db.Queryable<T>().ToTreeAsync(childListExpression, parentIdExpression, rootValue));
             return result;
         }
 
@@ -1788,6 +1964,26 @@ namespace Nzh.Lakers.Repository.Base
         public async Task<bool> InsertRangeAsync(List<T> insertObjs)
         {
             return await Task.Run(() => db.Insertable(insertObjs).ExecuteCommandAsync()) > 0 ? true : false;
+        }
+
+        /// <summary>
+        /// 新增返回实体
+        /// </summary>
+        /// <param name="insertObj"></param>
+        /// <returns></returns>
+        public T InsertReturnEntity(T insertObj)
+        {
+            return db.Insertable(insertObj).ExecuteReturnEntity();
+        }
+
+        /// <summary>
+        /// 新增返回实体（异步）
+        /// </summary>
+        /// <param name="insertObjs"></param>
+        /// <returns></returns>
+        public async Task<T> InsertReturnEntityAsync(T insertObjs)
+        {
+            return await Task.Run(() => db.Insertable(insertObjs).ExecuteReturnEntityAsync());
         }
 
         #endregion
