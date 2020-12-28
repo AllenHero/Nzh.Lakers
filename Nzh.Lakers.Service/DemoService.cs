@@ -32,14 +32,18 @@ namespace Nzh.Lakers.Service
         /// <param name="PageSize"></param>
         /// <param name="Name"></param>
         /// <returns></returns>
-        public List<Demo> GetDemoPageList(int PageIndex, int PageSize, string Name)
+        public Pagination<Demo> GetDemoPageList(int PageIndex, int PageSize, string Name)
         {
+            Pagination<Demo> page = new Pagination<Demo>();
             PageModel pm = new PageModel() { PageIndex = PageIndex, PageSize = PageSize };
             var expression = ListFilter(Name);
             List<Demo> list = _demoRepository.GetPageList(expression, pm);
-            //int a = 0;
-            //int b = 100 / a;
-            return list;
+            page.DataList = list;
+            page.PageIndex = PageIndex;
+            page.PageSize = PageSize;
+            page.TotalCount = pm.PageCount;
+            page.TotalPage = pm.PageCount == 0 ? pm.PageCount / PageSize : (pm.PageCount / PageSize);
+            return page;
         }
 
         /// <summary>

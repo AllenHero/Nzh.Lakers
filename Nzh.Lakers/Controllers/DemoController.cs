@@ -36,6 +36,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="demoService"></param>
         /// <param name="memoryCache"></param>
         /// <param name="redisCache"></param>
+        /// <param name="logger"></param>
         public DemoController(IDemoService demoService, ICacheService memoryCache, ICacheService redisCache, ILogger<DemoController> logger)
         {
             _demoService = demoService;
@@ -56,8 +57,8 @@ namespace Nzh.Lakers.Controllers
         public JsonResult GetDemoPageList(int PageIndex, int PageSize, string Name)
         {
             var result = _demoService.GetDemoPageList(PageIndex, PageSize, Name);
-            //_memoryCache.Add("GetDemoPageList", JsonConvert.SerializeObject(result));
-            _redisCache.Add("GetDemoPageList", JsonConvert.SerializeObject(result));
+            _memoryCache.Add("GetDemoPageList", JsonConvert.SerializeObject(result));
+            //_redisCache.Add("GetDemoPageList", JsonConvert.SerializeObject(result));
             return Result(result);
         }
 
@@ -129,8 +130,8 @@ namespace Nzh.Lakers.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult GetCacheValue(string Key)
         {
-            var result = _redisCache.GetValue(Key);
-            //var result = _memoryCache.GetValue(Key);
+            //var result = _redisCache.GetValue(Key);
+            var result = _memoryCache.GetValue(Key);
             return Result(result);
         }
     }

@@ -10,7 +10,7 @@ namespace Nzh.Lakers.IService
 {
     public interface ITestService : IBaseService
     {
-        Task<List<Demo>> GetDemoPageListAsync(int PageIndex, int PageSize, string Name);
+        Task<Pagination<Demo>> GetDemoPageListAsync(int PageIndex, int PageSize, string Name);
 
         Task<Demo> GetDemoByIdAsync(long Id);
 

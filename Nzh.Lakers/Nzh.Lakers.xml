@@ -53,6 +53,7 @@
             <param name="demoService"></param>
             <param name="memoryCache"></param>
             <param name="redisCache"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:Nzh.Lakers.Controllers.DemoController.GetDemoPageList(System.Int32,System.Int32,System.String)">
             <summary>

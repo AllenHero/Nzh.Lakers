@@ -8,7 +8,7 @@ namespace Nzh.Lakers.IService
 {
     public interface IDemoService : IBaseService
     {
-        List<Demo> GetDemoPageList(int PageIndex, int PageSize, string Name);
+        Pagination<Demo> GetDemoPageList(int PageIndex, int PageSize, string Name);
 
         Demo GetDemoById(long Id);
 

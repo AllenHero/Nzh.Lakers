@@ -34,13 +34,19 @@ namespace Nzh.Lakers.Service
         /// <param name="PageSize"></param>
         /// <param name="Name"></param>
         /// <returns></returns>
-        public async Task<List<Demo>> GetDemoPageListAsync(int PageIndex, int PageSize, string Name)
+        public async Task<Pagination<Demo>> GetDemoPageListAsync(int PageIndex, int PageSize, string Name)
         {
+            Pagination<Demo> page = new Pagination<Demo>();
             PageModel pm = new PageModel() { PageIndex = PageIndex, PageSize = PageSize };
             string sql = "SELECT * FROM  Demo";
             var expression = ListFilter(Name);
             List<Demo> list = await _testRepository.GetPageListBySqlAsync(sql, expression, pm);
-            return list;
+            page.DataList = list;
+            page.PageIndex = PageIndex;
+            page.PageSize = PageSize;
+            page.TotalCount = pm.PageCount;
+            page.TotalPage = pm.PageCount == 0 ? pm.PageCount / PageSize : (pm.PageCount / PageSize);
+            return page;
         }
 
         /// <summary>

@@ -25,12 +25,6 @@ namespace Nzh.Lakers.Model
 
     public class ResultModel<T> : ResultModel
     {
-       
-        /// <summary>
-        /// 数量
-        /// </summary>
-        //public int Count { get; set; }
-
         /// <summary>
         /// 数据
         /// </summary>
