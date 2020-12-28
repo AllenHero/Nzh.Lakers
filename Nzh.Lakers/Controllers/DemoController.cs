@@ -13,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Nzh.Lakers.Cache.RedisCache;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Nzh.Lakers.Controllers
 {
@@ -50,6 +52,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Name"></param>
         /// <returns></returns>
         [HttpGet("GetDemoPageList")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult GetDemoPageList(int PageIndex, int PageSize, string Name)
         {
             ResultModel<Demo> result = new ResultModel<Demo>();
@@ -75,6 +78,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("GetDemoById")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult GetDemoById(long Id)
         {
             ResultModel<Demo> result = new ResultModel<Demo>();
@@ -99,6 +103,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Remark"></param>
         /// <returns></returns>
         [HttpPost("InsertDemo")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult InsertDemo(string Name, string Sex, int Age, string Remark)
         {
             ResultModel<bool> result = new ResultModel<bool>();
@@ -124,6 +129,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Remark"></param>
         /// <returns></returns>
         [HttpPost("UpdateDemo")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult UpdateDemo(long Id, string Name, string Sex, int Age, string Remark)
         {
             ResultModel<bool> result = new ResultModel<bool>();
@@ -145,6 +151,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpPost("DeleteDemoById")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult DeleteDemoById(long Id)
         {
             ResultModel<bool> result = new ResultModel<bool>();
@@ -166,6 +173,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Key"></param>
         /// <returns></returns>
         [HttpPost("GetCacheValue")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult GetCacheValue(string Key)
         {
             ResultModel<string> result = new ResultModel<string>();

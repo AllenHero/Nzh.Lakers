@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
@@ -47,6 +49,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Name"></param>
         /// <returns></returns>
         [HttpGet("GetDemoPageListAsync")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<JsonResult> GetDemoPageListAsync(int PageIndex, int PageSize, string Name)
         {
             ResultModel<Demo> result = new ResultModel<Demo>();
@@ -68,6 +71,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("GetDemoByIdAsync")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<JsonResult> GetDemoByIdAsync(long Id)
         {
             ResultModel<Demo> result = new ResultModel<Demo>();
@@ -92,6 +96,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Remark"></param>
         /// <returns></returns>
         [HttpPost("InsertDemoAsync")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<JsonResult> InsertDemoAsync(string Name, string Sex, int Age, string Remark)
         {
             ResultModel<bool> result = new ResultModel<bool>();
@@ -117,6 +122,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Remark"></param>
         /// <returns></returns>
         [HttpPost("UpdateDemoAsync")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<JsonResult> UpdateDemoAsync(long Id, string Name, string Sex, int Age, string Remark)
         {
             ResultModel<bool> result = new ResultModel<bool>();
@@ -138,6 +144,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpPost("DeleteDemoByIdAsync")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<JsonResult> DeleteDemoByIdAsync(long Id)
         {
             ResultModel<bool> result = new ResultModel<bool>();
@@ -159,6 +166,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="uploadfile"></param>
         /// <returns></returns>
         [HttpPost("TestUpLoadEnclosure")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult TestUpLoadEnclosure(IFormFile uploadfile)
         {
             ResultModel<bool> result = new ResultModel<bool>();
@@ -219,6 +227,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="uploadfile"></param>
         /// <returns></returns>
         [HttpPost("TestImportExcel")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult TestImportExcel(IFormFile uploadfile)
         {
             ResultModel<bool> result = new ResultModel<bool>();
@@ -281,6 +290,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("TestDownLoadEnclosure")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult TestDownLoadEnclosure(long Id)
         {
             ResultModel<bool> result = new ResultModel<bool>();
@@ -307,6 +317,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Name"></param>
         /// <returns></returns>
         [HttpGet("TestExcelExport")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult TestExportExcel(string Name)
         {
             ResultModel<bool> result = new ResultModel<bool>();
