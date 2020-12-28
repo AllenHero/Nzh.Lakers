@@ -24,6 +24,7 @@ namespace Nzh.Lakers.SwaggerHelper
                 //添加对应的控制器描述 这个是我好不容易在issues里面翻到的
                 new OpenApiTag { Name = "Demo", Description = "Demo示例" },
                 new OpenApiTag { Name = "Test", Description = "Sql操作" },
+                new OpenApiTag { Name = "Auth", Description = "JWT认证" },
             };
         }
     }
