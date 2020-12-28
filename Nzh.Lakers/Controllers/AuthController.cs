@@ -60,7 +60,7 @@ namespace Nzh.Lakers.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogInformation(JsonConvert.SerializeObject(ex));
+                _logger.LogError(JsonConvert.SerializeObject(ex));
                 return null;
             }
         }
