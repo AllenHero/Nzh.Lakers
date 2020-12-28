@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace Nzh.Lakers.Global
             }
             catch (Exception ex)
             {
-                _logger.LogError("Unhandled Exception", ex);
+                _logger.LogError(JsonConvert.SerializeObject(ex));//写入log
                 await HandleExceptionAsync(httpContext, ex);
             }
         }
