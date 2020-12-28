@@ -1,4 +1,5 @@
-﻿using SqlSugar;
+﻿using Nzh.Lakers.Model;
+using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -30,21 +31,21 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<List<T>> GetListBySqlAsync(string Sql, Expression<Func<T, bool>> expression);
 
-        List<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> expression, PageModel page);
+        Pagination<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> expression, PageModel page);
 
-        Task<List<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> expression, PageModel page);
+        Task<Pagination<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> expression, PageModel page);
 
-        List<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Pagination<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
-        Task<List<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Task<Pagination<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
-        List<T> GetPageListBySql(string Sql, List<IConditionalModel> conditionalList, PageModel page);
+        Pagination<T> GetPageListBySql(string Sql, List<IConditionalModel> conditionalList, PageModel page);
 
-        Task<List<T>> GetPageListBySqlAsync(string Sql, List<IConditionalModel> conditionalList, PageModel page);
+        Task<Pagination<T>> GetPageListBySqlAsync(string Sql, List<IConditionalModel> conditionalList, PageModel page);
 
-        List<T> GetPageListBySql(string Sql, List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Pagination<T> GetPageListBySql(string Sql, List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
-        Task<List<T>> GetPageListBySqlAsync(string Sql, List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Task<Pagination<T>> GetPageListBySqlAsync(string Sql, List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
         DataTable GetDataTableBySql(string Sql);
 
@@ -306,10 +307,6 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<T> GetSingleAsync(Expression<Func<T, bool>> expression);
 
-        List<T> GetPageList(Expression<Func<T, bool>> expression, PageModel page);
-
-        Task<List<T>> GetPageListAsync(Expression<Func<T, bool>> expression, PageModel page);
-
         string GetJson();
 
         Task<string> GetJsonAsync();
@@ -334,17 +331,21 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<DataTable> GetDataTablePageAsync(Expression<Func<T, bool>> expression, PageModel page);
 
-        List<T> GetPageList(Expression<Func<T, bool>> expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Pagination<T> GetPageList(Expression<Func<T, bool>> expression, PageModel page);
 
-        Task<List<T>> GetPageListAsync(Expression<Func<T, bool>> whereExpression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Task<Pagination<T>> GetPageListAsync(Expression<Func<T, bool>> expression, PageModel page);
 
-        List<T> GetPageList(List<IConditionalModel> conditionalList, PageModel page);
+        Pagination<T> GetPageList(Expression<Func<T, bool>> expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
-        Task<List<T>> GetPageListAsync(List<IConditionalModel> conditionalList, PageModel page);
+        Task<Pagination<T>> GetPageListAsync(Expression<Func<T, bool>> whereExpression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
-        List<T> GetPageList(List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Pagination<T> GetPageList(List<IConditionalModel> conditionalList, PageModel page);
 
-        Task<List<T>> GetPageListAsync(List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Task<Pagination<T>> GetPageListAsync(List<IConditionalModel> conditionalList, PageModel page);
+
+        Pagination<T> GetPageList(List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+
+        Task<Pagination<T>> GetPageListAsync(List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
         List<T> GetTreeList(Expression<Func<T, IEnumerable<object>>> childListExpression, Expression<Func<T, object>> parentIdExpression, object rootValue);
 

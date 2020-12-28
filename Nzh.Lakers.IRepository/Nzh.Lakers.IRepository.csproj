@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Nzh.Lakers.Entity\Nzh.Lakers.Entity.csproj" />
+    <ProjectReference Include="..\Nzh.Lakers.Model\Nzh.Lakers.Model.csproj" />
   </ItemGroup>
 
 </Project>

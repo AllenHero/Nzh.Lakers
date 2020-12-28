@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Nzh.Lakers.IRepository\Nzh.Lakers.IRepository.csproj" />
+    <ProjectReference Include="..\Nzh.Lakers.Model\Nzh.Lakers.Model.csproj" />
     <ProjectReference Include="..\Nzh.Lakers.SqlSugar\Nzh.Lakers.SqlSugar.csproj" />
   </ItemGroup>
 

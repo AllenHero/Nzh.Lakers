@@ -36,15 +36,10 @@ namespace Nzh.Lakers.Service
         /// <returns></returns>
         public async Task<Pagination<Demo>> GetDemoPageListAsync(int PageIndex, int PageSize, string Name)
         {
-            Pagination<Demo> page = new Pagination<Demo>();
             PageModel pm = new PageModel() { PageIndex = PageIndex, PageSize = PageSize };
             string sql = "SELECT * FROM  Demo";
             var expression = ListFilter(Name);
-            List<Demo> list = await _testRepository.GetPageListBySqlAsync(sql, expression, pm);
-            page.DataList = list;
-            page.PageIndex = PageIndex;
-            page.PageSize = PageSize;
-            page.TotalCount = pm.PageCount;
+            Pagination<Demo> page = await _testRepository.GetPageListBySqlAsync(sql, expression, pm);
             return page;
         }
 
