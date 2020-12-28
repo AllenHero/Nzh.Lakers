@@ -40,8 +40,8 @@ namespace Nzh.Lakers.Service
             ResultModel<Demo> rm = new ResultModel<Demo>();
             rm.Count = pm.PageCount;
             rm.Data = list;
-            //int a = 0;
-            //int b = 100 / a;
+            int a = 0;
+            int b = 100 / a;
             return rm;
         }
 

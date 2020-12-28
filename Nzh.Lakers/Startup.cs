@@ -77,6 +77,11 @@ namespace Nzh.Lakers
                 {
                      { securityScheme, new string[] { } }
                 });
+
+                services.AddMvc(o =>
+                {
+                    o.Filters.Add(typeof(GlobalExceptions));
+                });
             });
 
             //Add Authentication

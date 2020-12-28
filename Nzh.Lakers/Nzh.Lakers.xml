@@ -167,6 +167,16 @@
             全局异常处理
             </summary>
         </member>
+        <member name="P:Nzh.Lakers.Global.JsonErrorResponse.Message">
+            <summary>
+            生产环境的消息
+            </summary>
+        </member>
+        <member name="P:Nzh.Lakers.Global.JsonErrorResponse.DevelopmentMessage">
+            <summary>
+            开发环境的消息
+            </summary>
+        </member>
         <member name="T:Nzh.Lakers.SwaggerHelper.SwaggerDocTag">
             <summary>
             Swagger注释帮助类
