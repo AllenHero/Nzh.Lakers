@@ -243,7 +243,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql返回DataTable
+        /// 执行sql获取DataTable
         /// </summary>
         /// <param name="Sql"></param>
         /// <returns></returns>
@@ -253,7 +253,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql返回DataTable（异步）
+        /// 执行sql获取DataTable（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <returns></returns>
@@ -263,7 +263,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据条件返回DataTable
+        /// 执行sql根据条件获取DataTable
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -274,7 +274,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据条件返回DataTable（异步）
+        /// 执行sql根据条件获取DataTable（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -285,7 +285,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据数条件返回DataTable
+        /// 执行sql根据数条件获取DataTable
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -296,7 +296,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据数条件返回DataTable（异步）
+        /// 执行sql根据数条件获取DataTable（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -307,7 +307,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据条件返回DataTable
+        /// 执行sql根据条件获取DataTable
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -318,7 +318,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据条件返回DataTable（异步）
+        /// 执行sql根据条件获取DataTable（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -329,7 +329,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据条件返回DataTable
+        /// 执行sql根据条件获取DataTable
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="expression"></param>
@@ -340,7 +340,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据条件返回DataTable（异步）
+        /// 执行sql根据条件获取DataTable（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="expression"></param>
@@ -351,7 +351,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql返回DataSet
+        /// 执行sql获取DataSet
         /// </summary>
         /// <param name="Sql"></param>
         /// <returns></returns>
@@ -361,7 +361,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql返回DataSet（异步）
+        /// 执行sql获取DataSet（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <returns></returns>
@@ -371,7 +371,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据条件返回DataSet
+        /// 执行sql根据条件获取DataSet
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -382,7 +382,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据条件返回DataSet（异步）
+        /// 执行sql根据条件获取DataSet（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -393,7 +393,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据数条件返回DataSet
+        /// 执行sql根据数条件获取DataSet
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -404,7 +404,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据条件返回DataSet（异步）
+        /// 执行sql根据条件获取DataSet（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -415,7 +415,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        ///  执行sql根据条件返回DataSet
+        ///  执行sql根据条件获取DataSet
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -426,7 +426,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        ///  执行sql根据条件返回DataSet（异步）
+        ///  执行sql根据条件获取DataSet（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -437,7 +437,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据条件返回DataSet
+        /// 执行sql根据条件获取DataSet
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="expression"></param>
@@ -448,7 +448,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据条件返回DataSet（异步）
+        /// 执行sql根据条件获取DataSet（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="expression"></param>
@@ -906,7 +906,7 @@ namespace Nzh.Lakers.Repository.Base
         #region 其他
 
         /// <summary>
-        /// 查询存储过程返回DataTable
+        /// 查询存储过程获取DataTable
         /// </summary>
         /// <param name="procedureName"></param>
         /// <returns></returns>
@@ -916,7 +916,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 查询存储过程返回DataTable（异步）
+        /// 查询存储过程获取DataTable（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <returns></returns>
@@ -926,7 +926,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件查询存储过程返回DataTable
+        /// 根据条件查询存储过程获取DataTable
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
@@ -937,7 +937,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件查询存储过程返回DataTable（异步）
+        /// 根据条件查询存储过程获取DataTable（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
@@ -948,7 +948,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件查询存储过程返回DataTable
+        /// 根据条件查询存储过程获取DataTable
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
@@ -959,7 +959,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件查询存储过程返回DataTable（异步）
+        /// 根据条件查询存储过程获取DataTable（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
@@ -970,7 +970,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件查询存储过程返回DataTable
+        /// 根据条件查询存储过程获取DataTable
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
@@ -981,7 +981,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件查询存储过程返回DataTable（异步）
+        /// 根据条件查询存储过程获取DataTable（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
@@ -992,7 +992,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        ///  根据条件查询存储过程返回DataTable
+        ///  根据条件查询存储过程获取DataTable
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="expression"></param>
@@ -1003,7 +1003,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件查询存储过程返回DataTable（异步）
+        /// 根据条件查询存储过程获取DataTable（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="expression"></param>
@@ -1014,7 +1014,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 查询存储过程返回DataSet
+        /// 查询存储过程获取DataSet
         /// </summary>
         /// <param name="procedureName"></param>
         /// <returns></returns>
@@ -1024,7 +1024,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 查询存储过程返回DataSet（异步）
+        /// 查询存储过程获取DataSet（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <returns></returns>
@@ -1034,7 +1034,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件查询存储过程返回DataSet
+        /// 根据条件查询存储过程获取DataSet
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
@@ -1045,7 +1045,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件查询存储过程返回DataSet（异步）
+        /// 根据条件查询存储过程获取DataSet（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
@@ -1056,7 +1056,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件查询存储过程返回DataSet
+        /// 根据条件查询存储过程获取DataSet
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
@@ -1067,7 +1067,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件查询存储过程返回DataSet（异步）
+        /// 根据条件查询存储过程获取DataSet（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
@@ -1078,7 +1078,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件查询存储过程返回DataSet
+        /// 根据条件查询存储过程获取DataSet
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
@@ -1089,7 +1089,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件查询存储过程返回DataSet（异步）
+        /// 根据条件查询存储过程获取DataSet（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
@@ -1100,7 +1100,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件查询存储过程返回DataSet
+        /// 根据条件查询存储过程获取DataSet
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="expression"></param>
@@ -1111,7 +1111,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件查询存储过程返回DataSet（异步）
+        /// 根据条件查询存储过程获取DataSet（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="expression"></param>
@@ -1364,7 +1364,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 返回数量
+        /// 获取数量
         /// </summary>
         /// <returns></returns>
         public int Count()
@@ -1373,7 +1373,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 返回数量（异步）
+        /// 获取数量（异步）
         /// </summary>
         /// <returns></returns>
         public async Task<int> CountAsync()
@@ -1382,7 +1382,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件返回数量
+        /// 根据条件获取数量
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -1392,7 +1392,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件返回数量（异步）
+        /// 根据条件获取数量（异步）
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -1880,7 +1880,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 新增返回id
+        /// 新增获取id
         /// </summary>
         /// <param name="insertObj"></param>
         /// <returns></returns>
@@ -1890,7 +1890,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 新增返回id（异步）
+        /// 新增获取id（异步）
         /// </summary>
         /// <param name="insertObj"></param>
         /// <returns></returns>
@@ -1960,7 +1960,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 新增返回单个对象
+        /// 新增获取单个对象
         /// </summary>
         /// <param name="insertObj"></param>
         /// <returns></returns>
@@ -1970,7 +1970,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 新增返回单个对象（异步）
+        /// 新增获取单个对象（异步）
         /// </summary>
         /// <param name="insertObjs"></param>
         /// <returns></returns>
