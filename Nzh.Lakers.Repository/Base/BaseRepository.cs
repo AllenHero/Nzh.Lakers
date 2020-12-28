@@ -1463,6 +1463,48 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
+        /// 根据主键获取List
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public List<T> GetListByIds(object[] ids)
+        {
+            return Db.Queryable<T>().In(ids).ToList();
+        }
+
+        /// <summary>
+        /// 根据主键获取List（异步）
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public async Task<List<T>> GetListByIdsAsync(object[] ids)
+        {
+            return await Task.Run(() => db.Queryable<T>().In(ids).ToListAsync());
+        }
+
+        /// <summary>
+        /// 根据主键获取List
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public List<T> GetListByIds(object[] ids, Expression<Func<T, bool>> expression)
+        {
+            return Db.Queryable<T>().Where(expression).In(ids).ToList();
+        }
+
+        /// <summary>
+        /// 根据主键获取List（异步）
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public async Task<List<T>> GetListByIdsAsync(object[] ids, Expression<Func<T, bool>> expression)
+        {
+            return await Task.Run(() => db.Queryable<T>().Where(expression).In(ids).ToListAsync());
+        }
+
+        /// <summary>
         /// 获取List
         /// </summary>
         /// <returns></returns>

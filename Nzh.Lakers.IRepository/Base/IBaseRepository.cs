@@ -282,6 +282,14 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<T> GetByIdAsync(dynamic id);
 
+        List<T> GetListByIds(object[] ids);
+
+        Task<List<T>> GetListByIdsAsync(object[] ids);
+
+        List<T> GetListByIds(object[] ids, Expression<Func<T, bool>> expression);
+
+        Task<List<T>> GetListByIdsAsync(object[] ids, Expression<Func<T, bool>> expression);
+
         List<T> GetList();
 
         Task<List<T>> GetListAsync();
