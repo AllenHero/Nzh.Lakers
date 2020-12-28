@@ -32,17 +32,14 @@ namespace Nzh.Lakers.Service
         /// <param name="PageSize"></param>
         /// <param name="Name"></param>
         /// <returns></returns>
-        public ResultModel<Demo> GetDemoPageList(int PageIndex, int PageSize, string Name)
+        public List<Demo> GetDemoPageList(int PageIndex, int PageSize, string Name)
         {
             PageModel pm = new PageModel() { PageIndex = PageIndex, PageSize = PageSize };
             var expression = ListFilter(Name);
             List<Demo> list = _demoRepository.GetPageList(expression, pm);
-            ResultModel<Demo> rm = new ResultModel<Demo>();
-            rm.Count = pm.PageCount;
-            rm.Data = list;
-            int a = 0;
-            int b = 100 / a;
-            return rm;
+            //int a = 0;
+            //int b = 100 / a;
+            return list;
         }
 
         /// <summary>
@@ -65,12 +62,10 @@ namespace Nzh.Lakers.Service
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public ResultModel<Demo> GetDemoById(long Id)
+        public Demo GetDemoById(long Id)
         {
-            ResultModel<Demo> rm = new ResultModel<Demo>();
             Demo model = _demoRepository.GetById(Id);
-            rm.Data = model;
-            return rm;
+            return model;
         }
 
         /// <summary>
@@ -81,12 +76,11 @@ namespace Nzh.Lakers.Service
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public ResultModel<bool> InsertDemo(string Name, string Sex, int Age, string Remark)
+        public bool InsertDemo(string Name, string Sex, int Age, string Remark)
         {
             try
             {
                 _demoRepository.BeginTran();//开始事务
-                ResultModel<bool> rm = new ResultModel<bool>();
                 Demo Demo = new Demo();
                 Demo.Id = IdWorkerHelper.NewId();
                 Demo.Name = Name;
@@ -95,8 +89,7 @@ namespace Nzh.Lakers.Service
                 Demo.Remark = Remark;
                 bool result = _demoRepository.Insert(Demo);
                 _demoRepository.CommitTran();
-                rm.Data = result;
-                return rm;
+                return result;
             }
             catch (Exception ex)
             {
@@ -114,12 +107,11 @@ namespace Nzh.Lakers.Service
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public ResultModel<bool> UpdateDemo(long Id, string Name, string Sex, int Age, string Remark)
+        public bool UpdateDemo(long Id, string Name, string Sex, int Age, string Remark)
         {
             try
             {
                 _demoRepository.BeginTran();//开始事务
-                ResultModel<bool> rm = new ResultModel<bool>();
                 Demo Demo = new Demo();
                 Demo.Id = Id;
                 Demo.Name = Name;
@@ -128,8 +120,7 @@ namespace Nzh.Lakers.Service
                 Demo.Remark = Remark;
                 bool result = _demoRepository.Update(Demo);
                 _demoRepository.CommitTran();
-                rm.Data = result;
-                return rm;
+                return result;
             }
             catch (Exception ex)
             {
@@ -143,16 +134,14 @@ namespace Nzh.Lakers.Service
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public ResultModel<bool> DeleteDemoById(long Id)
+        public bool DeleteDemoById(long Id)
         {
             try
             {
                 _demoRepository.BeginTran();//开始事务
-                ResultModel<bool> rm = new ResultModel<bool>();
                 bool result = _demoRepository.DeleteById(Id);
                 _demoRepository.CommitTran();
-                rm.Data = result;
-                return rm;
+                return result;
             }
             catch (Exception ex)
             {

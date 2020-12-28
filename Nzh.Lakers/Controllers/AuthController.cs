@@ -13,7 +13,7 @@ namespace Nzh.Lakers.Controllers
 {
     [Route("api/Auth")]
     [ApiController]
-    public class AuthController : Controller
+    public class AuthController : BaseController
     {
         private readonly ILogger<DemoController> _logger;
 
@@ -33,7 +33,7 @@ namespace Nzh.Lakers.Controllers
         [HttpGet("GetToken")]
         public IActionResult GetToken()
         {
-            return Ok(new { Token = BuildToken("admin") });
+            return Result(new { Token = BuildToken("admin") });
         }
 
         /// <summary>

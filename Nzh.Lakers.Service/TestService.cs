@@ -34,16 +34,13 @@ namespace Nzh.Lakers.Service
         /// <param name="PageSize"></param>
         /// <param name="Name"></param>
         /// <returns></returns>
-        public async Task<ResultModel<Demo>> GetDemoPageListAsync(int PageIndex, int PageSize, string Name)
+        public async Task<List<Demo>> GetDemoPageListAsync(int PageIndex, int PageSize, string Name)
         {
             PageModel pm = new PageModel() { PageIndex = PageIndex, PageSize = PageSize };
             string sql = "SELECT * FROM  Demo";
             var expression = ListFilter(Name);
             List<Demo> list = await _testRepository.GetPageListBySqlAsync(sql, expression, pm);
-            ResultModel<Demo> rm = new ResultModel<Demo>();
-            rm.Count = pm.PageCount;
-            rm.Data = list;
-            return rm;
+            return list;
         }
 
         /// <summary>
@@ -66,13 +63,11 @@ namespace Nzh.Lakers.Service
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public async Task<ResultModel<Demo>> GetDemoByIdAsync(long Id)
+        public async Task<Demo> GetDemoByIdAsync(long Id)
         {
-            ResultModel<Demo> rm = new ResultModel<Demo>();
             string sql = "SELECT * FROM  Demo where Id=@Id";
             Demo model = await _testRepository.GetAsync(sql, new { Id = Id });
-            rm.Data = model;
-            return rm;
+            return model;
         }
 
         /// <summary>
@@ -83,12 +78,11 @@ namespace Nzh.Lakers.Service
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public async Task<ResultModel<bool>> InsertDemoAsync(string Name, string Sex, int Age, string Remark)
+        public async Task<bool> InsertDemoAsync(string Name, string Sex, int Age, string Remark)
         {
             try
             {
                 _testRepository.BeginTran();//开始事务
-                ResultModel<bool> rm = new ResultModel<bool>();
                 var result = false;
                 long Id = IdWorkerHelper.NewId();
                 string sql = "INSERT INTO Demo(Id,Name,Sex,Age,Remark) VALUES(@Id,@Name,@Sex,@Age,@Remark)";
@@ -102,8 +96,7 @@ namespace Nzh.Lakers.Service
                };
                 result = await _testRepository.ExecuteSqlAsync(sql, Parameter);
                 _testRepository.CommitTran();//提交事务
-                rm.Data = result;
-                return rm;
+                return result;
             }
             catch (Exception ex)
             {
@@ -121,12 +114,11 @@ namespace Nzh.Lakers.Service
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public async Task<ResultModel<bool>> UpdateDemoAsync(long Id, string Name, string Sex, int Age, string Remark)
+        public async Task<bool> UpdateDemoAsync(long Id, string Name, string Sex, int Age, string Remark)
         {
             try
             {
                 _testRepository.BeginTran();//开始事务
-                ResultModel<bool> rm = new ResultModel<bool>();
                 var result = false;
                 string sql = "UPDATE Demo SET Name=@Name,Sex=@Sex,Age=@Age,Remark=@Remark WHERE Id=@Id";
                 SugarParameter[] Parameter = new SugarParameter[]
@@ -139,8 +131,7 @@ namespace Nzh.Lakers.Service
                };
                 result = await _testRepository.ExecuteSqlAsync(sql, Parameter);
                 _testRepository.CommitTran();//提交事务
-                rm.Data = result;
-                return rm;
+                return result;
             }
             catch (Exception ex)
             {
@@ -154,12 +145,11 @@ namespace Nzh.Lakers.Service
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public async Task<ResultModel<bool>> DeleteDemoByIdAsync(long Id)
+        public async Task<bool> DeleteDemoByIdAsync(long Id)
         {
             try
             {
                 _testRepository.BeginTran();//开始事务
-                ResultModel<bool> rm = new ResultModel<bool>();
                 var result = false;
                 string sql = "DELETE FROM  Demo where Id=@Id";
                 SugarParameter[] Parameter = new SugarParameter[]
@@ -168,8 +158,7 @@ namespace Nzh.Lakers.Service
                 };
                 result = await _testRepository.ExecuteSqlAsync(sql, Parameter);
                 _testRepository.CommitTran();//提交事务
-                rm.Data = result;
-                return rm;
+                return result;
             }
             catch (Exception ex)
             {
@@ -183,20 +172,18 @@ namespace Nzh.Lakers.Service
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        public ResultModel<bool> TestImportExcel(List<Demo> list)
+        public bool TestImportExcel(List<Demo> list)
         {
             try
             {
                 _testRepository.BeginTran();//开始事务
-                ResultModel<bool> rm = new ResultModel<bool>();
                 var result = false;
                 foreach (var item in list)
                 {
                     result = _testRepository.Insert(item);
                 }
                 _testRepository.CommitTran();//提交事务
-                rm.Data = result;
-                return rm;
+                return result;
             }
             catch (Exception ex)
             {

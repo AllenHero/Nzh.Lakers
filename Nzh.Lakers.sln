@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Lakers", "Nzh.Lakers\Nzh.Lakers.csproj", "{A028470E-4B84-45C7-A4F6-F51CA0474B46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Lakers", "Nzh.Lakers\Nzh.Lakers.csproj", "{A028470E-4B84-45C7-A4F6-F51CA0474B46}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "仓储层", "仓储层", "{0A57FAA8-87C8-4020-83D4-3EAB5709D05E}"
 EndProject
@@ -17,25 +17,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "实体层", "实体层", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "注入服务层", "注入服务层", "{937668EE-E8B6-4BF5-80C0-4A633DC1A44C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Lakers.SqlSugar", "Nzh.Lakers.SqlSugar\Nzh.Lakers.SqlSugar.csproj", "{F16721CE-AA38-4C78-BCC1-2252B8F2405D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Lakers.SqlSugar", "Nzh.Lakers.SqlSugar\Nzh.Lakers.SqlSugar.csproj", "{F16721CE-AA38-4C78-BCC1-2252B8F2405D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Lakers.IRepository", "Nzh.Lakers.IRepository\Nzh.Lakers.IRepository.csproj", "{ACA9E202-452C-4697-B1C3-A6B8606C20C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Lakers.IRepository", "Nzh.Lakers.IRepository\Nzh.Lakers.IRepository.csproj", "{ACA9E202-452C-4697-B1C3-A6B8606C20C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Lakers.Repository", "Nzh.Lakers.Repository\Nzh.Lakers.Repository.csproj", "{350A6A2A-FB0E-4BFC-9888-40F289105AEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Lakers.Repository", "Nzh.Lakers.Repository\Nzh.Lakers.Repository.csproj", "{350A6A2A-FB0E-4BFC-9888-40F289105AEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Lakers.IService", "Nzh.Lakers.IService\Nzh.Lakers.IService.csproj", "{D326C12E-C69C-479F-907D-C8752B82C66D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Lakers.IService", "Nzh.Lakers.IService\Nzh.Lakers.IService.csproj", "{D326C12E-C69C-479F-907D-C8752B82C66D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Lakers.Service", "Nzh.Lakers.Service\Nzh.Lakers.Service.csproj", "{EC392EC8-A4CB-4318-89ED-348C12B7A709}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Lakers.Service", "Nzh.Lakers.Service\Nzh.Lakers.Service.csproj", "{EC392EC8-A4CB-4318-89ED-348C12B7A709}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Lakers.Util", "Nzh.Lakers.Util\Nzh.Lakers.Util.csproj", "{AE83998B-B419-4F57-B6FB-0581D00E3341}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Lakers.Util", "Nzh.Lakers.Util\Nzh.Lakers.Util.csproj", "{AE83998B-B419-4F57-B6FB-0581D00E3341}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Lakers.Factory", "Nzh.Lakers.Factory\Nzh.Lakers.Factory.csproj", "{A4B0861D-75DA-4355-BA21-D44F602B8028}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Lakers.Factory", "Nzh.Lakers.Factory\Nzh.Lakers.Factory.csproj", "{A4B0861D-75DA-4355-BA21-D44F602B8028}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Lakers.Cache", "Nzh.Lakers.Cache\Nzh.Lakers.Cache.csproj", "{189609D3-0B48-4847-801F-199D6C362684}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Lakers.Cache", "Nzh.Lakers.Cache\Nzh.Lakers.Cache.csproj", "{189609D3-0B48-4847-801F-199D6C362684}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Lakers.Entity", "Nzh.Lakers.Entity\Nzh.Lakers.Entity.csproj", "{588C5377-7FAE-47AA-9D37-ED4019B76882}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Lakers.Entity", "Nzh.Lakers.Entity\Nzh.Lakers.Entity.csproj", "{588C5377-7FAE-47AA-9D37-ED4019B76882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Lakers.Model", "Nzh.Lakers.Model\Nzh.Lakers.Model.csproj", "{58E9D237-941B-42B9-B6F1-0BBA2FF8F7F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Lakers.Model", "Nzh.Lakers.Model\Nzh.Lakers.Model.csproj", "{58E9D237-941B-42B9-B6F1-0BBA2FF8F7F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

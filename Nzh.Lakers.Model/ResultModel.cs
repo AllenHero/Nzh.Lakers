@@ -3,25 +3,33 @@
 namespace Nzh.Lakers.Model
 {
     /// <summary>
-    /// 表格数据，支持分页
+    /// 统一接口返回
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class ResultModel<T>
+    public class ResultModel
     {
+        public ResultModel()
+        {
+            Code = 0;
+        }
+
         /// <summary>
         /// 状态码
         /// </summary>
-        public int Code { get; set; } = 0;
+        public int Code { get; set; }
 
         /// <summary>
         /// 消息
         /// </summary>
-        public string Msg { get; set; } = "成功";
+        public string Msg { get; set; }
+    }
 
+    public class ResultModel<T> : ResultModel
+    {
+       
         /// <summary>
         /// 数量
         /// </summary>
-        public int Count { get; set; }
+        //public int Count { get; set; }
 
         /// <summary>
         /// 数据

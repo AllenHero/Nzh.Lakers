@@ -10,17 +10,17 @@ namespace Nzh.Lakers.IService
 {
     public interface ITestService : IBaseService
     {
-        Task<ResultModel<Demo>> GetDemoPageListAsync(int PageIndex, int PageSize, string Name);
+        Task<List<Demo>> GetDemoPageListAsync(int PageIndex, int PageSize, string Name);
 
-        Task<ResultModel<Demo>> GetDemoByIdAsync(long Id);
+        Task<Demo> GetDemoByIdAsync(long Id);
 
-        Task<ResultModel<bool>> InsertDemoAsync(string Name, string Sex, int Age, string Remark);
+        Task<bool> InsertDemoAsync(string Name, string Sex, int Age, string Remark);
 
-        Task<ResultModel<bool>> UpdateDemoAsync(long Id, string Name, string Sex, int Age, string Remark);
+        Task<bool> UpdateDemoAsync(long Id, string Name, string Sex, int Age, string Remark);
 
-        Task<ResultModel<bool>> DeleteDemoByIdAsync(long Id);
+        Task<bool> DeleteDemoByIdAsync(long Id);
 
-        ResultModel<bool> TestImportExcel(List<Demo> list);
+        bool TestImportExcel(List<Demo> list);
 
         List<Demo> TestExportExcel(string Name);
     }

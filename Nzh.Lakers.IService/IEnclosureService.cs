@@ -9,7 +9,7 @@ namespace Nzh.Lakers.IService
 {
     public interface IEnclosureService : IBaseService
     {
-        ResultModel<bool> TestUpLoadEnclosure(string FilePath);
+        bool TestUpLoadEnclosure(string FilePath);
 
         Enclosure TestDownLoadEnclosure(long Id);
     }

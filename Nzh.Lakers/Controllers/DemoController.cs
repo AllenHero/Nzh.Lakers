@@ -20,7 +20,7 @@ namespace Nzh.Lakers.Controllers
 {
     [Route("api/Demo")]
     [ApiController]
-    public class DemoController : Controller
+    public class DemoController : BaseController
     {
         private readonly IDemoService _demoService;
 
@@ -55,21 +55,10 @@ namespace Nzh.Lakers.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult GetDemoPageList(int PageIndex, int PageSize, string Name)
         {
-            ResultModel<Demo> result = new ResultModel<Demo>();
-            try
-            {
-                result = _demoService.GetDemoPageList(PageIndex, PageSize, Name);
-                _memoryCache.Add("GetDemoPageList", JsonConvert.SerializeObject(result));
-                _redisCache.Add("GetDemoPageList", JsonConvert.SerializeObject(result));
-                _logger.LogInformation(JsonConvert.SerializeObject(result));
-            }
-            catch (Exception ex)
-            {
-                result.Code = -1;
-                result.Msg = ex.Message;
-                //_logger.LogError(JsonConvert.SerializeObject(result.Msg));
-            }
-            return Json(result);
+            var result = _demoService.GetDemoPageList(PageIndex, PageSize, Name);
+            //_memoryCache.Add("GetDemoPageList", JsonConvert.SerializeObject(result));
+            _redisCache.Add("GetDemoPageList", JsonConvert.SerializeObject(result));
+            return Result(result);
         }
 
         /// <summary>
@@ -81,17 +70,8 @@ namespace Nzh.Lakers.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult GetDemoById(long Id)
         {
-            ResultModel<Demo> result = new ResultModel<Demo>();
-            try
-            {
-                result = _demoService.GetDemoById(Id);
-            }
-            catch (Exception ex)
-            {
-                result.Code = -1;
-                result.Msg = ex.Message;
-            }
-            return Json(result);
+            var result = _demoService.GetDemoById(Id);
+            return Result(result);
         }
 
         /// <summary>
@@ -106,17 +86,8 @@ namespace Nzh.Lakers.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult InsertDemo(string Name, string Sex, int Age, string Remark)
         {
-            ResultModel<bool> result = new ResultModel<bool>();
-            try
-            {
-                result = _demoService.InsertDemo(Name, Sex, Age, Remark);
-            }
-            catch (Exception ex)
-            {
-                result.Code = -1;
-                result.Msg = ex.Message;
-            }
-            return Json(result);
+            var result = _demoService.InsertDemo(Name, Sex, Age, Remark);
+            return Result(result);
         }
 
         /// <summary>
@@ -132,17 +103,8 @@ namespace Nzh.Lakers.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult UpdateDemo(long Id, string Name, string Sex, int Age, string Remark)
         {
-            ResultModel<bool> result = new ResultModel<bool>();
-            try
-            {
-                result = _demoService.UpdateDemo(Id, Name, Sex, Age, Remark);
-            }
-            catch (Exception ex)
-            {
-                result.Code = -1;
-                result.Msg = ex.Message;
-            }
-            return Json(result);
+            var result = _demoService.UpdateDemo(Id, Name, Sex, Age, Remark);
+            return Result(result);
         }
 
         /// <summary>
@@ -154,17 +116,8 @@ namespace Nzh.Lakers.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult DeleteDemoById(long Id)
         {
-            ResultModel<bool> result = new ResultModel<bool>();
-            try
-            {
-                result = _demoService.DeleteDemoById(Id);
-            }
-            catch (Exception ex)
-            {
-                result.Code = -1;
-                result.Msg = ex.Message;
-            }
-            return Json(result);
+            var result = _demoService.DeleteDemoById(Id);
+            return Result(result);
         }
 
         /// <summary>
@@ -176,18 +129,9 @@ namespace Nzh.Lakers.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult GetCacheValue(string Key)
         {
-            ResultModel<string> result = new ResultModel<string>();
-            try
-            {
-                //result.Data = _memoryCache.GetValue(Key);
-                result.Data = _redisCache.GetValue(Key);
-            }
-            catch (Exception ex)
-            {
-                result.Code = -1;
-                result.Msg = ex.Message;
-            }
-            return Json(result);
+            var result = _redisCache.GetValue(Key);
+            //var result = _memoryCache.GetValue(Key);
+            return Result(result);
         }
     }
 }

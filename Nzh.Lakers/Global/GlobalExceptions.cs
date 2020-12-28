@@ -2,21 +2,24 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Nzh.Lakers.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Nzh.Lakers.Model.EnumType;
 
 namespace Nzh.Lakers.Global
 {
-    public class GlobalExceptions : IExceptionFilter
+    public class GlobalExceptions : Attribute, IExceptionFilter
     {
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
 
         private readonly ILogger<GlobalExceptions> _logger;
 
-        public GlobalExceptions(IHostingEnvironment env, ILogger<GlobalExceptions> logger)
+        public GlobalExceptions(IWebHostEnvironment env, ILogger<GlobalExceptions> logger)
         {
             _env = env;
             _logger = logger;
@@ -24,36 +27,27 @@ namespace Nzh.Lakers.Global
 
         public void OnException(ExceptionContext context)
         {
-            var json = new JsonErrorResponse();
-            //这里面是自定义的操作记录日志
-            if (context.Exception.GetType() == typeof(UserOperationException))
+            ResultModel<string> result = new ResultModel<string>();
+            result.Code = (int)StatusCodeType.Error;
+            result.Msg = context.Exception.Message;//错误信息
+            if (_env.IsDevelopment())
             {
-                json.Message = context.Exception.Message;
-                if (_env.IsDevelopment())
-                {
-                    json.DevelopmentMessage = context.Exception.StackTrace;//堆栈信息
-                }
-                context.Result = new BadRequestObjectResult(json);//返回异常数据
+                result.Data = context.Exception.StackTrace;//堆栈信息
             }
-            else
-            {
-                json.Message = "发生了未知内部错误";
-                if (_env.IsDevelopment())
-                {
-                    json.DevelopmentMessage = context.Exception.StackTrace;//堆栈信息
-                }
-                context.Result = new InternalServerErrorObjectResult(json);
-            }
-            //采用log4net 进行错误日志记录
-            //LogHelper.ErrorLog(json.Message, context.Exception);
-            _logger.LogError(json.Message, context.Exception);
+            context.Result = new JsonResult(result) { StatusCode = (int)StatusCodeType.Success };
+            //采用Nlog 进行错误日志记录
+            _logger.LogError(WriteLog(result.Msg, context.Exception));
         }
-    }
-    public class InternalServerErrorObjectResult : ObjectResult
-    {
-        public InternalServerErrorObjectResult(object value) : base(value)
+
+        /// <summary>
+        /// 自定义返回格式
+        /// </summary>
+        /// <param name="throwMsg"></param>
+        /// <param name="ex"></param>
+        /// <returns></returns>
+        public string WriteLog(string throwMsg, Exception ex)
         {
-            StatusCode = StatusCodes.Status500InternalServerError;
+            return $"\r\n【自定义错误】：{throwMsg} \r\n【异常类型】：{ex.GetType().Name} \r\n【异常信息】：{ex.Message} \r\n【堆栈调用】：{ex.StackTrace }\r\n";
         }
     }
 }

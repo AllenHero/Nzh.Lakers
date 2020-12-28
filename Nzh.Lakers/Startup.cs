@@ -14,6 +14,7 @@ using NLog.Extensions.Logging;
 using Nzh.Lakers.Cache.MemoryCache;
 using Nzh.Lakers.Factory;
 using Nzh.Lakers.Global;
+using Nzh.Lakers.Middleware;
 using Nzh.Lakers.SqlSugar;
 using Nzh.Lakers.SwaggerHelper;
 using System;
@@ -78,9 +79,12 @@ namespace Nzh.Lakers
                      { securityScheme, new string[] { } }
                 });
 
-                services.AddMvc(o =>
+                services.AddControllers(options =>
                 {
-                    o.Filters.Add(typeof(GlobalExceptions));
+                    //全局异常过滤
+                    options.Filters.Add<GlobalExceptions>();
+                    //全局日志
+                    options.Filters.Add<GlobalActionMonitor>();
                 });
             });
 
@@ -135,14 +139,14 @@ namespace Nzh.Lakers
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Nzh.Lakers API V1");
             });
 
+            // 请求日志监控
+            app.UseMiddleware<RequestMiddleware>();
+
             // 添加NLog
             loggerFactory.AddNLog();
 
             //引入Nlog配置文件
             NLog.LogManager.LoadConfiguration("NLog.config");
-
-            //全局异常处理
-            app.UseGlobalExceptionMiddleware();
         }
     }
 }

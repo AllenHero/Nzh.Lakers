@@ -24,18 +24,17 @@ namespace Nzh.Lakers.Service
         /// </summary>
         /// <param name="FilePath"></param>
         /// <returns></returns>
-        public ResultModel<bool> TestUpLoadEnclosure(string FilePath)
+        public bool TestUpLoadEnclosure(string FilePath)
         {
-            ResultModel<bool> rm = new ResultModel<bool>();
             try
             {
                 _enclosureRepository.BeginTran();//开始事务
                 Enclosure Enclosure = new Enclosure();
                 Enclosure.Id= IdWorkerHelper.NewId();
                 Enclosure.FilePath = FilePath;
-                rm.Data = _enclosureRepository.Insert(Enclosure);
+                bool result = _enclosureRepository.Insert(Enclosure);
                 _enclosureRepository.CommitTran();//提交事务
-                return rm;
+                return result;
             }
             catch (Exception ex)
             {

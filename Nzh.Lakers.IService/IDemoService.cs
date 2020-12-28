@@ -2,19 +2,20 @@
 using Nzh.Lakers.IService.Base;
 using Nzh.Lakers.Model;
 using System;
+using System.Collections.Generic;
 
 namespace Nzh.Lakers.IService
 {
     public interface IDemoService : IBaseService
     {
-        ResultModel<Demo> GetDemoPageList(int PageIndex, int PageSize, string Name);
+        List<Demo> GetDemoPageList(int PageIndex, int PageSize, string Name);
 
-        ResultModel<Demo> GetDemoById(long Id);
+        Demo GetDemoById(long Id);
 
-        ResultModel<bool> InsertDemo(string Name, string Sex, int Age, string Remark);
+        bool InsertDemo(string Name, string Sex, int Age, string Remark);
 
-        ResultModel<bool> UpdateDemo(long Id, string Name, string Sex, int Age, string Remark);
+        bool UpdateDemo(long Id, string Name, string Sex, int Age, string Remark);
 
-        ResultModel<bool> DeleteDemoById(long Id);
+        bool DeleteDemoById(long Id);
     }
 }
