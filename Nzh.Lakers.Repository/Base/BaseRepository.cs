@@ -1244,7 +1244,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 最大值
+        /// 获取最大值
         /// </summary>
         /// <param name="field"></param>
         /// <returns></returns>
@@ -1254,7 +1254,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 最大值（异步）
+        /// 获取最大值（异步）
         /// </summary>
         /// <param name="field"></param>
         /// <returns></returns>
@@ -1284,7 +1284,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 最小值
+        /// 获取最小值
         /// </summary>
         /// <param name="field"></param>
         /// <returns></returns>
@@ -1294,7 +1294,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 最小值（异步）
+        /// 获取最小值（异步）
         /// </summary>
         /// <param name="field"></param>
         /// <returns></returns>
@@ -1324,7 +1324,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 平均值
+        /// 获取平均值
         /// </summary>
         /// <param name="field"></param>
         /// <returns></returns>
@@ -1334,7 +1334,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 平均值（异步）
+        /// 获取平均值（异步）
         /// </summary>
         /// <param name="field"></param>
         /// <returns></returns>
@@ -1402,7 +1402,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 是否存在
+        /// 判断是否存在
         /// </summary>
         /// <returns></returns>
         public bool IsAny()
@@ -1411,7 +1411,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 是否存在（异步）
+        /// 判断是否存在（异步）
         /// </summary>
         /// <returns></returns>
         public async Task<bool> IsAnyAsync()
@@ -2064,7 +2064,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件更新列
+        /// 根据条件修改列
         /// </summary>
         /// <param name="columns"></param>
         /// <param name="expression"></param>
@@ -2075,7 +2075,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件更新列（异步）
+        /// 根据条件修改列（异步）
         /// </summary>
         /// <param name="columns"></param>
         /// <param name="expression"></param>
@@ -2086,7 +2086,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件更新
+        /// 根据条件修改
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -2096,7 +2096,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件更新（异步）
+        /// 根据条件修改（异步）
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
