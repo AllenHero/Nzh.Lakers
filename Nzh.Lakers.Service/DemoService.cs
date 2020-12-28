@@ -42,7 +42,6 @@ namespace Nzh.Lakers.Service
             page.PageIndex = PageIndex;
             page.PageSize = PageSize;
             page.TotalCount = pm.PageCount;
-            page.TotalPage = pm.PageCount == 0 ? pm.PageCount / PageSize : (pm.PageCount / PageSize);
             return page;
         }
 

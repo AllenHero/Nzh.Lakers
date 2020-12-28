@@ -36,7 +36,21 @@ namespace Nzh.Lakers.Model
         /// <summary>
         /// 总页数
         /// </summary>
-        public int TotalPage { get; set; }
+        public int TotalPage
+        {
+            get
+            {
+                if (TotalCount > 0)
+                {
+                    return TotalCount % this.PageSize == 0 ? TotalCount / this.PageSize : TotalCount / this.PageSize + 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            set { }
+        }
 
         /// <summary>
         /// 内容
