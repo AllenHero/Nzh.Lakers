@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +13,7 @@ using Microsoft.OpenApi.Models;
 using NLog.Extensions.Logging;
 using Nzh.Lakers.Cache.MemoryCache;
 using Nzh.Lakers.Factory;
+using Nzh.Lakers.Global;
 using Nzh.Lakers.SqlSugar;
 using Nzh.Lakers.SwaggerHelper;
 using System;
@@ -131,7 +134,10 @@ namespace Nzh.Lakers
             loggerFactory.AddNLog();
 
             //引入Nlog配置文件
-            NLog.LogManager.LoadConfiguration("NLog.config"); 
+            NLog.LogManager.LoadConfiguration("NLog.config");
+
+            //全局异常处理
+            app.UseGlobalExceptionMiddleware();
         }
     }
 }

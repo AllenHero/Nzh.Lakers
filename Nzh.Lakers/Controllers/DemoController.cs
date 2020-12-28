@@ -67,7 +67,7 @@ namespace Nzh.Lakers.Controllers
             {
                 result.Code = -1;
                 result.Msg = ex.Message;
-                _logger.LogError(JsonConvert.SerializeObject(result.Msg));
+                //_logger.LogError(JsonConvert.SerializeObject(result.Msg));
             }
             return Json(result);
         }
