@@ -473,7 +473,6 @@ namespace Nzh.Lakers.Repository.Base
         /// </summary>
         /// <param name="Sql"></param>
         /// <returns></returns>
-
         public async Task<bool> ExecuteSqlAsync(string Sql)
         {
             return await Task.Run(() => db.Ado.ExecuteCommandAsync(Sql)) > 0 ? true : false;
