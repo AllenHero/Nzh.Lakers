@@ -14,9 +14,15 @@ using NLog.Extensions.Logging;
 using Nzh.Lakers.Cache.MemoryCache;
 using Nzh.Lakers.Factory;
 using Nzh.Lakers.Global;
+using Nzh.Lakers.Job.HostedService;
+using Nzh.Lakers.Job.Job;
+using Nzh.Lakers.Job.JobFactory;
+using Nzh.Lakers.Job.JobSchedule;
 using Nzh.Lakers.Middleware;
 using Nzh.Lakers.SqlSugar;
 using Nzh.Lakers.SwaggerHelper;
+using Quartz;
+using Quartz.Spi;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -102,6 +108,18 @@ namespace Nzh.Lakers
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Security:Tokens:Key"))
                     };
                 });
+
+            //添加QuartzServices
+            services.AddSingleton<IJobFactory, MyJobFactory>();
+
+            //添加Job
+            services.AddSingleton<MyJob>();
+            services.AddSingleton(new MyJobSchedule(
+                jobType: typeof(MyJob),
+                cronExpression: "0/1 * * * * ?")); //每分钟运行一次
+
+            //注册托管服务
+            services.AddHostedService<QuartzHostedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
