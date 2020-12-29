@@ -355,9 +355,9 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<Dictionary<string, object>> GetDictionaryAsync(Expression<Func<T, object>> key, Expression<Func<T, object>> value);
 
-        List<Dictionary<string, object>> ToDictionaryList();
+        List<Dictionary<string, object>> GetDictionaryList();
 
-        Task<List<Dictionary<string, object>>> ToDictionaryListAsync();
+        Task<List<Dictionary<string, object>>> GetDictionaryListAsync();
 
         #endregion
 

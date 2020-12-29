@@ -1844,7 +1844,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据多条件获取分页并分页
+        /// 根据多条件获取分页并排序
         /// </summary>
         /// <param name="conditionalList"></param>
         /// <param name="page"></param>
@@ -1863,7 +1863,7 @@ namespace Nzh.Lakers.Repository.Base
         }
 
         /// <summary>
-        /// 根据多条件获取分页并分页（异步）
+        /// 根据多条件获取分页并排序（异步）
         /// </summary>
         /// <param name="conditionalList"></param>
         /// <param name="page"></param>
@@ -1931,7 +1931,7 @@ namespace Nzh.Lakers.Repository.Base
         /// 获取字典List
         /// </summary>
         /// <returns></returns>
-        public List<Dictionary<string, object>> ToDictionaryList()
+        public List<Dictionary<string, object>> GetDictionaryList()
         {
             return db.Queryable<T>().ToDictionaryList();
         }
@@ -1940,7 +1940,7 @@ namespace Nzh.Lakers.Repository.Base
         /// 获取字典List（异步）
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Dictionary<string, object>>> ToDictionaryListAsync()
+        public async Task<List<Dictionary<string, object>>> GetDictionaryListAsync()
         {
             return await Task.Run(() => db.Queryable<T>().ToDictionaryListAsync());
         }
