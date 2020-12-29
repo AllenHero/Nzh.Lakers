@@ -3,6 +3,7 @@ using Nzh.Lakers.IService.Base;
 using Nzh.Lakers.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Nzh.Lakers.IService
 {

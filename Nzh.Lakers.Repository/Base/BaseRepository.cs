@@ -1649,11 +1649,14 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="expression"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public string GetJsonPage(Expression<Func<T, bool>> expression, PageModel page)
+        public Pagination<string> GetJsonPage(Expression<Func<T, bool>> expression, PageModel page)
         {
-            int count = 0;
-            var result = db.Queryable<T>().Where(expression).ToJsonPage(page.PageIndex, page.PageSize, ref count);
-            page.PageCount = count;
+            Pagination<string> result = new Pagination<string>();
+            int Count = 0;
+            result.DataList = db.Queryable<T>().Where(expression).ToJsonPage(page.PageIndex, page.PageSize, ref Count);
+            result.PageIndex = page.PageIndex;
+            result.PageSize = page.PageSize;
+            result.TotalCount = Count;
             return result;
         }
 
@@ -1663,11 +1666,14 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="expression"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public async Task<string> GetJsonPageAsync(Expression<Func<T, bool>> expression, PageModel page)
+        public async Task<Pagination<string>> GetJsonPageAsync(Expression<Func<T, bool>> expression, PageModel page)
         {
-            int count = 0;
-            var result = await Task.Run(() => db.Queryable<T>().Where(expression).ToJsonPage(page.PageIndex, page.PageSize, ref count));
-            page.PageCount = count;
+            Pagination<string> result = new Pagination<string>();
+            int Count = 0;
+            result.DataList = await Task.Run(() => db.Queryable<T>().Where(expression).ToJsonPage(page.PageIndex, page.PageSize, ref Count));
+            result.PageIndex = page.PageIndex;
+            result.PageSize = page.PageSize;
+            result.TotalCount = Count;
             return result;
         }
 
@@ -1715,11 +1721,14 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="expression"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public DataTable GetDataTablePage(Expression<Func<T, bool>> expression, PageModel page)
+        public Pagination<DataTable> GetDataTablePage(Expression<Func<T, bool>> expression, PageModel page)
         {
-            int count = 0;
-            var result = db.Queryable<T>().Where(expression).ToDataTablePage(page.PageIndex, page.PageSize, ref count);
-            page.PageCount = count;
+            Pagination<DataTable> result = new Pagination<DataTable>();
+            int Count = 0;
+            result.DataList = db.Queryable<T>().Where(expression).ToDataTablePage(page.PageIndex, page.PageSize, ref Count);
+            result.PageIndex = page.PageIndex;
+            result.PageSize = page.PageSize;
+            result.TotalCount = Count;
             return result;
         }
 
@@ -1729,11 +1738,14 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="expression"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public async Task<DataTable> GetDataTablePageAsync(Expression<Func<T, bool>> expression, PageModel page)
+        public async Task<Pagination<DataTable>> GetDataTablePageAsync(Expression<Func<T, bool>> expression, PageModel page)
         {
-            int count = 0;
-            var result = await Task.Run(() => db.Queryable<T>().Where(expression).ToDataTablePage(page.PageIndex, page.PageSize, ref count));
-            page.PageCount = count;
+            Pagination<DataTable> result = new Pagination<DataTable>();
+            int Count = 0;
+            result.DataList = await Task.Run(() => db.Queryable<T>().Where(expression).ToDataTablePage(page.PageIndex, page.PageSize, ref Count));
+            result.PageIndex = page.PageIndex;
+            result.PageSize = page.PageSize;
+            result.TotalCount = Count;
             return result;
         }
 

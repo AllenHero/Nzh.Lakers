@@ -315,9 +315,9 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<string> GetJsonAsync(Expression<Func<T, bool>> expression);
 
-        string GetJsonPage(Expression<Func<T, bool>> expression, PageModel page);
+        Pagination<string> GetJsonPage(Expression<Func<T, bool>> expression, PageModel page);
 
-        Task<string> GetJsonPageAsync(Expression<Func<T, bool>> expression, PageModel page);
+        Task<Pagination<string>> GetJsonPageAsync(Expression<Func<T, bool>> expression, PageModel page);
 
         DataTable GetDataTable();
 
@@ -327,9 +327,9 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<DataTable> GetDataTableAsync(Expression<Func<T, bool>> expression);
 
-        DataTable GetDataTablePage(Expression<Func<T, bool>> expression, PageModel page);
+        Pagination<DataTable> GetDataTablePage(Expression<Func<T, bool>> expression, PageModel page);
 
-        Task<DataTable> GetDataTablePageAsync(Expression<Func<T, bool>> expression, PageModel page);
+        Task<Pagination<DataTable>> GetDataTablePageAsync(Expression<Func<T, bool>> expression, PageModel page);
 
         Pagination<T> GetPageList(Expression<Func<T, bool>> expression, PageModel page);
 
