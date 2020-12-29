@@ -41,7 +41,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "定时任务", "定时任�
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "消息队列", "消息队列", "{844E29C5-92B5-43A2-A460-917C986B23CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Lakers.Job", "Nzh.Lakers.Job\Nzh.Lakers.Job.csproj", "{E88C9140-EB85-493B-9E30-794F285F9AE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Lakers.Job", "Nzh.Lakers.Job\Nzh.Lakers.Job.csproj", "{E88C9140-EB85-493B-9E30-794F285F9AE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Lakers.MQ", "Nzh.Lakers.MQ\Nzh.Lakers.MQ.csproj", "{4E32F934-781D-483D-B437-9472ECA5AAF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +99,10 @@ Global
 		{E88C9140-EB85-493B-9E30-794F285F9AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E88C9140-EB85-493B-9E30-794F285F9AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E88C9140-EB85-493B-9E30-794F285F9AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E32F934-781D-483D-B437-9472ECA5AAF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E32F934-781D-483D-B437-9472ECA5AAF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E32F934-781D-483D-B437-9472ECA5AAF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E32F934-781D-483D-B437-9472ECA5AAF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,6 +119,7 @@ Global
 		{588C5377-7FAE-47AA-9D37-ED4019B76882} = {8DF36CCB-D77C-40FC-AA41-E6FB27CDFBD4}
 		{58E9D237-941B-42B9-B6F1-0BBA2FF8F7F5} = {8DF36CCB-D77C-40FC-AA41-E6FB27CDFBD4}
 		{E88C9140-EB85-493B-9E30-794F285F9AE7} = {ABA3A95B-1661-4DE0-859D-3A450196E632}
+		{4E32F934-781D-483D-B437-9472ECA5AAF5} = {844E29C5-92B5-43A2-A460-917C986B23CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4E93B4BF-5E20-439F-AEA4-3D7056A9B5AD}
