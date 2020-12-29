@@ -15,6 +15,7 @@
     <ProjectReference Include="..\Nzh.Lakers.Factory\Nzh.Lakers.Factory.csproj" />
     <ProjectReference Include="..\Nzh.Lakers.IService\Nzh.Lakers.IService.csproj" />
     <ProjectReference Include="..\Nzh.Lakers.Job\Nzh.Lakers.Job.csproj" />
+    <ProjectReference Include="..\Nzh.Lakers.MQ\Nzh.Lakers.MQ.csproj" />
   </ItemGroup>
 
   <ItemGroup>

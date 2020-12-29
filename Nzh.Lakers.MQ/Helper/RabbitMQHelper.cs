@@ -85,33 +85,31 @@ namespace Nzh.Lakers.MQ.Helper
         /// <param name="callback">回调函数</param>
         /// <param name="exchangeType">交换机类型，默认：ExchangeType.Direct</param>
         /// <param name="errorCallback">错误回调函数</param>
-        public void CreateConsumer(string exchangeName, string routingKey, string queueName, Action<string> callback, string exchangeType = ExchangeType.Direct, Action errorCallback = null)
+        public dynamic Receive(string exchangeName, string routingKey, string queueName, Action<string> callback, string exchangeType = ExchangeType.Direct, Action errorCallback = null)
         {
-            Task.Run(() =>
+            channel.ExchangeDeclare(exchangeName, exchangeType, true, false, null);
+            channel.QueueDeclare(queueName, true, false, false, null);
+            channel.QueueBind(queueName, exchangeName, routingKey, null);
+            channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
+            EventingBasicConsumer consumer = new EventingBasicConsumer(channel);
+            consumer.Received += (model, ea) =>
             {
-                channel.ExchangeDeclare(exchangeName, exchangeType, true, false, null);
-                channel.QueueDeclare(queueName, true, false, false, null);
-                channel.QueueBind(queueName, exchangeName, routingKey, null);
-                channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
-                EventingBasicConsumer consumer = new EventingBasicConsumer(channel);
-                consumer.Received += (model, ea) =>
+                ReadOnlyMemory<byte> body = ea.Body;
+                var message = Encoding.UTF8.GetString(body.ToArray());
+                try
                 {
-                    ReadOnlyMemory<byte> body = ea.Body;
-                    var message = Encoding.UTF8.GetString(body.ToArray());
-                    try
-                    {
-                        callback(message);
-                        channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
-                    }
-                    catch (Exception ex)
-                    {
-                        channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
-                        errorCallback?.Invoke();
-                        return;
-                    }
-                };
-                channel.BasicConsume(queueName, autoAck: false, consumer: consumer);
-            });
+                    callback(message);
+                    channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
+                }
+                catch (Exception ex)
+                {
+                    channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
+                    errorCallback?.Invoke();
+                    return;
+                }
+            };
+            var result = channel.BasicConsume(queueName, autoAck: false, consumer: consumer);
+            return result;
         }
     }
 }

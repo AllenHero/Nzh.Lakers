@@ -15,6 +15,7 @@ using Nzh.Lakers.Cache.RedisCache;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Nzh.Lakers.MQ.Helper;
 
 namespace Nzh.Lakers.Controllers
 {
@@ -132,6 +133,31 @@ namespace Nzh.Lakers.Controllers
         {
             //var result = _redisCache.GetValue(Key);
             var result = _memoryCache.GetValue(Key);
+            return Result(result);
+        }
+
+        /// <summary>
+        /// 测试发送
+        /// </summary>
+        /// <param name="Msg"></param>
+        /// <returns></returns>
+        [HttpPost("TestSendMsg")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public JsonResult TestSendMsg(string Msg)
+        {
+            new RabbitMQHelper().Send("Demo", "Demo", "DemoMQ", Msg);
+            return Result(true);
+        }
+
+        /// <summary>
+        /// 测试接收
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("TestReceiveMsg")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public JsonResult TestReceiveMsg()
+        {
+            var result = new RabbitMQHelper().Receive("Demo", "Demo", "DemoMQ", null);
             return Result(result);
         }
     }

@@ -106,6 +106,19 @@
             <param name="Key"></param>
             <returns></returns>
         </member>
+        <member name="M:Nzh.Lakers.Controllers.DemoController.TestSendMsg(System.String)">
+            <summary>
+            测试发送
+            </summary>
+            <param name="Msg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.DemoController.TestReceiveMsg">
+            <summary>
+            测试接收
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Nzh.Lakers.Controllers.TestController.#ctor(Nzh.Lakers.IService.ITestService,Nzh.Lakers.IService.IEnclosureService,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
             <summary>
             构造函数
