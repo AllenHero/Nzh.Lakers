@@ -16,6 +16,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Nzh.Lakers.MQ.Helper;
+using Nzh.Lakers.MQ;
+using Nzh.Lakers.Util.Helper;
 
 namespace Nzh.Lakers.Controllers
 {
@@ -145,7 +147,23 @@ namespace Nzh.Lakers.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult TestSendMsg(string Msg)
         {
-            new RabbitMQHelper().Send("TestChange", "HelloRouteKey", "HelloMQ", Msg);
+            //new RabbitMQHelper().Send("TestChange", "HelloRouteKey", "HelloMQ", Msg);
+            var rabbitMqProxy = new RabbitMqService(new MqConfig
+            {
+                AutomaticRecoveryEnabled = true,
+                HeartBeat = TimeSpan.FromTicks(60),
+                NetworkRecoveryInterval = new TimeSpan(60),
+                Host = "127.0.0.1",
+                UserName = "Administrator",
+                Password = "123456"
+            });
+            var log = new MessageModel
+            {
+                CreateDateTime = DateTime.Now,
+                Msg = Msg
+            };
+            rabbitMqProxy.Publish(log);
+            rabbitMqProxy.Dispose();
             return Result(true);
         }
 
@@ -157,8 +175,24 @@ namespace Nzh.Lakers.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult TestReceiveMsg()
         {
-            var result = new RabbitMQHelper().Receive("TestChange", "HelloRouteKey", "HelloMQ");
-            return Result(result);
+            //var result = new RabbitMQHelper().Receive("TestChange", "HelloRouteKey", "HelloMQ");
+            var json = "";
+            var _rabbitMqProxy = new RabbitMqService(new MqConfig
+            {
+                AutomaticRecoveryEnabled = true,
+                HeartBeat = TimeSpan.FromTicks(60),
+                NetworkRecoveryInterval = new TimeSpan(60),
+                Host = "127.0.0.1",
+                UserName = "Administrator",
+                Password = "123456"
+            });
+            _rabbitMqProxy.Subscribe<MessageModel>(msg =>
+            {
+                json = JsonConvert.SerializeObject(msg);
+                Console.WriteLine(json);
+            });
+            _rabbitMqProxy.Dispose();
+            return Result(json);
         }
     }
 }
