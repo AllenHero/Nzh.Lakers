@@ -82,23 +82,23 @@ namespace Nzh.Lakers.MQ.Helper
         /// <param name="exchangeName">交换机名称</param>
         /// <param name="routingKey">路由key</param>
         /// <param name="queueName">队列名称</param>
-        /// <param name="callback">回调函数</param>
         /// <param name="exchangeType">交换机类型，默认：ExchangeType.Direct</param>
         /// <param name="errorCallback">错误回调函数</param>
-        public dynamic Receive(string exchangeName, string routingKey, string queueName, Action<string> callback, string exchangeType = ExchangeType.Direct, Action errorCallback = null)
+        public dynamic Receive(string exchangeName, string routingKey, string queueName, string exchangeType = ExchangeType.Direct, Action errorCallback = null)
         {
             channel.ExchangeDeclare(exchangeName, exchangeType, true, false, null);
             channel.QueueDeclare(queueName, true, false, false, null);
             channel.QueueBind(queueName, exchangeName, routingKey, null);
             channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
             EventingBasicConsumer consumer = new EventingBasicConsumer(channel);
+            var message = "";
             consumer.Received += (model, ea) =>
             {
                 ReadOnlyMemory<byte> body = ea.Body;
-                var message = Encoding.UTF8.GetString(body.ToArray());
+                message = Encoding.UTF8.GetString(body.ToArray());
                 try
                 {
-                    callback(message);
+                    //callback(message);
                     channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
                 }
                 catch (Exception ex)
@@ -108,8 +108,8 @@ namespace Nzh.Lakers.MQ.Helper
                     return;
                 }
             };
-            var result = channel.BasicConsume(queueName, autoAck: false, consumer: consumer);
-            return result;
+            channel.BasicConsume(queueName, autoAck: false, consumer: consumer);
+            return message;
         }
     }
 }

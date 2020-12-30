@@ -145,7 +145,7 @@ namespace Nzh.Lakers.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult TestSendMsg(string Msg)
         {
-            new RabbitMQHelper().Send("Demo", "Demo", "DemoMQ", Msg);
+            new RabbitMQHelper().Send("TestChange", "HelloRouteKey", "HelloMQ", Msg);
             return Result(true);
         }
 
@@ -157,7 +157,7 @@ namespace Nzh.Lakers.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult TestReceiveMsg()
         {
-            var result = new RabbitMQHelper().Receive("Demo", "Demo", "DemoMQ", null);
+            var result = new RabbitMQHelper().Receive("TestChange", "HelloRouteKey", "HelloMQ");
             return Result(result);
         }
     }
