@@ -15,7 +15,6 @@ using Nzh.Lakers.Cache.RedisCache;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Nzh.Lakers.MQ.Helper;
 using Nzh.Lakers.MQ;
 using Nzh.Lakers.Util.Helper;
 
