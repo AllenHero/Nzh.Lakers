@@ -18,9 +18,9 @@ namespace Nzh.Lakers.MQ
     public class RabbitMqService : IDisposable
     {
         #region 初始化
+
         //RabbitMQ建议客户端线程之间不要共用Model，至少要保证共用Model的线程发送消息必须是串行的，但是建议尽量共用Connection。
-        private static readonly ConcurrentDictionary<string, IModel> ModelDic =
-            new ConcurrentDictionary<string, IModel>();
+        private static readonly ConcurrentDictionary<string, IModel> ModelDic = new ConcurrentDictionary<string, IModel>();
 
         private static RabbitMqAttribute _rabbitMqAttribute;
 
@@ -209,14 +209,7 @@ namespace Nzh.Lakers.MQ
         public void Publish(string exchange, string queue, string routingKey, string body, bool isProperties = false)
         {
             var channel = GetModel(exchange, queue, routingKey, isProperties);
-            try
-            {
-                channel.BasicPublish(exchange, routingKey, null, System.Text.Encoding.Default.GetBytes(JsonConvert.SerializeObject(body)));
-            }
-            catch (Exception ex)
-            {
-
-            }
+            channel.BasicPublish(exchange, routingKey, null, System.Text.Encoding.Default.GetBytes(JsonConvert.SerializeObject(body)));
         }
 
         /// <summary>
@@ -296,52 +289,6 @@ namespace Nzh.Lakers.MQ
                 }
             };
             channel.BasicConsume(queue, false, consumer);
-        }
-
-        #endregion
-
-        #region 获取消息
-
-        /// <summary>
-        /// 获取消息
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="handler">消费处理</param>
-        public void Pull<T>(Action<T> handler) where T : class
-        {
-            var queueInfo = GetRabbitMqAttribute<T>();
-            if (queueInfo==null)
-                throw new ArgumentException("RabbitMqAttribute");
-            Pull(queueInfo.ExchangeName, queueInfo.QueueName, queueInfo.ExchangeName, handler);
-        }
-
-        /// <summary>
-        /// 获取消息
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="exchange"></param>
-        /// <param name="queue"></param>
-        /// <param name="routingKey"></param>
-        /// <param name="handler">消费处理</param>
-        private void Pull<T>(string exchange, string queue, string routingKey, Action<T> handler) where T : class
-        {
-            var channel = GetModel(exchange, queue, routingKey);
-            var result = channel.BasicGet(queue, false);
-            if (result==null)
-                return;
-            var msg = (T)JsonConvert.DeserializeObject(result.Body.ToString());
-            try
-            {
-                handler(msg);
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally
-            {
-                channel.BasicAck(result.DeliveryTag, false);
-            }
         }
 
         #endregion
