@@ -184,7 +184,6 @@ namespace Nzh.Lakers.Controllers
             _rabbitMqProxy.Subscribe<MessageModel>(msg =>
             {
                 json = JsonConvert.SerializeObject(msg);
-                Console.WriteLine(json);
             });
             //_rabbitMqProxy.Dispose();
             return Result(json);
