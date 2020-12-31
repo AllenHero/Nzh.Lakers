@@ -271,9 +271,9 @@ namespace Nzh.Lakers.MQ
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += (model, ea) =>
             {
-                var body = ea.Body;
-                var msgStr = JsonConvert.DeserializeObject(Convert.ToString(body));
-                var msg = (T)msgStr;
+                ReadOnlyMemory<byte> body = ea.Body;
+                var msgStr = JsonConvert.DeserializeObject(Encoding.UTF8.GetString(body.ToArray()));
+                var msg = JsonConvert.DeserializeObject<T>(Convert.ToString(msgStr));
                 try
                 {
                     handler(msg);
@@ -282,10 +282,6 @@ namespace Nzh.Lakers.MQ
                 {
                     if (!isDeadLetter)
                         PublishToDead<DeadLetterQueue>(queue, msgStr.ToString(), ex);
-                }
-                finally
-                {
-                    channel.BasicAck(ea.DeliveryTag, false);
                 }
             };
             channel.BasicConsume(queue, false, consumer);

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Nzh.Lakers.MQ
 {
-    [RabbitMq("SkyChen.QueueName", ExchangeName = "SkyChen.ExchangeName", IsProperties = false)]
+    [RabbitMq("nizeheng.QueueName", ExchangeName = "nizeheng.ExchangeName", IsProperties = false)]
     public class MessageModel
     {
         public string Msg { get; set; }

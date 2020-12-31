@@ -144,10 +144,8 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Msg"></param>
         /// <returns></returns>
         [HttpPost("TestSendMsg")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult TestSendMsg(string Msg)
         {
-            //new RabbitMQHelper().Send("TestChange", "HelloRouteKey", "HelloMQ", Msg);
             var rabbitMqProxy = new RabbitMqService(new MqConfig
             {
                 AutomaticRecoveryEnabled = true,
@@ -163,7 +161,7 @@ namespace Nzh.Lakers.Controllers
                 Msg = Msg
             };
             rabbitMqProxy.Publish(log);
-            rabbitMqProxy.Dispose();
+            //rabbitMqProxy.Dispose();
             return Result(true);
         }
 
@@ -172,10 +170,8 @@ namespace Nzh.Lakers.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("TestReceiveMsg")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult TestReceiveMsg()
         {
-            //var result = new RabbitMQHelper().Receive("TestChange", "HelloRouteKey", "HelloMQ");
             var json = "";
             var _rabbitMqProxy = new RabbitMqService(new MqConfig
             {
@@ -191,7 +187,7 @@ namespace Nzh.Lakers.Controllers
                 json = JsonConvert.SerializeObject(msg);
                 Console.WriteLine(json);
             });
-            _rabbitMqProxy.Dispose();
+            //_rabbitMqProxy.Dispose();
             return Result(json);
         }
     }

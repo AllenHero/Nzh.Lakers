@@ -7,10 +7,15 @@ namespace Nzh.Lakers.MQ
     public class MqConfig
     {
         public string Host { get; set; }
+
         public TimeSpan HeartBeat { get; set; }
+
         public bool AutomaticRecoveryEnabled { get; set; }
+
         public TimeSpan NetworkRecoveryInterval { get; set; }
+
         public string UserName { get; set; }
+
         public string Password { get; set; }
     }
 
