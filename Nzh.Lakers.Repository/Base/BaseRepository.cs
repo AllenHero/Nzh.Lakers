@@ -2171,6 +2171,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="columns"></param>
         /// <param name="expression"></param>
         /// <returns></returns>
+        [Obsolete]
         public bool Update(Expression<Func<T, T>> columns, Expression<Func<T, bool>> expression)
         {
             return db.Updateable<T>().UpdateColumns(columns).Where(expression).ExecuteCommand() > 0 ? true : false;
@@ -2182,6 +2183,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <param name="columns"></param>
         /// <param name="expression"></param>
         /// <returns></returns>
+        [Obsolete]
         public async Task<bool> UpdateAsync(Expression<Func<T, T>> columns, Expression<Func<T, bool>> expression)
         {
             return await Task.Run(() => db.Updateable<T>().UpdateColumns(columns).Where(expression).ExecuteCommandAsync()) > 0 ? true : false;
