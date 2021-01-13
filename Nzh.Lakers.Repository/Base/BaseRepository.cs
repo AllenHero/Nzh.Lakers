@@ -1228,7 +1228,6 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 求和
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="field"></param>
         /// <returns></returns>
         public int Sum(string field)
@@ -1239,7 +1238,6 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 求和（异步）
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="field"></param>
         /// <returns></returns>
         public async Task<int> SumAsync(string field)
@@ -2306,7 +2304,7 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件删除（异步）
         /// </summary>
-        /// <param name="whereExpression"></param>
+        /// <param name="expression"></param>
         /// <returns></returns>
         public async Task<bool> DeleteAsync(Expression<Func<T, bool>> expression)
         {
