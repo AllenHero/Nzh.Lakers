@@ -99,36 +99,36 @@ namespace Nzh.Lakers.Repository.Base
         /// 执行sql根据条件获取List
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public List<T> GetListBySql(string Sql, Expression<Func<T, bool>> expression)
+        public List<T> GetListBySql(string Sql, Expression<Func<T, bool>> Expression)
         {
-            return db.SqlQueryable<T>(Sql).Where(expression).ToList();
+            return db.SqlQueryable<T>(Sql).Where(Expression).ToList();
         }
 
         /// <summary>
         /// 执行sql根据条件获取List（异步）
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<List<T>> GetListBySqlAsync(string Sql, Expression<Func<T, bool>> expression)
+        public async Task<List<T>> GetListBySqlAsync(string Sql, Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.SqlQueryable<T>(Sql).Where(expression).ToList());
+            return await Task.Run(() => db.SqlQueryable<T>(Sql).Where(Expression).ToList());
         }
 
         /// <summary>
         /// 执行sql根据条件获取分页
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public Pagination<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> expression, PageModel page)
+        public Pagination<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> Expression, PageModel page)
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = db.SqlQueryable<T>(Sql).Where(expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
+            result.DataList = db.SqlQueryable<T>(Sql).Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -139,14 +139,14 @@ namespace Nzh.Lakers.Repository.Base
         /// 执行sql根据条件获取分页（异步）
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public async Task<Pagination<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> expression, PageModel page)
+        public async Task<Pagination<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> Expression, PageModel page)
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = await Task.Run(() => db.SqlQueryable<T>(Sql).Where(expression).ToPageList(page.PageIndex, page.PageSize, ref Count));
+            result.DataList = await Task.Run(() => db.SqlQueryable<T>(Sql).Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count));
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -157,16 +157,16 @@ namespace Nzh.Lakers.Repository.Base
         ///  执行sql根据条件获取分页并且排序
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <param name="page"></param>
         /// <param name="orderByExpression"></param>
         /// <param name="orderByType"></param>
         /// <returns></returns>
-        public Pagination<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc)
+        public Pagination<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> Expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc)
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = db.SqlQueryable<T>(Sql).OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
+            result.DataList = db.SqlQueryable<T>(Sql).OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -177,16 +177,16 @@ namespace Nzh.Lakers.Repository.Base
         ///  执行sql根据条件获取分页并且排序（异步）
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <param name="page"></param>
         /// <param name="orderByExpression"></param>
         /// <param name="orderByType"></param>
         /// <returns></returns>
-        public async Task<Pagination<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc)
+        public async Task<Pagination<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> Expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc)
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = await Task.Run(() => db.SqlQueryable<T>(Sql).OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(expression).ToPageList(page.PageIndex, page.PageSize, ref Count));
+            result.DataList = await Task.Run(() => db.SqlQueryable<T>(Sql).OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count));
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -357,22 +357,22 @@ namespace Nzh.Lakers.Repository.Base
         /// 执行sql根据条件获取DataTable
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public DataTable GetDataTableBySql(string Sql, Expression<Func<T, bool>> expression)
+        public DataTable GetDataTableBySql(string Sql, Expression<Func<T, bool>> Expression)
         {
-            return db.Ado.GetDataTable(Sql, expression);
+            return db.Ado.GetDataTable(Sql, Expression);
         }
 
         /// <summary>
         /// 执行sql根据条件获取DataTable（异步）
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<DataTable> GetDataTableBySqlAsync(string Sql, Expression<Func<T, bool>> expression)
+        public async Task<DataTable> GetDataTableBySqlAsync(string Sql, Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Ado.GetDataTableAsync(Sql, expression));
+            return await Task.Run(() => db.Ado.GetDataTableAsync(Sql, Expression));
         }
 
         /// <summary>
@@ -465,22 +465,22 @@ namespace Nzh.Lakers.Repository.Base
         /// 执行sql根据条件获取DataSet
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public DataSet GetDataSetBySql(string Sql, Expression<Func<T, bool>> expression)
+        public DataSet GetDataSetBySql(string Sql, Expression<Func<T, bool>> Expression)
         {
-            return db.Ado.GetDataSetAll(Sql, expression);
+            return db.Ado.GetDataSetAll(Sql, Expression);
         }
 
         /// <summary>
         /// 执行sql根据条件获取DataSet（异步）
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<DataSet> GetDataSetBySqlAsync(string Sql, Expression<Func<T, bool>> expression)
+        public async Task<DataSet> GetDataSetBySqlAsync(string Sql, Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Ado.GetDataSetAllAsync(Sql, expression));
+            return await Task.Run(() => db.Ado.GetDataSetAllAsync(Sql, Expression));
         }
 
         /// <summary>
@@ -573,22 +573,22 @@ namespace Nzh.Lakers.Repository.Base
         ///  根据条件执行Sql
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public bool ExecuteSql(string Sql, Expression<Func<T, bool>> expression)
+        public bool ExecuteSql(string Sql, Expression<Func<T, bool>> Expression)
         {
-            return db.Ado.ExecuteCommand(Sql, expression) > 0 ? true : false;
+            return db.Ado.ExecuteCommand(Sql, Expression) > 0 ? true : false;
         }
 
         /// <summary>
         /// 根据条件执行Sql（异步）
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<bool> ExecuteSqlAsync(string Sql, Expression<Func<T, bool>> expression)
+        public async Task<bool> ExecuteSqlAsync(string Sql, Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Ado.ExecuteCommandAsync(Sql, expression)) > 0 ? true : false;
+            return await Task.Run(() => db.Ado.ExecuteCommandAsync(Sql, Expression)) > 0 ? true : false;
         }
 
         /// <summary>
@@ -681,22 +681,22 @@ namespace Nzh.Lakers.Repository.Base
         /// 执行sql根据条件获取List
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public List<T> GetList(string Sql, Expression<Func<T, bool>> expression)
+        public List<T> GetList(string Sql, Expression<Func<T, bool>> Expression)
         {
-            return db.Ado.SqlQuery<T>(Sql, expression);
+            return db.Ado.SqlQuery<T>(Sql, Expression);
         }
 
         /// <summary>
         /// 执行sql根据条件获取List（异步）
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<List<T>> GetListAsync(string Sql, Expression<Func<T, bool>> expression)
+        public async Task<List<T>> GetListAsync(string Sql, Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Ado.SqlQueryAsync<T>(Sql, expression));
+            return await Task.Run(() => db.Ado.SqlQueryAsync<T>(Sql, Expression));
         }
 
         /// <summary>
@@ -789,22 +789,22 @@ namespace Nzh.Lakers.Repository.Base
         /// 执行sql根据条件获取单个对象
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public T Get(string Sql, Expression<Func<T, bool>> expression)
+        public T Get(string Sql, Expression<Func<T, bool>> Expression)
         {
-            return db.Ado.SqlQuerySingle<T>(Sql, expression);
+            return db.Ado.SqlQuerySingle<T>(Sql, Expression);
         }
 
         /// <summary>
         /// 执行sql根据条件获取单个对象（异步）
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<T> GetAsync(string Sql, Expression<Func<T, bool>> expression)
+        public async Task<T> GetAsync(string Sql, Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Ado.SqlQuerySingleAsync<T>(Sql, expression));
+            return await Task.Run(() => db.Ado.SqlQuerySingleAsync<T>(Sql, Expression));
         }
 
         /// <summary>
@@ -905,24 +905,24 @@ namespace Nzh.Lakers.Repository.Base
         /// 执行sql根据条件获取匿名对象
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
         [Obsolete("Use SqlQuery<dynamic>(sql)")]
-        public dynamic GetDynamic(string Sql, Expression<Func<T, bool>> expression)
+        public dynamic GetDynamic(string Sql, Expression<Func<T, bool>> Expression)
         {
-            return db.Ado.SqlQueryDynamic(Sql, expression);
+            return db.Ado.SqlQueryDynamic(Sql, Expression);
         }
 
         /// <summary>
         /// 执行sql根据条件获取匿名对象（异步）
         /// </summary>
         /// <param name="Sql"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
         [Obsolete("Use SqlQuery<dynamic>(sql)")]
-        public async Task<dynamic> GetDynamicAsync(string Sql, Expression<Func<T, bool>> expression)
+        public async Task<dynamic> GetDynamicAsync(string Sql, Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Ado.SqlQueryDynamic(Sql, expression));
+            return await Task.Run(() => db.Ado.SqlQueryDynamic(Sql, Expression));
         }
 
         #endregion
@@ -1019,22 +1019,22 @@ namespace Nzh.Lakers.Repository.Base
         ///  根据条件查询存储过程获取DataTable
         /// </summary>
         /// <param name="procedureName"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public DataTable QueryDataTableByProcedure(string procedureName, Expression<Func<T, bool>> expression)
+        public DataTable QueryDataTableByProcedure(string procedureName, Expression<Func<T, bool>> Expression)
         {
-            return db.Ado.UseStoredProcedure().GetDataTable(procedureName, expression);
+            return db.Ado.UseStoredProcedure().GetDataTable(procedureName, Expression);
         }
 
         /// <summary>
         /// 根据条件查询存储过程获取DataTable（异步）
         /// </summary>
         /// <param name="procedureName"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, Expression<Func<T, bool>> expression)
+        public async Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, expression));
+            return await Task.Run(() => db.Ado.UseStoredProcedure().GetDataTableAsync(procedureName, Expression));
         }
 
         /// <summary>
@@ -1127,22 +1127,22 @@ namespace Nzh.Lakers.Repository.Base
         /// 根据条件查询存储过程获取DataSet
         /// </summary>
         /// <param name="procedureName"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public DataSet QueryDataSetByProcedure(string procedureName, Expression<Func<T, bool>> expression)
+        public DataSet QueryDataSetByProcedure(string procedureName, Expression<Func<T, bool>> Expression)
         {
-            return db.Ado.UseStoredProcedure().GetDataSetAll(procedureName, expression);
+            return db.Ado.UseStoredProcedure().GetDataSetAll(procedureName, Expression);
         }
 
         /// <summary>
         /// 根据条件查询存储过程获取DataSet（异步）
         /// </summary>
         /// <param name="procedureName"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, Expression<Func<T, bool>> expression)
+        public async Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName, expression));
+            return await Task.Run(() => db.Ado.UseStoredProcedure().GetDataSetAllAsync(procedureName, Expression));
         }
 
         /// <summary>
@@ -1168,23 +1168,23 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件查询前多少条数据 
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <param name="num"></param>
         /// <returns></returns>
-        public List<T> Take(Expression<Func<T, bool>> expression, int num)
+        public List<T> Take(Expression<Func<T, bool>> Expression, int num)
         {
-            return db.Queryable<T>().With(SqlWith.NoLock).Where(expression).Take(num).ToList();
+            return db.Queryable<T>().With(SqlWith.NoLock).Where(Expression).Take(num).ToList();
         }
 
         /// <summary>
         /// 根据条件查询前多少条数据 （异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <param name="num"></param>
         /// <returns></returns>
-        public async Task<List<T>> TakeAsync(Expression<Func<T, bool>> expression, int num)
+        public async Task<List<T>> TakeAsync(Expression<Func<T, bool>> Expression, int num)
         {
-            return await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).Where(expression).Take(num).ToListAsync());
+            return await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).Where(Expression).Take(num).ToListAsync());
         }
 
         /// <summary>
@@ -1208,21 +1208,21 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件查询单个对象
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public T First(Expression<Func<T, bool>> expression)
+        public T First(Expression<Func<T, bool>> Expression)
         {
-            return db.Queryable<T>().With(SqlWith.NoLock).Where(expression).First();
+            return db.Queryable<T>().With(SqlWith.NoLock).Where(Expression).First();
         }
 
         /// <summary>
         /// 根据条件查询单个对象（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<T> FirstAsync(Expression<Func<T, bool>> expression)
+        public async Task<T> FirstAsync(Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).Where(expression).FirstAsync());
+            return await Task.Run(() => db.Queryable<T>().With(SqlWith.NoLock).Where(Expression).FirstAsync());
         }
 
         /// <summary>
@@ -1248,21 +1248,21 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件求和
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public int Sum(Expression<Func<T, int>> expression)
+        public int Sum(Expression<Func<T, int>> Expression)
         {
-            return db.Queryable<T>().Sum(expression);
+            return db.Queryable<T>().Sum(Expression);
         }
 
         /// <summary>
         /// 根据条件求和（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<int> SumAsync(Expression<Func<T, int>> expression)
+        public async Task<int> SumAsync(Expression<Func<T, int>> Expression)
         {
-            return await Task.Run(() => db.Queryable<T>().SumAsync(expression));
+            return await Task.Run(() => db.Queryable<T>().SumAsync(Expression));
         }
 
         /// <summary>
@@ -1288,21 +1288,21 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件获取最大值
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public object Max(Expression<Func<T, bool>> expression)
+        public object Max(Expression<Func<T, bool>> Expression)
         {
-            return db.Queryable<T>().Max(expression);
+            return db.Queryable<T>().Max(Expression);
         }
 
         /// <summary>
         /// 根据条件获取最大值（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<object> MaxAsync(Expression<Func<T, bool>> expression)
+        public async Task<object> MaxAsync(Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Queryable<T>().MaxAsync(expression));
+            return await Task.Run(() => db.Queryable<T>().MaxAsync(Expression));
         }
 
         /// <summary>
@@ -1328,21 +1328,21 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件获取最小值
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public object Min(Expression<Func<T, bool>> expression)
+        public object Min(Expression<Func<T, bool>> Expression)
         {
-            return db.Queryable<T>().Min(expression);
+            return db.Queryable<T>().Min(Expression);
         }
 
         /// <summary>
         ///  根据条件获取最小值（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<object> MinAsync(Expression<Func<T, bool>> expression)
+        public async Task<object> MinAsync(Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Queryable<T>().MinAsync(expression));
+            return await Task.Run(() => db.Queryable<T>().MinAsync(Expression));
         }
 
         /// <summary>
@@ -1368,21 +1368,21 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件获取平均值
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public int Avg(Expression<Func<T, int>> expression)
+        public int Avg(Expression<Func<T, int>> Expression)
         {
-            return db.Queryable<T>().Avg(expression);
+            return db.Queryable<T>().Avg(Expression);
         }
 
         /// <summary>
         /// 根据条件获取平均值（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<int> AvgAsync(Expression<Func<T, int>> expression)
+        public async Task<int> AvgAsync(Expression<Func<T, int>> Expression)
         {
-            return await Task.Run(() => db.Queryable<T>().AvgAsync(expression));
+            return await Task.Run(() => db.Queryable<T>().AvgAsync(Expression));
         }
 
         /// <summary>
@@ -1406,21 +1406,21 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件获取数量
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public int Count(Expression<Func<T, bool>> expression)
+        public int Count(Expression<Func<T, bool>> Expression)
         {
-            return db.Queryable<T>().Where(expression).Count();
+            return db.Queryable<T>().Where(Expression).Count();
         }
 
         /// <summary>
         /// 根据条件获取数量（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<int> CountAsync(Expression<Func<T, bool>> expression)
+        public async Task<int> CountAsync(Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Queryable<T>().Where(expression).CountAsync());
+            return await Task.Run(() => db.Queryable<T>().Where(Expression).CountAsync());
         }
 
         /// <summary>
@@ -1444,21 +1444,21 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件获取判断是否存在
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public bool IsAny(Expression<Func<T, bool>> expression)
+        public bool IsAny(Expression<Func<T, bool>> Expression)
         {
-            return db.Queryable<T>().Where(expression).Any();
+            return db.Queryable<T>().Where(Expression).Any();
         }
 
         /// <summary>
         /// 根据条件获取判断是否存在（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<bool> IsAnyAsync(Expression<Func<T, bool>> expression)
+        public async Task<bool> IsAnyAsync(Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Queryable<T>().Where(expression).AnyAsync());
+            return await Task.Run(() => db.Queryable<T>().Where(Expression).AnyAsync());
         }
 
         #endregion
@@ -1509,22 +1509,22 @@ namespace Nzh.Lakers.Repository.Base
         /// 根据主键获取List
         /// </summary>
         /// <param name="ids"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public List<T> GetListByIds(object[] ids, Expression<Func<T, bool>> expression)
+        public List<T> GetListByIds(object[] ids, Expression<Func<T, bool>> Expression)
         {
-            return Db.Queryable<T>().Where(expression).In(ids).ToList();
+            return Db.Queryable<T>().Where(Expression).In(ids).ToList();
         }
 
         /// <summary>
         /// 根据主键获取List（异步）
         /// </summary>
         /// <param name="ids"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<List<T>> GetListByIdsAsync(object[] ids, Expression<Func<T, bool>> expression)
+        public async Task<List<T>> GetListByIdsAsync(object[] ids, Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Queryable<T>().Where(expression).In(ids).ToListAsync());
+            return await Task.Run(() => db.Queryable<T>().Where(Expression).In(ids).ToListAsync());
         }
 
         /// <summary>
@@ -1548,21 +1548,21 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件获取List
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public List<T> GetList(Expression<Func<T, bool>> expression)
+        public List<T> GetList(Expression<Func<T, bool>> Expression)
         {
-            return db.Queryable<T>().Where(expression).ToList();
+            return db.Queryable<T>().Where(Expression).ToList();
         }
 
         /// <summary>
         /// 根据条件获取List（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<List<T>> GetListAsync(Expression<Func<T, bool>> expression)
+        public async Task<List<T>> GetListAsync(Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Queryable<T>().Where(expression).ToListAsync());
+            return await Task.Run(() => db.Queryable<T>().Where(Expression).ToListAsync());
         }
 
         /// <summary>
@@ -1586,21 +1586,21 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件获取单个对象
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public T GetSingle(Expression<Func<T, bool>> expression)
+        public T GetSingle(Expression<Func<T, bool>> Expression)
         {
-            return db.Queryable<T>().Single(expression);
+            return db.Queryable<T>().Single(Expression);
         }
 
         /// <summary>
         /// 根据条件获取单个对象（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> expression)
+        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Queryable<T>().SingleAsync(expression));
+            return await Task.Run(() => db.Queryable<T>().SingleAsync(Expression));
         }
 
         /// <summary>
@@ -1624,34 +1624,34 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         ///  根据条件获取Json
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public string GetJson(Expression<Func<T, bool>> expression)
+        public string GetJson(Expression<Func<T, bool>> Expression)
         {
-            return db.Queryable<T>().Where(expression).ToJson();
+            return db.Queryable<T>().Where(Expression).ToJson();
         }
 
         /// <summary>
         ///  根据条件获取Json（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<string> GetJsonAsync(Expression<Func<T, bool>> expression)
+        public async Task<string> GetJsonAsync(Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Queryable<T>().Where(expression).ToJsonAsync());
+            return await Task.Run(() => db.Queryable<T>().Where(Expression).ToJsonAsync());
         }
 
         /// <summary>
         /// 根据条件获取Json分页
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public Pagination<string> GetJsonPage(Expression<Func<T, bool>> expression, PageModel page)
+        public Pagination<string> GetJsonPage(Expression<Func<T, bool>> Expression, PageModel page)
         {
             Pagination<string> result = new Pagination<string>();
             int Count = 0;
-            result.DataList = db.Queryable<T>().Where(expression).ToJsonPage(page.PageIndex, page.PageSize, ref Count);
+            result.DataList = db.Queryable<T>().Where(Expression).ToJsonPage(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1661,14 +1661,14 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件获取Json分页（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public async Task<Pagination<string>> GetJsonPageAsync(Expression<Func<T, bool>> expression, PageModel page)
+        public async Task<Pagination<string>> GetJsonPageAsync(Expression<Func<T, bool>> Expression, PageModel page)
         {
             Pagination<string> result = new Pagination<string>();
             int Count = 0;
-            result.DataList = await Task.Run(() => db.Queryable<T>().Where(expression).ToJsonPage(page.PageIndex, page.PageSize, ref Count));
+            result.DataList = await Task.Run(() => db.Queryable<T>().Where(Expression).ToJsonPage(page.PageIndex, page.PageSize, ref Count));
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1696,34 +1696,34 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件获取DataTable
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public DataTable GetDataTable(Expression<Func<T, bool>> expression)
+        public DataTable GetDataTable(Expression<Func<T, bool>> Expression)
         {
-            return db.Queryable<T>().Where(expression).ToDataTable();
+            return db.Queryable<T>().Where(Expression).ToDataTable();
         }
 
         /// <summary>
         /// 根据条件获取DataTable（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<DataTable> GetDataTableAsync(Expression<Func<T, bool>> expression)
+        public async Task<DataTable> GetDataTableAsync(Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Queryable<T>().Where(expression).ToDataTableAsync());
+            return await Task.Run(() => db.Queryable<T>().Where(Expression).ToDataTableAsync());
         }
 
         /// <summary>
         /// 根据条件获取DataTable分页
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public Pagination<DataTable> GetDataTablePage(Expression<Func<T, bool>> expression, PageModel page)
+        public Pagination<DataTable> GetDataTablePage(Expression<Func<T, bool>> Expression, PageModel page)
         {
             Pagination<DataTable> result = new Pagination<DataTable>();
             int Count = 0;
-            result.DataList = db.Queryable<T>().Where(expression).ToDataTablePage(page.PageIndex, page.PageSize, ref Count);
+            result.DataList = db.Queryable<T>().Where(Expression).ToDataTablePage(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1733,14 +1733,14 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件获取DataTable分页（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public async Task<Pagination<DataTable>> GetDataTablePageAsync(Expression<Func<T, bool>> expression, PageModel page)
+        public async Task<Pagination<DataTable>> GetDataTablePageAsync(Expression<Func<T, bool>> Expression, PageModel page)
         {
             Pagination<DataTable> result = new Pagination<DataTable>();
             int Count = 0;
-            result.DataList = await Task.Run(() => db.Queryable<T>().Where(expression).ToDataTablePage(page.PageIndex, page.PageSize, ref Count));
+            result.DataList = await Task.Run(() => db.Queryable<T>().Where(Expression).ToDataTablePage(page.PageIndex, page.PageSize, ref Count));
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1750,14 +1750,14 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件获取分页
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public Pagination<T> GetPageList(Expression<Func<T, bool>> expression, PageModel page)
+        public Pagination<T> GetPageList(Expression<Func<T, bool>> Expression, PageModel page)
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = db.Queryable<T>().Where(expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
+            result.DataList = db.Queryable<T>().Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1767,14 +1767,14 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件获取分页（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public async Task<Pagination<T>> GetPageListAsync(Expression<Func<T, bool>> expression, PageModel page)
+        public async Task<Pagination<T>> GetPageListAsync(Expression<Func<T, bool>> Expression, PageModel page)
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = await Task.Run(() => db.Queryable<T>().Where(expression).ToPageList(page.PageIndex, page.PageSize, ref Count));
+            result.DataList = await Task.Run(() => db.Queryable<T>().Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count));
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1784,16 +1784,16 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件获取分页并排序
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <param name="page"></param>
         /// <param name="orderByExpression"></param>
         /// <param name="orderByType"></param>
         /// <returns></returns>
-        public Pagination<T> GetPageList(Expression<Func<T, bool>> expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc)
+        public Pagination<T> GetPageList(Expression<Func<T, bool>> Expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc)
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = db.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
+            result.DataList = db.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -2167,44 +2167,44 @@ namespace Nzh.Lakers.Repository.Base
         /// 根据条件修改列
         /// </summary>
         /// <param name="columns"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
         [Obsolete]
-        public bool Update(Expression<Func<T, T>> columns, Expression<Func<T, bool>> expression)
+        public bool Update(Expression<Func<T, T>> columns, Expression<Func<T, bool>> Expression)
         {
-            return db.Updateable<T>().UpdateColumns(columns).Where(expression).ExecuteCommand() > 0 ? true : false;
+            return db.Updateable<T>().UpdateColumns(columns).Where(Expression).ExecuteCommand() > 0 ? true : false;
         }
 
         /// <summary>
         /// 根据条件修改列（异步）
         /// </summary>
         /// <param name="columns"></param>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
         [Obsolete]
-        public async Task<bool> UpdateAsync(Expression<Func<T, T>> columns, Expression<Func<T, bool>> expression)
+        public async Task<bool> UpdateAsync(Expression<Func<T, T>> columns, Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Updateable<T>().UpdateColumns(columns).Where(expression).ExecuteCommandAsync()) > 0 ? true : false;
+            return await Task.Run(() => db.Updateable<T>().UpdateColumns(columns).Where(Expression).ExecuteCommandAsync()) > 0 ? true : false;
         }
 
         /// <summary>
         /// 根据条件修改
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public bool Update(Expression<Func<T, bool>> expression)
+        public bool Update(Expression<Func<T, bool>> Expression)
         {
-            return db.Updateable<T>().Where(expression).ExecuteCommand() > 0 ? true : false;
+            return db.Updateable<T>().Where(Expression).ExecuteCommand() > 0 ? true : false;
         }
 
         /// <summary>
         /// 根据条件修改（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<bool> UpdateAsync(Expression<Func<T, bool>> expression)
+        public async Task<bool> UpdateAsync(Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Updateable<T>().Where(expression).ExecuteCommandAsync()) > 0 ? true : false;
+            return await Task.Run(() => db.Updateable<T>().Where(Expression).ExecuteCommandAsync()) > 0 ? true : false;
         }
 
         #endregion
@@ -2294,21 +2294,21 @@ namespace Nzh.Lakers.Repository.Base
         /// <summary>
         /// 根据条件删除
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public bool Delete(Expression<Func<T, bool>> expression)
+        public bool Delete(Expression<Func<T, bool>> Expression)
         {
-            return db.Deleteable<T>().Where(expression).ExecuteCommand() > 0 ? true : false;
+            return db.Deleteable<T>().Where(Expression).ExecuteCommand() > 0 ? true : false;
         }
 
         /// <summary>
         /// 根据条件删除（异步）
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="Expression"></param>
         /// <returns></returns>
-        public async Task<bool> DeleteAsync(Expression<Func<T, bool>> expression)
+        public async Task<bool> DeleteAsync(Expression<Func<T, bool>> Expression)
         {
-            return await Task.Run(() => db.Deleteable<T>().Where(expression).ExecuteCommandAsync()) > 0 ? true : false;
+            return await Task.Run(() => db.Deleteable<T>().Where(Expression).ExecuteCommandAsync()) > 0 ? true : false;
         }
 
         /// <summary>
