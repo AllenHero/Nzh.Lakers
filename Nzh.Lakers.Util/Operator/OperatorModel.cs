@@ -6,26 +6,25 @@ namespace Nzh.Lakers.Util.Operator
 {
     public class OperatorModel
     {
-        public int UserId { get; set; }
+        public string Account { get; set; }
 
-        public string UserName { get; set; }
+        public string Password { get; set; }
 
         public string RealName { get; set; }
 
-        public string UserPwd { get; set; }
+        public int Gender { get; set; }
 
-        public int RoleId { get; set; }
+        public long DepartmentId { get; set; }
 
-        public string LoginIPAddress { get; set; }
+        public long PositionId { get; set; }
 
-        public string LoginIPAddressName { get; set; }
+        public string Birthday { get; set; }
 
-        public string LoginToken { get; set; }
+        public string Portrait { get; set; }
 
-        public DateTime LoginTime { get; set; }
+        public string Email { get; set; }
 
-        public bool IsSystem { get; set; }
+        public string Phone { get; set; }
 
-        public string HeadShot { get; set; }
     }
 }
