@@ -161,11 +161,39 @@
             </summary>
             <param name="logger"></param>
         </member>
-        <member name="M:Nzh.Lakers.Controllers.SysUserController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.SysUserController})">
+        <member name="M:Nzh.Lakers.Controllers.SysUserController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.SysUserController},Nzh.Lakers.IService.SystemManagement.ISysUserService)">
             <summary>
             构造函数
             </summary>
             <param name="logger"></param>
+            <param name="sysUserService"></param>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.SysUserController.GetUserPageList(System.Int32,System.Int32,System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int32})">
+            <summary>
+            用户列表分页
+            </summary>
+            <param name="PageIndex"></param>
+            <param name="PageSize"></param>
+            <param name="Account"></param>
+            <param name="RealName"></param>
+            <param name="DepartmentId"></param>
+            <param name="PositionId"></param>
+            <param name="Status"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.SysUserController.GetUserById(System.Int64)">
+            <summary>
+            用户详情
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.SysUserController.InsertUser(Nzh.Lakers.Model.Param.UserParam)">
+            <summary>
+            新增用户
+            </summary>
+            <param name="Param"></param>
+            <returns></returns>
         </member>
         <member name="M:Nzh.Lakers.Controllers.TestController.#ctor(Nzh.Lakers.IService.ITestService,Nzh.Lakers.IService.IEnclosureService,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
             <summary>

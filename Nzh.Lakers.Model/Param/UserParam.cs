@@ -1,13 +1,10 @@
-﻿using Nzh.Lakers.Entity.Base;
-using SqlSugar;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Nzh.Lakers.Entity.SystemManagement
+namespace Nzh.Lakers.Model.Param
 {
-    [SugarTable("sys_user")]
-    public class SysUser : BaseEntity
+    public class UserParam
     {
         public string Account { get; set; }
 
@@ -29,13 +26,6 @@ namespace Nzh.Lakers.Entity.SystemManagement
 
         public string Phone { get; set; }
 
-        public int LoginCount { get; set; }
-
-        public DateTime? FirstVisit { get; set; }
-
-        public DateTime? LastVisit { get; set; }
-
         public string Remark { get; set; }
-
     }
 }
