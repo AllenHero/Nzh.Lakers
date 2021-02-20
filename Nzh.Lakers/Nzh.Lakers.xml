@@ -119,6 +119,54 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Nzh.Lakers.Controllers.SysButtonController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.SysButtonController})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.SysDepartmentController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.SysDepartmentController})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.SysDictController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.SysDictController})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.SysLogController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.SysLogController})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.SysMenuController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.SysMenuController})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.SysPositionController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.SysPositionController})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.SysRoleController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.SysRoleController})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.SysUserController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.SysUserController})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+        </member>
         <member name="M:Nzh.Lakers.Controllers.TestController.#ctor(Nzh.Lakers.IService.ITestService,Nzh.Lakers.IService.IEnclosureService,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
             <summary>
             构造函数

@@ -3,9 +3,13 @@ using Nzh.Lakers.Cache.Interface;
 using Nzh.Lakers.Cache.MemoryCache;
 using Nzh.Lakers.Cache.RedisCache;
 using Nzh.Lakers.IRepository;
+using Nzh.Lakers.IRepository.SystemManagement;
 using Nzh.Lakers.IService;
+using Nzh.Lakers.IService.SystemManagement;
 using Nzh.Lakers.Repository;
+using Nzh.Lakers.Repository.SystemManagement;
 using Nzh.Lakers.Service;
+using Nzh.Lakers.Service.SystemManagement;
 using System;
 
 namespace Nzh.Lakers.Factory
@@ -33,6 +37,36 @@ namespace Nzh.Lakers.Factory
 
             services.AddScoped<ICacheService, MemoryCacheService>();
             services.AddScoped<ICacheService, RedisCacheService>();
+
+            services.AddScoped<ISysButtonRepository, SysButtonRepository>();
+            services.AddScoped<ISysButtonService, SysButtonService>();
+
+            services.AddScoped<ISysDepartmentRepository, SysDepartmentRepository>();
+            services.AddScoped<ISysDepartmentService, SysDepartmentService>();
+
+            services.AddScoped<ISysDictRepository, SysDictRepository>();
+            services.AddScoped<ISysDictService, SysDictService>();
+
+            services.AddScoped<ISysLogRepository, SysLogRepository>();
+            services.AddScoped<ISysLogService, SysLogService>();
+
+            services.AddScoped<ISysMenuButtonMapRepository, SysMenuButtonMapRepository>();
+
+            services.AddScoped<ISysMenuRepository, SysMenuRepository>();
+            services.AddScoped<ISysMenuService, SysMenuService>();
+
+            services.AddScoped<ISysPositionRepository, SysPositionRepository>();
+            services.AddScoped<ISysPositionService, SysPositionService>();
+
+            services.AddScoped<ISysRoleMenuMapRepository, SysRoleMenuMapRepository>();
+
+            services.AddScoped<ISysRoleRepository, SysRoleRepository>();
+            services.AddScoped<ISysRoleService, SysRoleService>();
+
+            services.AddScoped<ISysUserRepository, SysUserRepository>();
+            services.AddScoped<ISysUserService, SysUserService>();
+
+            services.AddScoped<ISysUserRoleMapRepository, SysUserRoleMapRepository>();
 
             return services;
         }
