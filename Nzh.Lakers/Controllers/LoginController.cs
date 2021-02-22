@@ -13,6 +13,7 @@ using Nzh.Lakers.Util.Helper;
 using Nzh.Lakers.Util.Web;
 using Nzh.Lakers.IService.SystemManagement;
 using Nzh.Lakers.Util.Extension;
+using Nzh.Lakers.IService;
 
 namespace Nzh.Lakers.Controllers
 {
@@ -24,15 +25,19 @@ namespace Nzh.Lakers.Controllers
 
         private readonly ISysUserService _sysUserService;
 
+        private readonly IUserToken _userToken;
+
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="sysUserService"></param>
-        public LoginController(ILogger<LoginController> logger, ISysUserService sysUserService)
+        /// <param name="userToken"></param>
+        public LoginController(ILogger<LoginController> logger, ISysUserService sysUserService, IUserToken userToken)
         {
             _logger = logger;
             _sysUserService = sysUserService;
+            _userToken = userToken;
         }
 
         /// <summary>
@@ -51,19 +56,15 @@ namespace Nzh.Lakers.Controllers
             {
                 ModelState.AddModelError("err", "密码不能为空");
             }
+            var output = new LoginOutput();
             try
             {
                 var user = _sysUserService.LoginValidate(loginModel.Account.Trim(), loginModel.Password.Trim());
-                var loginUserDto = new LoginUserDto();
                 if (user != null)
                 {
-                    loginUserDto.Id = user.Id;
-                    loginUserDto.Account = user.Account;
-                    loginUserDto.RealName = user.RealName;
-                    loginUserDto.DepartmentId = user.DepartmentId;
-                    loginUserDto.PositionId = user.PositionId;
-                    string claimstr = loginUserDto.ToJson();
-                    CookieHelper.WriteLoginCookie(claimstr);
+                    output.Id = user.Id;
+                    output.Account = user.Account;
+                    output.RealName = user.RealName;
                 }
                 ModelState.AddModelError("err", "用户名或密码错误");
             }
@@ -71,7 +72,18 @@ namespace Nzh.Lakers.Controllers
             {
                 ModelState.AddModelError("err", "登录异常"+ ex);
             }
-            return Result(true);
+            return GetToken(output);
+        }
+
+        private JsonResult GetToken(LoginOutput output)
+        {
+            var token = _userToken.Create(new[]
+            {
+                new Claim(LoginUserDto.Id.ToString(), output.Id.ToString()),
+                new Claim(LoginUserDto.Account, output.Account),
+                new Claim(LoginUserDto.RealName, output.RealName),
+            });
+            return Result(new { token });
         }
     }
 }

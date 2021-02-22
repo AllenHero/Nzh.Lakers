@@ -68,6 +68,10 @@ namespace Nzh.Lakers.Factory
 
             services.AddScoped<ISysUserRoleMapRepository, SysUserRoleMapRepository>();
 
+            services.AddScoped<IUserToken, UserToken>();
+
+            services.AddScoped<IUserHelper, UserHelper>();
+
             return services;
         }
     }

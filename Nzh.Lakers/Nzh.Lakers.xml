@@ -119,12 +119,13 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nzh.Lakers.Controllers.LoginController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.LoginController},Nzh.Lakers.IService.SystemManagement.ISysUserService)">
+        <member name="M:Nzh.Lakers.Controllers.LoginController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.LoginController},Nzh.Lakers.IService.SystemManagement.ISysUserService,Nzh.Lakers.IService.IUserToken)">
             <summary>
             构造函数
             </summary>
             <param name="logger"></param>
             <param name="sysUserService"></param>
+            <param name="userToken"></param>
         </member>
         <member name="M:Nzh.Lakers.Controllers.LoginController.Login(Nzh.Lakers.Model.Dto.LoginDto)">
             <summary>
@@ -207,6 +208,20 @@
             新增用户
             </summary>
             <param name="Param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.SysUserController.TestEncrypt(System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="Text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.SysUserController.TestDecrypt(System.String)">
+            <summary>
+            解密
+            </summary>
+            <param name="Text"></param>
             <returns></returns>
         </member>
         <member name="M:Nzh.Lakers.Controllers.TestController.#ctor(Nzh.Lakers.IService.ITestService,Nzh.Lakers.IService.IEnclosureService,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">

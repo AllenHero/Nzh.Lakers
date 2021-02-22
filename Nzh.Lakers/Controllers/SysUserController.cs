@@ -12,6 +12,7 @@ using Nzh.Lakers.IService.SystemManagement;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Nzh.Lakers.Model.Param;
+using Nzh.Lakers.Util.Security;
 
 namespace Nzh.Lakers.Controllers
 {
@@ -76,6 +77,30 @@ namespace Nzh.Lakers.Controllers
         public JsonResult InsertUser(UserParam Param)
         {
             var result = _sysUserService.InsertUser(Param);
+            return Result(result);
+        }
+
+        /// <summary>
+        /// 加密
+        /// </summary>
+        /// <param name="Text"></param>
+        /// <returns></returns>
+        [HttpPost("TestEncrypt")]
+        public JsonResult TestEncrypt(string Text)
+        {
+            var result = DESEncrypt.Encrypt(Text);
+            return Result(result);
+        }
+
+        /// <summary>
+        /// 解密
+        /// </summary>
+        /// <param name="Text"></param>
+        /// <returns></returns>
+        [HttpPost("TestDecrypt")]
+        public JsonResult TestDecrypt(string Text)
+        {
+            var result = DESEncrypt.Decrypt(Text);
             return Result(result);
         }
     }

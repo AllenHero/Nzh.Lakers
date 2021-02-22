@@ -9,14 +9,6 @@ namespace Nzh.Lakers.Service.Base
 {
     public class BaseService
     {
-        public LoginUserDto UserCookie;
-
-        public LoginUserDto GetUserCookie()
-        {
-            var userClaims = CookieHelper.GetUserLoginCookie();
-            if (userClaims != null)
-                return userClaims.ToObject<LoginUserDto>();
-            return new LoginUserDto();
-        }
+        
     }
 }

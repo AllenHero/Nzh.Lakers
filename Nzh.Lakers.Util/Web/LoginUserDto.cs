@@ -4,16 +4,28 @@ using System.Text;
 
 namespace Nzh.Lakers.Util.Web
 {
-    public  class LoginUserDto
+    public class LoginUserDto
     {
-        public long Id { get; set; }
+        /// <summary>
+        /// 用户Id
+        /// </summary>
+        public const string Id = "id";
 
-        public string Account { get; set; }
+        /// <summary>
+        /// 认证授权用户Id
+        /// </summary>
+        public const string Account = "account";
 
-        public string RealName { get; set; }
+        /// <summary>
+        /// 用户名
+        /// </summary>
+        public const string RealName = "realname";
 
-        public long DepartmentId { get; set; }
 
-        public long PositionId { get; set; }
+        /// <summary>
+        /// 刷新有效期
+        /// </summary>
+        public const string RefreshExpires = "re";
+
     }
 }

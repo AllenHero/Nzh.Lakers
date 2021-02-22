@@ -7,6 +7,5 @@ namespace Nzh.Lakers.IService.Base
 {
     public interface IBaseService
     {
-        LoginUserDto GetUserCookie();
     }
 }

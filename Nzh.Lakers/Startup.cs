@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -14,13 +15,17 @@ using NLog.Extensions.Logging;
 using Nzh.Lakers.Cache.MemoryCache;
 using Nzh.Lakers.Factory;
 using Nzh.Lakers.Global;
+using Nzh.Lakers.IService;
 using Nzh.Lakers.Job.HostedService;
 using Nzh.Lakers.Job.Job;
 using Nzh.Lakers.Job.JobFactory;
 using Nzh.Lakers.Job.JobSchedule;
 using Nzh.Lakers.Middleware;
+using Nzh.Lakers.Service;
 using Nzh.Lakers.SqlSugar;
 using Nzh.Lakers.SwaggerHelper;
+using Nzh.Lakers.Util.Helper;
+using Nzh.Lakers.Util.Web;
 using Quartz;
 using Quartz.Spi;
 using System;
@@ -37,15 +42,31 @@ namespace Nzh.Lakers
     {
         public IConfiguration _configuration { get; }
 
-        public Startup(IConfiguration configuration)
+        private readonly IHostEnvironment _env;
+
+        private readonly ConfigHelper _configHelper;
+
+        public Startup(IConfiguration configuration,IWebHostEnvironment env)
         {
             _configuration = configuration;
+            _env = env;
+            _configHelper = new ConfigHelper();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //用户信息
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.TryAddSingleton<IUserHelper, UserHelper>();
+
+            services.TryAddSingleton<IUserToken, UserToken>();
+
+            var jwtConfig = _configHelper.Get<JwtConfig>("jwtconfig", _env.EnvironmentName);
+            services.TryAddSingleton(jwtConfig);
 
             //注入服务
             services.AddRepositories();

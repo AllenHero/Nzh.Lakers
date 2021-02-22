@@ -1,5 +1,6 @@
 ﻿using Nzh.Lakers.Entity.SystemManagement;
 using Nzh.Lakers.IRepository.SystemManagement;
+using Nzh.Lakers.IService;
 using Nzh.Lakers.IService.SystemManagement;
 using Nzh.Lakers.Model;
 using Nzh.Lakers.Model.Param;
@@ -19,13 +20,17 @@ namespace Nzh.Lakers.Service.SystemManagement
     {
         private ISysUserRepository _sysUserRepository;
 
+        private readonly IUserHelper _userHelper;
+
         /// <summary>
         /// 构造函数
         /// </summary>
-        /// <param name="testRepository"></param>
-        public SysUserService(ISysUserRepository sysUserRepository)
+        /// <param name="sysUserRepository"></param>
+        /// <param name="userHelper"></param>
+        public SysUserService(ISysUserRepository sysUserRepository, IUserHelper userHelper)
         {
             _sysUserRepository = sysUserRepository;
+            _userHelper = userHelper;
         }
 
         /// <summary>
@@ -118,9 +123,9 @@ namespace Nzh.Lakers.Service.SystemManagement
                 User.Status = 0;
                 User.IsDeleted = 0;
                 User.CreateTime = DateTime.Now;
-                User.CreateUserId = UserCookie.Id;
+                User.CreateUserId = _userHelper.Id;
                 User.ModifyTime = DateTime.Now;
-                User.ModifyUserId = UserCookie.Id;
+                User.ModifyUserId = _userHelper.Id;
                 bool result = _sysUserRepository.Insert(User);
                 _sysUserRepository.CommitTran();
                 return result;
@@ -134,7 +139,7 @@ namespace Nzh.Lakers.Service.SystemManagement
 
         public SysUser LoginValidate(string Account, string Password)
         {
-            Password = DESEncrypt.Decrypt(Password);
+            Password = DESEncrypt.Encrypt(Password);
             var expression = LinqExtensions.True<SysUser>();
             if (!string.IsNullOrEmpty(Account))
             {
