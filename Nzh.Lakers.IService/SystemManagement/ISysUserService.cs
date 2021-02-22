@@ -15,5 +15,7 @@ namespace Nzh.Lakers.IService.SystemManagement
         SysUser GetUserById(long Id);
 
         bool InsertUser(UserParam Param);
+
+        SysUser LoginValidate(string Account, string Password);
     }
 }

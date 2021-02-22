@@ -33,6 +33,7 @@ namespace Nzh.Lakers.SwaggerHelper
                 new OpenApiTag { Name = "SysPosition", Description = "岗位管理" },
                 new OpenApiTag { Name = "SysRole", Description = "角色管理" },
                 new OpenApiTag { Name = "SysUser", Description = "用户管理" },
+                new OpenApiTag { Name = "Login", Description = "登录操作" },
             };
         }
     }

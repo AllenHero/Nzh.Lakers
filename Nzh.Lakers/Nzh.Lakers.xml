@@ -119,6 +119,20 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Nzh.Lakers.Controllers.LoginController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.LoginController},Nzh.Lakers.IService.SystemManagement.ISysUserService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="sysUserService"></param>
+        </member>
+        <member name="M:Nzh.Lakers.Controllers.LoginController.Login(Nzh.Lakers.Model.Dto.LoginDto)">
+            <summary>
+            登录
+            </summary>
+            <param name="loginModel"></param>
+            <returns></returns>
+        </member>
         <member name="M:Nzh.Lakers.Controllers.SysButtonController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.SysButtonController})">
             <summary>
             构造函数

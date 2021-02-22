@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Nzh.Lakers.Entity\Nzh.Lakers.Entity.csproj" />
     <ProjectReference Include="..\Nzh.Lakers.Model\Nzh.Lakers.Model.csproj" />
+    <ProjectReference Include="..\Nzh.Lakers.Util\Nzh.Lakers.Util.csproj" />
   </ItemGroup>
 
 </Project>

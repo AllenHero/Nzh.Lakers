@@ -28,7 +28,6 @@ namespace Nzh.Lakers.Service.SystemManagement
             _sysUserRepository = sysUserRepository;
         }
 
-
         /// <summary>
         /// 用户列表分页
         /// </summary>
@@ -119,9 +118,9 @@ namespace Nzh.Lakers.Service.SystemManagement
                 User.Status = 0;
                 User.IsDeleted = 0;
                 User.CreateTime = DateTime.Now;
-                //User.CreateUserId= 
+                User.CreateUserId = UserCookie.Id;
                 User.ModifyTime = DateTime.Now;
-                //User.ModifyUserId=
+                User.ModifyUserId = UserCookie.Id;
                 bool result = _sysUserRepository.Insert(User);
                 _sysUserRepository.CommitTran();
                 return result;
@@ -131,6 +130,22 @@ namespace Nzh.Lakers.Service.SystemManagement
                 _sysUserRepository.RollbackTran();//回滚事务
                 throw ex;
             }
+        }
+
+        public SysUser LoginValidate(string Account, string Password)
+        {
+            Password = DESEncrypt.Decrypt(Password);
+            var expression = LinqExtensions.True<SysUser>();
+            if (!string.IsNullOrEmpty(Account))
+            {
+                expression = expression.And(t => t.Account == Account);
+            }
+            if (!string.IsNullOrEmpty(Account))
+            {
+                expression = expression.And(t => t.Password == Password);
+            }
+            var model = _sysUserRepository.GetSingle(expression);
+            return model;
         }
     }
 }
