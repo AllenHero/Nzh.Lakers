@@ -49,16 +49,16 @@ namespace Nzh.Lakers.Controllers
         /// <summary>
         /// 登录
         /// </summary>
-        /// <param name="loginModel"></param>
+        /// <param name="loginDto"></param>
         /// <returns></returns>
         [HttpPost("Login")]
-        public JsonResult Login(LoginDto loginModel)
+        public JsonResult Login(LoginDto loginDto)
         {
-            if (string.IsNullOrEmpty(loginModel.Account))
+            if (string.IsNullOrEmpty(loginDto.Account))
             {
                 ModelState.AddModelError("err", "用户名不能为空");
             }
-            if (string.IsNullOrEmpty(loginModel.Password))
+            if (string.IsNullOrEmpty(loginDto.Password))
             {
                 ModelState.AddModelError("err", "密码不能为空");
             }
@@ -66,7 +66,7 @@ namespace Nzh.Lakers.Controllers
             SysLog sysLog = new SysLog();
             try
             {
-                var user = _sysUserService.LoginValidate(loginModel.Account.Trim(), loginModel.Password.Trim());
+                var user = _sysUserService.LoginValidate(loginDto.Account.Trim(), loginDto.Password.Trim());
                 if (user != null)
                 {
                     output.Id = user.Id;

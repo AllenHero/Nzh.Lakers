@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Nzh.Lakers.Model.Param
+namespace Nzh.Lakers.Model.Dto
 {
-    public class UserParam
+    public class UserDto
     {
         public string Account { get; set; }
 

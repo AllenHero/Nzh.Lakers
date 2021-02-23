@@ -11,8 +11,8 @@ using Microsoft.IdentityModel.Tokens;
 using Nzh.Lakers.IService.SystemManagement;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Nzh.Lakers.Model.Param;
 using Nzh.Lakers.Util.Security;
+using Nzh.Lakers.Model.Dto;
 
 namespace Nzh.Lakers.Controllers
 {
@@ -70,13 +70,13 @@ namespace Nzh.Lakers.Controllers
         /// <summary>
         /// 新增用户
         /// </summary>
-        /// <param name="Param"></param>
+        /// <param name="userDto"></param>
         /// <returns></returns>
         [HttpPost("InsertUser")]
         //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public JsonResult InsertUser(UserParam Param)
+        public JsonResult InsertUser(UserDto userDto)
         {
-            var result = _sysUserService.InsertUser(Param);
+            var result = _sysUserService.InsertUser(userDto);
             return Result(result);
         }
 

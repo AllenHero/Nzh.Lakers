@@ -1,7 +1,7 @@
 ﻿using Nzh.Lakers.Entity.SystemManagement;
 using Nzh.Lakers.IService.Base;
 using Nzh.Lakers.Model;
-using Nzh.Lakers.Model.Param;
+using Nzh.Lakers.Model.Dto;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +14,7 @@ namespace Nzh.Lakers.IService.SystemManagement
 
         SysUser GetUserById(long Id);
 
-        bool InsertUser(UserParam Param);
+        bool InsertUser(UserDto userDto);
 
         SysUser LoginValidate(string Account, string Password);
 

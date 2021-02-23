@@ -3,7 +3,7 @@ using Nzh.Lakers.IRepository.SystemManagement;
 using Nzh.Lakers.IService;
 using Nzh.Lakers.IService.SystemManagement;
 using Nzh.Lakers.Model;
-using Nzh.Lakers.Model.Param;
+using Nzh.Lakers.Model.Dto;
 using Nzh.Lakers.Service.Base;
 using Nzh.Lakers.Util.Extension;
 using Nzh.Lakers.Util.Helper;
@@ -102,25 +102,25 @@ namespace Nzh.Lakers.Service.SystemManagement
         /// <summary>
         /// 新增用户
         /// </summary>
-        /// <param name="Param"></param>
+        /// <param name="userDto"></param>
         /// <returns></returns>
-        public bool InsertUser(UserParam Param)
+        public bool InsertUser(UserDto userDto)
         {
             try
             {
                 _sysUserRepository.BeginTran();//开始事务
                 SysUser User = new SysUser();
                 User.Id = IdWorkerHelper.NewId();
-                User.Account = Param.Account;
-                User.Password = DESEncrypt.Encrypt(Param.Password);
-                User.RealName = Param.RealName;
-                User.Gender = Param.Gender;
-                User.DepartmentId = Param.DepartmentId;
-                User.Birthday = Param.Birthday;
-                User.Portrait = Param.Portrait;
-                User.Email = Param.Email;
-                User.Phone = Param.Phone;
-                User.Remark = Param.Remark;
+                User.Account = userDto.Account;
+                User.Password = DESEncrypt.Encrypt(userDto.Password);
+                User.RealName = userDto.RealName;
+                User.Gender = userDto.Gender;
+                User.DepartmentId = userDto.DepartmentId;
+                User.Birthday = userDto.Birthday;
+                User.Portrait = userDto.Portrait;
+                User.Email = userDto.Email;
+                User.Phone = userDto.Phone;
+                User.Remark = userDto.Remark;
                 User.Status = (int)StatusType.Enabled;
                 User.IsDeleted = (int)IsDeletedType.No;
                 User.CreateTime = DateTime.Now;

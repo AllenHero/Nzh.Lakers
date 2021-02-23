@@ -119,19 +119,20 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nzh.Lakers.Controllers.LoginController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.LoginController},Nzh.Lakers.IService.SystemManagement.ISysUserService,Nzh.Lakers.IService.IUserToken)">
+        <member name="M:Nzh.Lakers.Controllers.LoginController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.LoginController},Nzh.Lakers.IService.SystemManagement.ISysUserService,Nzh.Lakers.IService.IUserToken,Nzh.Lakers.IService.SystemManagement.ISysLogService)">
             <summary>
             构造函数
             </summary>
             <param name="logger"></param>
             <param name="sysUserService"></param>
             <param name="userToken"></param>
+            <param name="sysLogService"></param>
         </member>
         <member name="M:Nzh.Lakers.Controllers.LoginController.Login(Nzh.Lakers.Model.Dto.LoginDto)">
             <summary>
             登录
             </summary>
-            <param name="loginModel"></param>
+            <param name="loginDto"></param>
             <returns></returns>
         </member>
         <member name="M:Nzh.Lakers.Controllers.SysButtonController.#ctor(Microsoft.Extensions.Logging.ILogger{Nzh.Lakers.Controllers.SysButtonController})">
@@ -203,11 +204,11 @@
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:Nzh.Lakers.Controllers.SysUserController.InsertUser(Nzh.Lakers.Model.Param.UserParam)">
+        <member name="M:Nzh.Lakers.Controllers.SysUserController.InsertUser(Nzh.Lakers.Model.Dto.UserDto)">
             <summary>
             新增用户
             </summary>
-            <param name="Param"></param>
+            <param name="userDto"></param>
             <returns></returns>
         </member>
         <member name="M:Nzh.Lakers.Controllers.SysUserController.TestEncrypt(System.String)">
