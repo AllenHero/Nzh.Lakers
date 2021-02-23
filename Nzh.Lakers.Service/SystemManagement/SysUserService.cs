@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
+using static Nzh.Lakers.Model.EnumType;
 
 namespace Nzh.Lakers.Service.SystemManagement
 {
@@ -120,8 +121,8 @@ namespace Nzh.Lakers.Service.SystemManagement
                 User.Email = Param.Email;
                 User.Phone = Param.Phone;
                 User.Remark = Param.Remark;
-                User.Status = 0;
-                User.IsDeleted = 0;
+                User.Status = (int)StatusType.Enabled;
+                User.IsDeleted = (int)IsDeletedType.No;
                 User.CreateTime = DateTime.Now;
                 User.CreateUserId = _userHelper.Id;
                 User.ModifyTime = DateTime.Now;
@@ -137,6 +138,12 @@ namespace Nzh.Lakers.Service.SystemManagement
             }
         }
 
+        /// <summary>
+        /// 登录验证
+        /// </summary>
+        /// <param name="Account"></param>
+        /// <param name="Password"></param>
+        /// <returns></returns>
         public SysUser LoginValidate(string Account, string Password)
         {
             Password = DESEncrypt.Encrypt(Password);
@@ -151,6 +158,32 @@ namespace Nzh.Lakers.Service.SystemManagement
             }
             var model = _sysUserRepository.GetSingle(expression);
             return model;
+        }
+
+        /// <summary>
+        /// 更新用户登录信息
+        /// </summary>
+        /// <param name="sysUser"></param>
+        /// <returns></returns>
+        public bool UpdateUserLoginInfo(SysUser sysUser)
+        {
+            try
+            {
+                _sysUserRepository.BeginTran();//开始事务
+                SysUser User = new SysUser();
+                User.Id = sysUser.Id;
+                User.LoginCount = sysUser.LoginCount;
+                User.FirstVisit = sysUser.FirstVisit;
+                User.LastVisit = sysUser.LastVisit;
+                bool result = _sysUserRepository.Update(User);
+                _sysUserRepository.CommitTran();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _sysUserRepository.RollbackTran();//回滚事务
+                throw ex;
+            }
         }
     }
 }

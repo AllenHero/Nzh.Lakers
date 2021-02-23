@@ -36,6 +36,60 @@ namespace Nzh.Lakers.Model
             [Text("该URL已经失效")]
             URLExpireError = 407,
         }
+
+        public enum GenderType
+        {
+            [Text("男")]
+            Man = 0,
+
+            [Text("女")]
+            Woman = 1,
+        }
+
+        public enum StatusType
+        {
+            [Text("未启用")]
+            DisEnable = 0,
+
+            [Text("已启用")]
+            Enabled = 1,
+        }
+
+        public enum IsDeletedType
+        {
+            [Text("未启用")]
+            No = 0,
+
+            [Text("已启用")]
+            Yes = 1,
+        }
+
+        public enum LogTypeType
+        {
+            [Text("登录")]
+            Login,
+
+            [Text("新增")]
+            Add,
+
+            [Text("删除")]
+            Delete,
+
+            [Text("修改")]
+            Update,
+
+            [Text("查询")]
+            Query,
+        }
+
+        public enum LogStatusType
+        {
+            [Text("成功")]
+            Success = 0,
+
+            [Text("失败")]
+            Fail = 1,
+        }
     }
 
     public class TextAttribute : Attribute

@@ -14,6 +14,8 @@ using Nzh.Lakers.Util.Web;
 using Nzh.Lakers.IService.SystemManagement;
 using Nzh.Lakers.Util.Extension;
 using Nzh.Lakers.IService;
+using Nzh.Lakers.Entity.SystemManagement;
+using static Nzh.Lakers.Model.EnumType;
 
 namespace Nzh.Lakers.Controllers
 {
@@ -27,17 +29,21 @@ namespace Nzh.Lakers.Controllers
 
         private readonly IUserToken _userToken;
 
+        private readonly ISysLogService _sysLogService;
+
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="sysUserService"></param>
         /// <param name="userToken"></param>
-        public LoginController(ILogger<LoginController> logger, ISysUserService sysUserService, IUserToken userToken)
+        /// <param name="sysLogService"></param>
+        public LoginController(ILogger<LoginController> logger, ISysUserService sysUserService, IUserToken userToken, ISysLogService sysLogService)
         {
             _logger = logger;
             _sysUserService = sysUserService;
             _userToken = userToken;
+            _sysLogService = sysLogService;
         }
 
         /// <summary>
@@ -57,6 +63,7 @@ namespace Nzh.Lakers.Controllers
                 ModelState.AddModelError("err", "密码不能为空");
             }
             var output = new LoginOutput();
+            SysLog sysLog = new SysLog();
             try
             {
                 var user = _sysUserService.LoginValidate(loginModel.Account.Trim(), loginModel.Password.Trim());
@@ -65,8 +72,36 @@ namespace Nzh.Lakers.Controllers
                     output.Id = user.Id;
                     output.Account = user.Account;
                     output.RealName = user.RealName;
+
+                    #region 更新用户登录信息
+
+                    user.Id = user.Id;
+                    user.LoginCount++;
+                    if (user.FirstVisit==null)
+                    {
+                        user.FirstVisit = DateTime.Now;
+                    }
+                    user.LastVisit = DateTime.Now;
+                    _sysUserService.UpdateUserLoginInfo(user);
+
+                    #endregion
+
+                    sysLog.LogStatus = (int)LogStatusType.Success;
                 }
-                ModelState.AddModelError("err", "用户名或密码错误");
+                else
+                {
+                    ModelState.AddModelError("err", "用户名或密码错误");
+                    sysLog.LogStatus = (int)LogStatusType.Fail;
+                }
+
+                #region 登录日志
+
+                sysLog.IpAddress = "";
+                sysLog.LogType = LogTypeType.Login.ToString();
+                sysLog.Remark = "";
+                _sysLogService.InsertLog(sysLog);
+
+                #endregion
             }
             catch (Exception ex)
             {
