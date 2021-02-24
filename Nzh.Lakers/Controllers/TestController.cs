@@ -140,17 +140,17 @@ namespace Nzh.Lakers.Controllers
                                                                                  //const string fileFilt = ".doc|.xls|.ppt|.txt|.pdf|.html|......";   //附件
                 if (fileExtension == null)
                 {
-                    return new JsonResult(new ResultModel<string> { Code = -1, Msg = "上传的文件没有后缀" });
+                    return Result(false, "上传的文件没有后缀");
                 }
                 if (fileFilt.IndexOf(fileExtension.ToLower(), StringComparison.Ordinal) <= -1)
                 {
-                    return new JsonResult(new ResultModel<string> { Code = -1, Msg = "上传的文件不是图片" });
+                    return Result(false, "上传的文件不是图片");
                 }
                 //判断文件大小    
                 long length = uploadfile.Length;
                 if (length > 1024 * 1024 * 2) //2M
                 {
-                    return new JsonResult(new ResultModel<string> { Code = -1, Msg = "上传的文件不能大于2M" });
+                    return Result(false, "上传的文件不能大于2M");
                 }
                 var strDateTime = DateTime.Now.ToString("yyMMddhhmmssfff"); //取得时间字符串
                 var strRan = Convert.ToString(new Random().Next(100, 999)); //生成三位随机数

@@ -29,14 +29,14 @@ namespace Nzh.Lakers.Global
         {
             ResultModel<string> result = new ResultModel<string>();
             result.Code = (int)StatusCodeType.Error;
-            result.Msg = context.Exception.Message;//错误信息
+            result.Message = context.Exception.Message;//错误信息
             if (_env.IsDevelopment())
             {
                 result.Data = context.Exception.StackTrace;//堆栈信息
             }
             context.Result = new JsonResult(result) { StatusCode = (int)StatusCodeType.Success };
             //采用Nlog 进行错误日志记录
-            _logger.LogError(WriteLog(result.Msg, context.Exception));
+            _logger.LogError(WriteLog(result.Message, context.Exception));
         }
 
         /// <summary>

@@ -31,11 +31,11 @@ namespace Nzh.Lakers.Global
             {
                 foreach (var error in item.Errors)
                 {
-                    if (!string.IsNullOrEmpty(result.Msg))
+                    if (!string.IsNullOrEmpty(result.Message))
                     {
-                        result.Msg += " | ";
+                        result.Message += " | ";
                     }
-                    result.Msg += error.ErrorMessage;
+                    result.Message += error.ErrorMessage;
                 }
             }
             context.Result = new JsonResult(result);

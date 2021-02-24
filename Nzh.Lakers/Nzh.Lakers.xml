@@ -23,19 +23,19 @@
             <param name="UserId"></param>
             <returns></returns>
         </member>
-        <member name="M:Nzh.Lakers.Controllers.BaseController.Result(Nzh.Lakers.Model.EnumType.StatusCodeType)">
+        <member name="M:Nzh.Lakers.Controllers.BaseController.Result(System.Boolean)">
             <summary>
             返回封装
             </summary>
-            <param name="statusCode"></param>
+            <param name="Status"></param>
             <returns></returns>
         </member>
-        <member name="M:Nzh.Lakers.Controllers.BaseController.Result(Nzh.Lakers.Model.EnumType.StatusCodeType,System.String)">
+        <member name="M:Nzh.Lakers.Controllers.BaseController.Result(System.Boolean,System.String)">
             <summary>
             返回封装
             </summary>
-            <param name="statusCode"></param>
-            <param name="retMessage"></param>
+            <param name="Status"></param>
+            <param name="Message"></param>
             <returns></returns>
         </member>
         <member name="M:Nzh.Lakers.Controllers.BaseController.Result``1(``0)">
