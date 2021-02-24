@@ -49,7 +49,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Name"></param>
         /// <returns></returns>
         [HttpGet("GetDemoPageListAsync")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<JsonResult> GetDemoPageListAsync(int PageIndex, int PageSize, string Name)
         {
             var result = await _testService.GetDemoPageListAsync(PageIndex, PageSize, Name);
@@ -62,7 +62,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("GetDemoByIdAsync")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<JsonResult> GetDemoByIdAsync(long Id)
         {
             var result = await _testService.GetDemoByIdAsync(Id);
@@ -78,7 +78,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Remark"></param>
         /// <returns></returns>
         [HttpPost("InsertDemoAsync")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<JsonResult> InsertDemoAsync(string Name, string Sex, int Age, string Remark)
         {
             var result = await _testService.InsertDemoAsync(Name, Sex, Age, Remark);
@@ -95,7 +95,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Remark"></param>
         /// <returns></returns>
         [HttpPost("UpdateDemoAsync")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<JsonResult> UpdateDemoAsync(long Id, string Name, string Sex, int Age, string Remark)
         {
             var result = await _testService.UpdateDemoAsync(Id, Name, Sex, Age, Remark);
@@ -108,7 +108,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpPost("DeleteDemoByIdAsync")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<JsonResult> DeleteDemoByIdAsync(long Id)
         {
             var result = await _testService.DeleteDemoByIdAsync(Id);
@@ -121,7 +121,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="uploadfile"></param>
         /// <returns></returns>
         [HttpPost("TestUpLoadEnclosure")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult TestUpLoadEnclosure(IFormFile uploadfile)
         {
             uploadfile = Request.Form.Files[0];
@@ -174,7 +174,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="uploadfile"></param>
         /// <returns></returns>
         [HttpPost("TestImportExcel")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult TestImportExcel(IFormFile uploadfile)
         {
             var filename = ContentDispositionHeaderValue.Parse(uploadfile.ContentDisposition).FileName; // 原文件名（包括路径）
@@ -229,7 +229,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("TestDownLoadEnclosure")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult TestDownLoadEnclosure(long Id)
         {
             var webRootPath = _hostingEnvironment.WebRootPath;
@@ -246,7 +246,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Name"></param>
         /// <returns></returns>
         [HttpGet("TestExcelExport")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult TestExportExcel(string Name)
         {
             string webRootPath = _hostingEnvironment.WebRootPath;

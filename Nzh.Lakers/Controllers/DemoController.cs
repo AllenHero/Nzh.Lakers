@@ -55,7 +55,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Name"></param>
         /// <returns></returns>
         [HttpGet("GetDemoPageList")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult GetDemoPageList(int PageIndex, int PageSize, string Name)
         {
             var result = _demoService.GetDemoPageList(PageIndex, PageSize, Name);
@@ -70,7 +70,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("GetDemoById")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult GetDemoById(long Id)
         {
             var result = _demoService.GetDemoById(Id);
@@ -86,7 +86,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Remark"></param>
         /// <returns></returns>
         [HttpPost("InsertDemo")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult InsertDemo(string Name, string Sex, int Age, string Remark)
         {
             var result = _demoService.InsertDemo(Name, Sex, Age, Remark);
@@ -103,7 +103,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Remark"></param>
         /// <returns></returns>
         [HttpPost("UpdateDemo")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult UpdateDemo(long Id, string Name, string Sex, int Age, string Remark)
         {
             var result = _demoService.UpdateDemo(Id, Name, Sex, Age, Remark);
@@ -116,7 +116,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpPost("DeleteDemoById")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult DeleteDemoById(long Id)
         {
             var result = _demoService.DeleteDemoById(Id);
@@ -129,7 +129,7 @@ namespace Nzh.Lakers.Controllers
         /// <param name="Key"></param>
         /// <returns></returns>
         [HttpPost("GetCacheValue")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public JsonResult GetCacheValue(string Key)
         {
             //var result = _redisCache.GetValue(Key);
