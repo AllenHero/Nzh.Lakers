@@ -82,7 +82,7 @@ namespace Nzh.Lakers.Controllers
                         user.FirstVisit = DateTime.Now;
                     }
                     user.LastVisit = DateTime.Now;
-                    //_sysUserService.UpdateUserLoginInfo(user);
+                    _sysUserService.UpdateUserLoginInfo(user);
 
                     #endregion
 

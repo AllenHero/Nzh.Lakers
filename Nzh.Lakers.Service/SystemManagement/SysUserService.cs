@@ -170,13 +170,16 @@ namespace Nzh.Lakers.Service.SystemManagement
             try
             {
                 _sysUserRepository.BeginTran();//开始事务
-                SysUser User = new SysUser();
-                User.Id = sysUser.Id;
-                User.LoginCount = sysUser.LoginCount;
-                User.FirstVisit = sysUser.FirstVisit;
-                User.LastVisit = sysUser.LastVisit;
-                bool result = _sysUserRepository.Update(User);
-                _sysUserRepository.CommitTran();
+                string sql = "UPDATE sys_user SET LoginCount=@LoginCount,FirstVisit=@FirstVisit,LastVisit=@LastVisit WHERE Id=@Id";
+                SugarParameter[] Parameter = new SugarParameter[]
+                {
+               new SugarParameter("@Id",sysUser.Id),
+               new SugarParameter("@LoginCount", sysUser.LoginCount),
+               new SugarParameter("@FirstVisit",  sysUser.FirstVisit),
+               new SugarParameter("@LastVisit", sysUser.LastVisit)
+               };
+                bool result =  _sysUserRepository.ExecuteSql(sql, Parameter);
+                _sysUserRepository.CommitTran();//提交事务
                 return result;
             }
             catch (Exception ex)
