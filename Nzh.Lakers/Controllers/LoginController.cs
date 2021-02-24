@@ -56,11 +56,11 @@ namespace Nzh.Lakers.Controllers
         {
             if (string.IsNullOrEmpty(loginDto.Account))
             {
-                ModelState.AddModelError("err", "用户名不能为空");
+                return Result(false, "用户名不能为空");
             }
             if (string.IsNullOrEmpty(loginDto.Password))
             {
-                ModelState.AddModelError("err", "密码不能为空");
+                return Result(false, "密码不能为空");
             }
             var output = new LoginOutput();
             SysLog sysLog = new SysLog();
@@ -77,7 +77,7 @@ namespace Nzh.Lakers.Controllers
 
                     user.Id = user.Id;
                     user.LoginCount++;
-                    if (user.FirstVisit==null)
+                    if (user.FirstVisit == null)
                     {
                         user.FirstVisit = DateTime.Now;
                     }
@@ -90,8 +90,8 @@ namespace Nzh.Lakers.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("err", "用户名或密码错误");
                     sysLog.LogStatus = (int)LogStatusType.Fail;
+                    return Result(false, "用户名或密码错误");
                 }
 
                 #region 登录日志
@@ -105,7 +105,7 @@ namespace Nzh.Lakers.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("err", "登录异常"+ ex);
+                return Result(false, "登录异常" + ex);
             }
             return GetToken(output);
         }

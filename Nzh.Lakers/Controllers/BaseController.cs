@@ -16,27 +16,42 @@ namespace Nzh.Lakers.Controllers
         /// <summary>
         /// 返回封装
         /// </summary>
-        /// <param name="statusCode"></param>
+        /// <param name="Status"></param>
         /// <returns></returns>
-        public static JsonResult Result(StatusCodeType statusCode)
+        public static JsonResult Result(bool Status)
         {
             ResultModel result = new ResultModel();
-            result.Code = (int)statusCode;
-            result.Msg = statusCode.GetEnumText();
+            result.Status = Status;
+            if (Status)
+            {
+                result.Message = "操作成功";
+                result.Code = (int)StatusCodeType.Success;
+            }
+            else {
+                result.Message = "操作成功";
+                result.Code = (int)StatusCodeType.Error;
+            } 
             return new JsonResult(result);
         }
 
         /// <summary>
         /// 返回封装
         /// </summary>
-        /// <param name="statusCode"></param>
-        /// <param name="retMessage"></param>
+        /// <param name="Status"></param>
+        /// <param name="Message"></param>
         /// <returns></returns>
-        public static JsonResult Result(StatusCodeType statusCode, string retMessage)
+        public static JsonResult Result(bool Status, string Message)
         {
             ResultModel result = new ResultModel();
-            result.Code = (int)statusCode;
-            result.Msg = retMessage;
+            result.Status = Status;
+            result.Message = Message;
+            if (Status)
+            {
+                result.Code = (int)StatusCodeType.Success;
+            }
+            else {
+                result.Code = (int)StatusCodeType.Error;
+            }
             return new JsonResult(result);
         }
 
@@ -49,51 +64,13 @@ namespace Nzh.Lakers.Controllers
         public static JsonResult Result<T>(T data)
         {
             ResultModel<T> result = new ResultModel<T>();
+            result.Status = true;
             result.Code = (int)StatusCodeType.Success;
-            result.Msg = StatusCodeType.Success.GetEnumText();
+            result.Message = StatusCodeType.Success.GetEnumText();
             result.Data = data;
             return new JsonResult(result);
         }
 
-        #endregion
-
-        /// <summary>
-        /// 总记录数
-        /// </summary>
-        public int TotalCount { get; set; }
-
-        /// <summary>
-        /// 一页展示的条数
-        /// </summary>
-        public int PageSize { get; set; }
-
-        /// <summary>
-        /// 当前页
-        /// </summary>
-        public int PageIndex { get; set; }
-
-        /// <summary>
-        /// 总页数
-        /// </summary>
-        public int TotalPage
-        {
-            get
-            {
-                if (TotalCount > 0)
-                {
-                    return TotalCount % this.PageSize == 0 ? TotalCount / this.PageSize : TotalCount / this.PageSize + 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            set { }
-        }
-
-        /// <summary>
-        /// 内容
-        /// </summary>
-        public dynamic List { get; set; }
+        #endregion 
     }
 }

@@ -18,9 +18,14 @@ namespace Nzh.Lakers.Model
         public int Code { get; set; }
 
         /// <summary>
+        /// 状态
+        /// </summary>
+        public bool Status { get; set; }
+
+        /// <summary>
         /// 消息
         /// </summary>
-        public string Msg { get; set; }
+        public string Message { get; set; }
     }
 
     public class ResultModel<T> : ResultModel
