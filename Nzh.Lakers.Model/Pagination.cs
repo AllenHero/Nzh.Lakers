@@ -55,6 +55,6 @@ namespace Nzh.Lakers.Model
         /// <summary>
         /// 内容
         /// </summary>
-        public dynamic DataList { get; set; }
+        public dynamic List { get; set; }
     }
 }

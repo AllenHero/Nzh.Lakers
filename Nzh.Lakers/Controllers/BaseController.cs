@@ -56,5 +56,44 @@ namespace Nzh.Lakers.Controllers
         }
 
         #endregion
+
+        /// <summary>
+        /// 总记录数
+        /// </summary>
+        public int TotalCount { get; set; }
+
+        /// <summary>
+        /// 一页展示的条数
+        /// </summary>
+        public int PageSize { get; set; }
+
+        /// <summary>
+        /// 当前页
+        /// </summary>
+        public int PageIndex { get; set; }
+
+        /// <summary>
+        /// 总页数
+        /// </summary>
+        public int TotalPage
+        {
+            get
+            {
+                if (TotalCount > 0)
+                {
+                    return TotalCount % this.PageSize == 0 ? TotalCount / this.PageSize : TotalCount / this.PageSize + 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            set { }
+        }
+
+        /// <summary>
+        /// 内容
+        /// </summary>
+        public dynamic List { get; set; }
     }
 }

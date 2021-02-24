@@ -128,7 +128,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = db.SqlQueryable<T>(Sql).Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
+            result.List = db.SqlQueryable<T>(Sql).Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -146,7 +146,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = await Task.Run(() => db.SqlQueryable<T>(Sql).Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count));
+            result.List = await Task.Run(() => db.SqlQueryable<T>(Sql).Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count));
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -166,7 +166,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = db.SqlQueryable<T>(Sql).OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
+            result.List = db.SqlQueryable<T>(Sql).OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -186,7 +186,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = await Task.Run(() => db.SqlQueryable<T>(Sql).OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count));
+            result.List = await Task.Run(() => db.SqlQueryable<T>(Sql).OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count));
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -204,7 +204,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = db.SqlQueryable<T>(Sql).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count);
+            result.List = db.SqlQueryable<T>(Sql).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -222,7 +222,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = await Task.Run(() => db.SqlQueryable<T>(Sql).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count));
+            result.List = await Task.Run(() => db.SqlQueryable<T>(Sql).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count));
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -241,7 +241,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = db.SqlQueryable<T>(Sql).OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count);
+            result.List = db.SqlQueryable<T>(Sql).OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -260,7 +260,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = await Task.Run(() => db.SqlQueryable<T>(Sql).OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count));
+            result.List = await Task.Run(() => db.SqlQueryable<T>(Sql).OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count));
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1651,7 +1651,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<string> result = new Pagination<string>();
             int Count = 0;
-            result.DataList = db.Queryable<T>().Where(Expression).ToJsonPage(page.PageIndex, page.PageSize, ref Count);
+            result.List = db.Queryable<T>().Where(Expression).ToJsonPage(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1668,7 +1668,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<string> result = new Pagination<string>();
             int Count = 0;
-            result.DataList = await Task.Run(() => db.Queryable<T>().Where(Expression).ToJsonPage(page.PageIndex, page.PageSize, ref Count));
+            result.List = await Task.Run(() => db.Queryable<T>().Where(Expression).ToJsonPage(page.PageIndex, page.PageSize, ref Count));
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1723,7 +1723,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<DataTable> result = new Pagination<DataTable>();
             int Count = 0;
-            result.DataList = db.Queryable<T>().Where(Expression).ToDataTablePage(page.PageIndex, page.PageSize, ref Count);
+            result.List = db.Queryable<T>().Where(Expression).ToDataTablePage(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1740,7 +1740,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<DataTable> result = new Pagination<DataTable>();
             int Count = 0;
-            result.DataList = await Task.Run(() => db.Queryable<T>().Where(Expression).ToDataTablePage(page.PageIndex, page.PageSize, ref Count));
+            result.List = await Task.Run(() => db.Queryable<T>().Where(Expression).ToDataTablePage(page.PageIndex, page.PageSize, ref Count));
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1757,7 +1757,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = db.Queryable<T>().Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
+            result.List = db.Queryable<T>().Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1774,7 +1774,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = await Task.Run(() => db.Queryable<T>().Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count));
+            result.List = await Task.Run(() => db.Queryable<T>().Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count));
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1793,7 +1793,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = db.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
+            result.List = db.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(Expression).ToPageList(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1812,7 +1812,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = await Task.Run(() => db.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(whereExpression).ToPageList(page.PageIndex, page.PageSize, ref Count));
+            result.List = await Task.Run(() => db.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(whereExpression).ToPageList(page.PageIndex, page.PageSize, ref Count));
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1829,7 +1829,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = db.Queryable<T>().Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count);
+            result.List = db.Queryable<T>().Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1846,7 +1846,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = await Task.Run(() => db.Queryable<T>().Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count));
+            result.List = await Task.Run(() => db.Queryable<T>().Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count));
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1865,7 +1865,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = db.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count);
+            result.List = db.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count);
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
@@ -1884,7 +1884,7 @@ namespace Nzh.Lakers.Repository.Base
         {
             Pagination<T> result = new Pagination<T>();
             int Count = 0;
-            result.DataList = await Task.Run(() => db.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count));
+            result.List = await Task.Run(() => db.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref Count));
             result.PageIndex = page.PageIndex;
             result.PageSize = page.PageSize;
             result.TotalCount = Count;
