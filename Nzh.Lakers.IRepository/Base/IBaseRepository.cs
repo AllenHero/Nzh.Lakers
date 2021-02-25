@@ -31,37 +31,37 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<List<T>> GetListBySqlAsync(string Sql, Expression<Func<T, bool>> Expression);
 
-        Pagination<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> Expression, PageModel page);
+        Pagination<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> Expression, PageModel Page);
 
-        Task<Pagination<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> Expression, PageModel page);
+        Task<Pagination<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> Expression, PageModel Page);
 
-        Pagination<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> Expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Pagination<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> Expression, PageModel Page, Expression<Func<T, object>> OrderByExpression = null, OrderByType OrderByType = OrderByType.Asc);
 
-        Task<Pagination<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> Expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Task<Pagination<T>> GetPageListBySqlAsync(string Sql, Expression<Func<T, bool>> Expression, PageModel Page, Expression<Func<T, object>> OrderByExpression = null, OrderByType OrderByType = OrderByType.Asc);
 
-        Pagination<T> GetPageListBySql(string Sql, List<IConditionalModel> conditionalList, PageModel page);
+        Pagination<T> GetPageListBySql(string Sql, List<IConditionalModel> ConditionalList, PageModel Page);
 
-        Task<Pagination<T>> GetPageListBySqlAsync(string Sql, List<IConditionalModel> conditionalList, PageModel page);
+        Task<Pagination<T>> GetPageListBySqlAsync(string Sql, List<IConditionalModel> ConditionalList, PageModel Page);
 
-        Pagination<T> GetPageListBySql(string Sql, List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Pagination<T> GetPageListBySql(string Sql, List<IConditionalModel> ConditionalList, PageModel Page, Expression<Func<T, object>> OrderByExpression = null, OrderByType OrderByType = OrderByType.Asc);
 
-        Task<Pagination<T>> GetPageListBySqlAsync(string Sql, List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Task<Pagination<T>> GetPageListBySqlAsync(string Sql, List<IConditionalModel> ConditionalList, PageModel Page, Expression<Func<T, object>> OrderByExpression = null, OrderByType OrderByType = OrderByType.Asc);
 
         DataTable GetDataTableBySql(string Sql);
 
         Task<DataTable> GetDataTableBySqlAsync(string Sql);
 
-        DataTable GetDataTableBySql(string Sql, object parameters);
+        DataTable GetDataTableBySql(string Sql, object Parameters);
 
-        Task<DataTable> GetDataTableBySqlAsync(string Sql, object parameters);
+        Task<DataTable> GetDataTableBySqlAsync(string Sql, object Parameters);
 
-        DataTable GetDataTableBySql(string Sql, params SugarParameter[] parameters);
+        DataTable GetDataTableBySql(string Sql, params SugarParameter[] Parameters);
 
-        Task<DataTable> GetDataTableBySqlAsync(string Sql, params SugarParameter[] parameters);
+        Task<DataTable> GetDataTableBySqlAsync(string Sql, params SugarParameter[] Parameters);
 
-        DataTable GetDataTableBySql(string Sql, List<SugarParameter> parameters);
+        DataTable GetDataTableBySql(string Sql, List<SugarParameter> Parameters);
 
-        Task<DataTable> GetDataTableBySqlAsync(string Sql, List<SugarParameter> parameters);
+        Task<DataTable> GetDataTableBySqlAsync(string Sql, List<SugarParameter> Parameters);
 
         DataTable GetDataTableBySql(string Sql, Expression<Func<T, bool>> Expression);
 
@@ -71,17 +71,17 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<DataSet> GetDataSetBySqlAsync(string Sql);
 
-        DataSet GetDataSetBySql(string Sql, object parameters);
+        DataSet GetDataSetBySql(string Sql, object Parameters);
 
-        Task<DataSet> GetDataSetBySqlAsync(string Sql, object parameters);
+        Task<DataSet> GetDataSetBySqlAsync(string Sql, object Parameters);
 
-        DataSet GetDataSetBySql(string Sql, params SugarParameter[] parameters);
+        DataSet GetDataSetBySql(string Sql, params SugarParameter[] Parameters);
 
-        Task<DataSet> GetDataSetBySqlAsync(string Sql, params SugarParameter[] parameters);
+        Task<DataSet> GetDataSetBySqlAsync(string Sql, params SugarParameter[] Parameters);
 
-        DataSet GetDataSetBySql(string Sql, List<SugarParameter> parameters);
+        DataSet GetDataSetBySql(string Sql, List<SugarParameter> Parameters);
 
-        Task<DataSet> GetDataSetBySqlAsync(string Sql, List<SugarParameter> parameters);
+        Task<DataSet> GetDataSetBySqlAsync(string Sql, List<SugarParameter> Parameters);
 
         DataSet GetDataSetBySql(string Sql, Expression<Func<T, bool>> Expression);
 
@@ -91,17 +91,17 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<bool> ExecuteSqlAsync(string Sql);
 
-        bool ExecuteSql(string Sql, object parameters);
+        bool ExecuteSql(string Sql, object Parameters);
 
-        Task<bool> ExecuteSqlAsync(string Sql, object parameters);
+        Task<bool> ExecuteSqlAsync(string Sql, object Parameters);
 
-        bool ExecuteSql(string Sql, params SugarParameter[] parameters);
+        bool ExecuteSql(string Sql, params SugarParameter[] Parameters);
 
-        Task<bool> ExecuteSqlAsync(string Sql, params SugarParameter[] parameters);
+        Task<bool> ExecuteSqlAsync(string Sql, params SugarParameter[] Parameters);
 
-        bool ExecuteSql(string Sql, List<SugarParameter> parameters);
+        bool ExecuteSql(string Sql, List<SugarParameter> Parameters);
 
-        Task<bool> ExecuteSqlAsync(string Sql, List<SugarParameter> parameters);
+        Task<bool> ExecuteSqlAsync(string Sql, List<SugarParameter> Parameters);
 
         bool ExecuteSql(string Sql, Expression<Func<T, bool>> Expression);
 
@@ -111,17 +111,17 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<List<T>> GetListAsync(string Sql);
 
-        List<T> GetList(string Sql, object parameters);
+        List<T> GetList(string Sql, object Parameters);
 
-        Task<List<T>> GetListAsync(string Sql, object parameters);
+        Task<List<T>> GetListAsync(string Sql, object Parameters);
 
-        List<T> GetList(string Sql, params SugarParameter[] parameters);
+        List<T> GetList(string Sql, params SugarParameter[] Parameters);
 
-        Task<List<T>> GetListAsync(string Sql, params SugarParameter[] parameters);
+        Task<List<T>> GetListAsync(string Sql, params SugarParameter[] Parameters);
 
-        List<T> GetList(string Sql, List<SugarParameter> parameters);
+        List<T> GetList(string Sql, List<SugarParameter> Parameters);
 
-        Task<List<T>> GetListAsync(string Sql, List<SugarParameter> parameters);
+        Task<List<T>> GetListAsync(string Sql, List<SugarParameter> Parameters);
 
         List<T> GetList(string Sql, Expression<Func<T, bool>> Expression);
 
@@ -131,17 +131,17 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<T> GetAsync(string Sql);
 
-        T Get(string Sql, object parameters);
+        T Get(string Sql, object Parameters);
 
-        Task<T> GetAsync(string Sql, object parameters);
+        Task<T> GetAsync(string Sql, object Parameters);
 
-        T Get(string Sql, params SugarParameter[] parameters);
+        T Get(string Sql, params SugarParameter[] Parameters);
 
-        Task<T> GetAsync(string Sql, params SugarParameter[] parameters);
+        Task<T> GetAsync(string Sql, params SugarParameter[] Parameters);
 
-        T Get(string Sql, List<SugarParameter> parameters);
+        T Get(string Sql, List<SugarParameter> Parameters);
 
-        Task<T> GetAsync(string Sql, List<SugarParameter> parameters);
+        Task<T> GetAsync(string Sql, List<SugarParameter> Parameters);
 
         T Get(string Sql, Expression<Func<T, bool>> Expression);
 
@@ -151,17 +151,17 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<dynamic> GetDynamicAsync(string Sql);
 
-        dynamic GetDynamic(string Sql, object parameters);
+        dynamic GetDynamic(string Sql, object Parameters);
 
-        Task<dynamic> GetDynamicAsync(string Sql, object parameters);
+        Task<dynamic> GetDynamicAsync(string Sql, object Parameters);
 
-        dynamic GetDynamic(string Sql, params SugarParameter[] parameters);
+        dynamic GetDynamic(string Sql, params SugarParameter[] Parameters);
 
-        Task<dynamic> GetDynamicAsync(string Sql, params SugarParameter[] parameters);
+        Task<dynamic> GetDynamicAsync(string Sql, params SugarParameter[] Parameters);
 
-        dynamic GetDynamic(string Sql, List<SugarParameter> parameters);
+        dynamic GetDynamic(string Sql, List<SugarParameter> Parameters);
 
-        Task<dynamic> GetDynamicAsync(string Sql, List<SugarParameter> parameters);
+        Task<dynamic> GetDynamicAsync(string Sql, List<SugarParameter> Parameters);
 
         dynamic GetDynamic(string Sql, Expression<Func<T, bool>> Expression);
 
@@ -171,53 +171,53 @@ namespace Nzh.Lakers.IRepository.Base
 
         #region  其他
 
-        DataTable QueryDataTableByProcedure(string procedureName);
+        DataTable QueryDataTableByProcedure(string ProcedureName);
 
-        Task<DataTable> QueryDataTableByProcedureAsync(string procedureName);
+        Task<DataTable> QueryDataTableByProcedureAsync(string ProcedureName);
 
-        DataTable QueryDataTableByProcedure(string procedureName, object parameters);
+        DataTable QueryDataTableByProcedure(string ProcedureName, object Parameters);
 
-        Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, object parameters);
+        Task<DataTable> QueryDataTableByProcedureAsync(string ProcedureName, object Parameters);
 
-        DataTable QueryDataTableByProcedure(string procedureName, params SugarParameter[] parameters);
+        DataTable QueryDataTableByProcedure(string ProcedureName, params SugarParameter[] Parameters);
 
-        Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, params SugarParameter[] parameters);
+        Task<DataTable> QueryDataTableByProcedureAsync(string ProcedureName, params SugarParameter[] Parameters);
 
-        DataTable QueryDataTableByProcedure(string procedureName, List<SugarParameter> parameters);
+        DataTable QueryDataTableByProcedure(string ProcedureName, List<SugarParameter> Parameters);
 
-        Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, List<SugarParameter> parameters);
+        Task<DataTable> QueryDataTableByProcedureAsync(string ProcedureName, List<SugarParameter> Parameters);
 
-        DataTable QueryDataTableByProcedure(string procedureName, Expression<Func<T, bool>> Expression);
+        DataTable QueryDataTableByProcedure(string ProcedureName, Expression<Func<T, bool>> Expression);
 
-        Task<DataTable> QueryDataTableByProcedureAsync(string procedureName, Expression<Func<T, bool>> Expression);
+        Task<DataTable> QueryDataTableByProcedureAsync(string ProcedureName, Expression<Func<T, bool>> Expression);
 
-        DataSet QueryDataSetByProcedure(string procedureName);
+        DataSet QueryDataSetByProcedure(string ProcedureName);
 
-        Task<DataSet> QueryDataSetByProcedureAsync(string procedureName);
+        Task<DataSet> QueryDataSetByProcedureAsync(string ProcedureName);
 
-        DataSet QueryDataSetByProcedure(string procedureName, object parameters);
+        DataSet QueryDataSetByProcedure(string ProcedureName, object Parameters);
 
-        Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, object parameters);
+        Task<DataSet> QueryDataSetByProcedureAsync(string ProcedureName, object Parameters);
 
-        DataSet QueryDataSetByProcedure(string procedureName, params SugarParameter[] parameters);
+        DataSet QueryDataSetByProcedure(string ProcedureName, params SugarParameter[] Parameters);
 
-        Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, params SugarParameter[] parameters);
+        Task<DataSet> QueryDataSetByProcedureAsync(string ProcedureName, params SugarParameter[] Parameters);
 
-        DataSet QueryDataSetByProcedure(string procedureName, List<SugarParameter> parameters);
+        DataSet QueryDataSetByProcedure(string ProcedureName, List<SugarParameter> Parameters);
 
-        Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, List<SugarParameter> parameters);
+        Task<DataSet> QueryDataSetByProcedureAsync(string ProcedureName, List<SugarParameter> Parameters);
 
-        DataSet QueryDataSetByProcedure(string procedureName, Expression<Func<T, bool>> Expression);
+        DataSet QueryDataSetByProcedure(string ProcedureName, Expression<Func<T, bool>> Expression);
 
-        Task<DataSet> QueryDataSetByProcedureAsync(string procedureName, Expression<Func<T, bool>> Expression);
+        Task<DataSet> QueryDataSetByProcedureAsync(string ProcedureName, Expression<Func<T, bool>> Expression);
 
-        List<T> Take(int num);
+        List<T> Take(int Num);
 
-        Task<List<T>> TakeAsync(int num);
+        Task<List<T>> TakeAsync(int Num);
 
-        List<T> Take(Expression<Func<T, bool>> Expression, int num);
+        List<T> Take(Expression<Func<T, bool>> Expression, int Num);
 
-        Task<List<T>> TakeAsync(Expression<Func<T, bool>> Expression, int num);
+        Task<List<T>> TakeAsync(Expression<Func<T, bool>> Expression, int Num);
 
         T First();
 
@@ -227,33 +227,33 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<T> FirstAsync(Expression<Func<T, bool>> Expression);
 
-        int Sum(string field);
+        int Sum(string Field);
 
-        Task<int> SumAsync(string field);
+        Task<int> SumAsync(string Field);
 
         int Sum(Expression<Func<T, int>> Expression);
 
         Task<int> SumAsync(Expression<Func<T, int>> Expression);
 
-        object Max(string field);
+        object Max(string Field);
 
-        Task<object> MaxAsync(string field);
+        Task<object> MaxAsync(string Field);
 
         object Max(Expression<Func<T, bool>> Expression);
 
         Task<object> MaxAsync(Expression<Func<T, bool>> Expression);
 
-        object Min(string field);
+        object Min(string Field);
 
-        Task<object> MinAsync(string field);
+        Task<object> MinAsync(string Field);
 
         object Min(Expression<Func<T, bool>> Expression);
 
         Task<object> MinAsync(Expression<Func<T, bool>> Expression);
 
-        int Avg(string field);
+        int Avg(string Field);
 
-        Task<int> AvgAsync(string field);
+        Task<int> AvgAsync(string Field);
 
         int Avg(Expression<Func<T, int>> Expression);
 
@@ -279,17 +279,17 @@ namespace Nzh.Lakers.IRepository.Base
 
         #region  查询
 
-        T GetById(dynamic id);
+        T GetById(dynamic Id);
 
-        Task<T> GetByIdAsync(dynamic id);
+        Task<T> GetByIdAsync(dynamic Id);
 
-        List<T> GetListByIds(object[] ids);
+        List<T> GetListByIds(object[] Ids);
 
-        Task<List<T>> GetListByIdsAsync(object[] ids);
+        Task<List<T>> GetListByIdsAsync(object[] Ids);
 
-        List<T> GetListByIds(object[] ids, Expression<Func<T, bool>> Expression);
+        List<T> GetListByIds(object[] Ids, Expression<Func<T, bool>> Expression);
 
-        Task<List<T>> GetListByIdsAsync(object[] ids, Expression<Func<T, bool>> Expression);
+        Task<List<T>> GetListByIdsAsync(object[] Ids, Expression<Func<T, bool>> Expression);
 
         List<T> GetList();
 
@@ -315,9 +315,9 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<string> GetJsonAsync(Expression<Func<T, bool>> Expression);
 
-        Pagination<string> GetJsonPage(Expression<Func<T, bool>> Expression, PageModel page);
+        Pagination<string> GetJsonPage(Expression<Func<T, bool>> Expression, PageModel Page);
 
-        Task<Pagination<string>> GetJsonPageAsync(Expression<Func<T, bool>> Expression, PageModel page);
+        Task<Pagination<string>> GetJsonPageAsync(Expression<Func<T, bool>> Expression, PageModel Page);
 
         DataTable GetDataTable();
 
@@ -327,33 +327,33 @@ namespace Nzh.Lakers.IRepository.Base
 
         Task<DataTable> GetDataTableAsync(Expression<Func<T, bool>> Expression);
 
-        Pagination<DataTable> GetDataTablePage(Expression<Func<T, bool>> Expression, PageModel page);
+        Pagination<DataTable> GetDataTablePage(Expression<Func<T, bool>> Expression, PageModel Page);
 
-        Task<Pagination<DataTable>> GetDataTablePageAsync(Expression<Func<T, bool>> Expression, PageModel page);
+        Task<Pagination<DataTable>> GetDataTablePageAsync(Expression<Func<T, bool>> Expression, PageModel Page);
 
-        Pagination<T> GetPageList(Expression<Func<T, bool>> Expression, PageModel page);
+        Pagination<T> GetPageList(Expression<Func<T, bool>> Expression, PageModel Page);
 
-        Task<Pagination<T>> GetPageListAsync(Expression<Func<T, bool>> Expression, PageModel page);
+        Task<Pagination<T>> GetPageListAsync(Expression<Func<T, bool>> Expression, PageModel Page);
 
-        Pagination<T> GetPageList(Expression<Func<T, bool>> Expression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Pagination<T> GetPageList(Expression<Func<T, bool>> Expression, PageModel Page, Expression<Func<T, object>> OrderByExpression = null, OrderByType OrderByType = OrderByType.Asc);
 
-        Task<Pagination<T>> GetPageListAsync(Expression<Func<T, bool>> whereExpression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Task<Pagination<T>> GetPageListAsync(Expression<Func<T, bool>> whereExpression, PageModel Page, Expression<Func<T, object>> OrderByExpression = null, OrderByType OrderByType = OrderByType.Asc);
 
-        Pagination<T> GetPageList(List<IConditionalModel> conditionalList, PageModel page);
+        Pagination<T> GetPageList(List<IConditionalModel> ConditionalList, PageModel Page);
 
-        Task<Pagination<T>> GetPageListAsync(List<IConditionalModel> conditionalList, PageModel page);
+        Task<Pagination<T>> GetPageListAsync(List<IConditionalModel> ConditionalList, PageModel Page);
 
-        Pagination<T> GetPageList(List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Pagination<T> GetPageList(List<IConditionalModel> ConditionalList, PageModel Page, Expression<Func<T, object>> OrderByExpression = null, OrderByType OrderByType = OrderByType.Asc);
 
-        Task<Pagination<T>> GetPageListAsync(List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+        Task<Pagination<T>> GetPageListAsync(List<IConditionalModel> ConditionalList, PageModel Page, Expression<Func<T, object>> OrderByExpression = null, OrderByType OrderByType = OrderByType.Asc);
 
-        List<T> GetTreeList(Expression<Func<T, IEnumerable<object>>> childListExpression, Expression<Func<T, object>> parentIdExpression, object rootValue);
+        List<T> GetTreeList(Expression<Func<T, IEnumerable<object>>> ChildListExpression, Expression<Func<T, object>> ParentIdExpression, object RootValue);
 
-        Task<List<T>> GetTreeListAsync(Expression<Func<T, IEnumerable<object>>> childListExpression, Expression<Func<T, object>> parentIdExpression, object rootValue);
+        Task<List<T>> GetTreeListAsync(Expression<Func<T, IEnumerable<object>>> ChildListExpression, Expression<Func<T, object>> ParentIdExpression, object RootValue);
 
-        Dictionary<string, object> GetDictionary(Expression<Func<T, object>> key, Expression<Func<T, object>> value);
+        Dictionary<string, object> GetDictionary(Expression<Func<T, object>> Key, Expression<Func<T, object>> Value);
 
-        Task<Dictionary<string, object>> GetDictionaryAsync(Expression<Func<T, object>> key, Expression<Func<T, object>> value);
+        Task<Dictionary<string, object>> GetDictionaryAsync(Expression<Func<T, object>> Key, Expression<Func<T, object>> Value);
 
         List<Dictionary<string, object>> GetDictionaryList();
 
@@ -363,53 +363,53 @@ namespace Nzh.Lakers.IRepository.Base
 
         #region  新增
 
-        bool Insert(T insertObj);
+        bool Insert(T InsertObj);
 
-        Task<bool> InsertAsync(T insertObj);
+        Task<bool> InsertAsync(T InsertObj);
 
-        int InsertReturnIdentity(T insertObj);
+        int InsertReturnIdentity(T InsertObj);
 
-        Task<int> InsertReturnIdentityAsync(T insertObj);
+        Task<int> InsertReturnIdentityAsync(T InsertObj);
 
-        bool InsertRange(T[] insertObjs);
+        bool InsertRange(T[] InsertObjs);
 
-        Task<bool> InsertRangeAsync(T[] insertObjs);
+        Task<bool> InsertRangeAsync(T[] InsertObjs);
 
-        bool InsertRange(List<T>[] insertObjs);
+        bool InsertRange(List<T>[] InsertObjs);
 
-        Task<bool> InsertRangeAsync(List<T>[] insertObjs);
+        Task<bool> InsertRangeAsync(List<T>[] InsertObjs);
 
-        bool InsertRange(List<T> insertObjs);
+        bool InsertRange(List<T> InsertObjs);
 
-        Task<bool> InsertRangeAsync(List<T> insertObjs);
+        Task<bool> InsertRangeAsync(List<T> InsertObjs);
 
-        T InsertReturnEntity(T insertObj);
+        T InsertReturnEntity(T InsertObj);
 
-        Task<T> InsertReturnEntityAsync(T insertObjs);
+        Task<T> InsertReturnEntityAsync(T InsertObjs);
 
         #endregion
 
         #region  修改
 
-        bool Update(T updateObj);
+        bool Update(T UpdateObj);
 
-        Task<bool> UpdateAsync(T updateObj);
+        Task<bool> UpdateAsync(T UpdateObj);
 
-        bool UpdateRange(T[] updateObjs);
+        bool UpdateRange(T[] UpdateObjs);
 
-        Task<bool> UpdateRangeAsync(T[] updateObjs);
+        Task<bool> UpdateRangeAsync(T[] UpdateObjs);
 
-        bool UpdateRange(List<T>[] updateObjs);
+        bool UpdateRange(List<T>[] UpdateObjs);
 
-        Task<bool> UpdateRangeAsync(List<T>[] updateObjs);
+        Task<bool> UpdateRangeAsync(List<T>[] UpdateObjs);
 
-        bool UpdateRange(List<T> updateObjs);
+        bool UpdateRange(List<T> UpdateObjs);
 
-        Task<bool> UpdateRangeAsync(List<T> updateObjs);
+        Task<bool> UpdateRangeAsync(List<T> UpdateObjs);
 
-        bool Update(Expression<Func<T, T>> columns, Expression<Func<T, bool>> Expression);
+        bool Update(Expression<Func<T, T>> Columns, Expression<Func<T, bool>> Expression);
 
-        Task<bool> UpdateAsync(Expression<Func<T, T>> columns, Expression<Func<T, bool>> Expression);
+        Task<bool> UpdateAsync(Expression<Func<T, T>> Columns, Expression<Func<T, bool>> Expression);
 
         bool Update(Expression<Func<T, bool>> Expression);
 
@@ -419,37 +419,37 @@ namespace Nzh.Lakers.IRepository.Base
 
         #region  删除
 
-        bool Delete(T deleteObj);
+        bool Delete(T DeleteObj);
 
-        Task<bool> DeleteAsync(T deleteObj);
+        Task<bool> DeleteAsync(T DeleteObj);
 
-        bool Delete(T[] deleteObj);
+        bool Delete(T[] DeleteObj);
 
-        Task<bool> DeleteAsync(T[] deleteObj);
+        Task<bool> DeleteAsync(T[] DeleteObj);
 
-        bool Delete(List<T>[] deleteObj);
+        bool Delete(List<T>[] DeleteObj);
 
-        Task<bool> DeleteAsync(List<T>[] deleteObj);
+        Task<bool> DeleteAsync(List<T>[] DeleteObj);
 
-        bool Delete(List<T> deleteObj);
+        bool Delete(List<T> DeleteObj);
 
-        Task<bool> DeleteAsync(List<T> deleteObj);
+        Task<bool> DeleteAsync(List<T> DeleteObj);
 
         bool Delete(Expression<Func<T, bool>> Expression);
 
         Task<bool> DeleteAsync(Expression<Func<T, bool>> Expression);
 
-        bool DeleteByIds(dynamic[] ids);
+        bool DeleteByIds(dynamic[] Ids);
 
-        Task<bool> DeleteByIdsAsync(dynamic[] ids);
+        Task<bool> DeleteByIdsAsync(dynamic[] Ids);
 
-        bool DeleteByIds(List<dynamic> ids);
+        bool DeleteByIds(List<dynamic> Ids);
 
-        Task<bool> DeleteByIdsAsync(List<dynamic> ids);
+        Task<bool> DeleteByIdsAsync(List<dynamic> Ids);
 
-        bool DeleteById(long id);
+        bool DeleteById(long Id);
 
-        Task<bool> DeleteByIdAsync(long id);
+        Task<bool> DeleteByIdAsync(long Id);
 
         #endregion
     }
